@@ -5,16 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background"
     tools:context=".DangNhap">
-    <ImageView
-        android:id="@+id/img_dn_1"
+
+    <ViewFlipper
         android:layout_width="390dp"
         android:layout_height="300dp"
+        android:autoStart="true"
+        android:flipInterval="2000"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:src=""
-        />
+        android:inAnimation="@android:anim/slide_in_left"
+        android:outAnimation="@android:anim/slide_out_right"
+        >
+        <ImageView
+            android:id="@+id/img_view_1"
+            android:layout_width="390dp"
+            android:layout_height="300dp"
+            android:src="@drawable/imgview1" />
+        <ImageView
+            android:id="@+id/img_view_2"
+            android:layout_width="390dp"
+            android:layout_height="300dp"
+            android:src="@drawable/imgview2" />
+    </ViewFlipper>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,24 +40,33 @@
         >
         <EditText
             android:id="@+id/edt_dn_us"
-            android:layout_width="match_parent"
+            android:layout_width="371dp"
             android:layout_height="48dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="15dp"
             android:layout_alignParentTop="true"
+            android:background="@drawable/edit_dn_bg"
             android:hint="Nhập tài khoản"
+            android:textColorHint="#5A7B8C"
+            android:paddingLeft="10dp"
+            android:drawableRight="@drawable/account"
+
             />
         <EditText
             android:id="@+id/edt_dn_ps"
-            android:layout_width="match_parent"
+            android:layout_width="371dp"
             android:layout_height="48dp"
             android:hint="Nhập mật khẩu"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="15dp"
+            android:background="@drawable/edit_dn_bg"
             android:layout_below="@+id/edt_dn_us"
+            android:textColorHint="#5A7B8C"
+            android:paddingLeft="10dp"
+            android:drawableEnd="@drawable/password"
             />
     </RelativeLayout>
     <LinearLayout
@@ -53,18 +78,22 @@
         >
         <Button
             android:id="@+id/btn_dn_dangnhap"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Đăng Nhập"
+            android:background="@drawable/btn_dn_bg"
+            android:textColor="@color/deep_koamaru"
             />
         <Button
             android:id="@+id/btn_tv_dangnhap"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
             android:text="Trở Về"
+            android:background="@drawable/btn_dn_bg"
+            android:textColor="@color/deep_koamaru"
             />
     </LinearLayout>
 </LinearLayout>

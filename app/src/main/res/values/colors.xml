@@ -2,4 +2,28 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+<!--    mã màu 1-->
+    <color name="black_pearl">#0B1629</color>
+    <color name="navy_blue">#122543</color>
+    <color name="anakiwa">#8CC4DF</color>
+    <color name="honeysuckle">#E2FF65</color>
+<!--    mã màu 2 : Mã này nhìn đẹp-->
+    <color name="deep_koamaru">#363753</color>
+    <color name="ethereal_blue">#DFE3EE</color>
+    <color name="mostly_white">#FEFEFE</color>
+    <color name="natural_blue">#5CD2C6</color>
+<!--    mã màu 3 : Mã màu này nhìn có vẻ hơi nhạt-->
+    <color name="echo_blue">#B7BAC3</color>
+    <color name="plantinum">#E4E4E4</color>
+    <color name="light_yellow">#F9FAF5</color>
+    <color name="light_blue_1">#6E77EE</color>
+<!--    mã màu 4 : Siêu Đẹp-->
+    <color name="paradiso">#407C87</color>
+    <color name="light_blue_2">#A5DBDD</color>
+    <color name="light_grayish_blue">#EEF1F6</color>
+    <color name="athens_grey">#D3E1E2</color>
+<!--    mã màu 5 : Hơi nữ tính-->
+    <color name="imaginary_mauve">#89687D</color>
+    <color name="cinderella">#FCD8CC</color>
+    <color name="seashell">#FFF7EC</color>
 </resources>
