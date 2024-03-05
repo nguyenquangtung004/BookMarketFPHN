@@ -17,7 +17,7 @@ public class ManHinhWelcome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_man_hinh_welcome);
         lottie = findViewById(R.id.lottie_welcome);
-        tvWelcome = findViewById(R.id.animatedTextView);
+        tvWelcome = findViewById(R.id.tv_wc_cm);
 
         animationImage();
 
@@ -40,11 +40,10 @@ public class ManHinhWelcome extends AppCompatActivity {
     }
 
     private void animationText() {
-        tvWelcome.setAlpha(0f); // Ẩn đối tượng ngay từ đầu
-
+        tvWelcome.setAlpha(0f);
         tvWelcome.animate()
-                .translationY(0)      // Di chuyển theo trục Y với khoảng cách 0 pixels (tại vị trí hiện tại)
-                .alpha(1f)            // Hiển thị gradually (độ đục từ 0 đến 1)
+                .translationY(0)
+                .alpha(1f)
                 .setDuration(2700)
                 .setStartDelay(0);
     }

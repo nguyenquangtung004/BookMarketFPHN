@@ -8,14 +8,14 @@ import android.widget.TextView;
 
 public class DangKi extends AppCompatActivity {
 
-    private  TextView tv_animation_nnvt;
-    private  String textViewDK= "Đăng Kí Tài Khoản";
+    private  TextView tvDkTitle;
+    private  String tvstrDK= "Đăng Kí Tài Khoản";
     private int soKiTu = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_ki);
-        tv_animation_nnvt = findViewById(R.id.tv_dk);
+        tvDkTitle = findViewById(R.id.tv_dk_title);
         // Bắt đầu hiển thị từng chữ một
         animateText();
     }
@@ -25,9 +25,9 @@ public class DangKi extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (soKiTu < textViewDK.length()){
-                    String vanBanHT = textViewDK.substring(0, soKiTu + 1);
-                    tv_animation_nnvt.setText(vanBanHT);
+                if (soKiTu < tvstrDK.length()){
+                    String vanBanHT = tvstrDK.substring(0, soKiTu + 1);
+                    tvDkTitle.setText(vanBanHT);
                     soKiTu++;
                     animateText();
                 }

@@ -16,8 +16,8 @@ public class DangNhap extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_nhap);
-        tvDangKi = findViewById(R.id.tv_signup);
-        tvDangNhap = findViewById(R.id.tv_login);
+        tvDangKi = findViewById(R.id.tv_dn_signup);
+        tvDangNhap = findViewById(R.id.tv_dn_dn);
 
         animationText();
 

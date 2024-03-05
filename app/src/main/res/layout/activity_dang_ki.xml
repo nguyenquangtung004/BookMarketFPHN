@@ -9,125 +9,166 @@
     tools:context=".DangKi">
 
     <TextView
-        android:id="@+id/tv_dk"
+        android:id="@+id/tv_dk_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Đăng Kí Tài Khoản"
-        android:layout_marginTop="70dp"
-        android:textSize="40dp"
-        android:textStyle="bold"
-        android:textColor="@color/colortextChu"
         android:layout_gravity="center_horizontal"
-        />
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/fonttieudeextrabold"
+        android:text="Đăng Kí Tài Khoản"
+        android:textColor="@color/colortextChu"
+        android:textSize="40dp" />
+
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_dk_tk"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_marginTop="70dp"
+
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="70dp"
         android:layout_marginRight="10dp"
-        android:paddingBottom="10dp"
+
         android:hint="Nhập tài khoản"
+        android:paddingBottom="10dp"
         android:textColorHint="@color/colortextChu"
-        >
+        app:errorEnabled="true"
+        app:errorTextColor="#F10000">
+
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiedt_dk_tk"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/edit_dn_bg"
-            android:paddingLeft="10dp"
+
             android:layout_gravity="center_vertical"
+            android:background="@drawable/edit_dn"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+
+            android:drawableLeft="@drawable/account"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_dk_ps"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="80dp"
+
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:paddingBottom="10dp"
+
         android:hint="Nhập mật khẩu"
         android:textColorHint="@color/colortextChu"
-        >
+        app:errorEnabled="true"
+        app:errorTextColor="#F10000">
+
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiedt_dk_ps"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/edit_dn"
+            android:inputType="text"
             android:paddingLeft="10dp"
-            android:background="@drawable/edit_dn_bg"
+
+            android:drawableLeft="@drawable/password"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_dk_reps"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="80dp"
+
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:paddingBottom="10dp"
+
         android:hint="Nhập lại mật khẩu"
         android:textColorHint="@color/colortextChu"
-        >
+        app:errorEnabled="true"
+        app:errorTextColor="#F10000">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiedt_dk_reps"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/edit_dn_bg"
-            android:paddingLeft="10dp" />
+
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/edit_dn"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+
+            android:drawableLeft="@drawable/password"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_dk_em"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="80dp"
+
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:hint="Nhập Email"
-        android:paddingBottom="10dp"
+
+        android:hint="Nhập email"
         android:textColorHint="@color/colortextChu"
-        >
+        app:errorEnabled="true"
+        app:errorTextColor="#F10000">
+
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiedt_dk_em"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/edit_dn"
+            android:inputType="text"
             android:paddingLeft="10dp"
-            android:background="@drawable/edit_dn_bg"
+
+            android:drawableLeft="@drawable/email"
             />
     </com.google.android.material.textfield.TextInputLayout>
+
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="20dp"
-        >
+        android:layout_marginRight="10dp">
 
         <Button
-            android:id="@+id/btn_dn_dangnhap"
+            android:id="@+id/btn_dk_dk"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/btn_dn_bg"
+            android:background="@drawable/btn_dn"
+            android:fontFamily="@font/fonttieudeextrabold"
             android:text="Đăng Kí"
             android:textColor="@color/colortextChu" />
 
         <Button
-            android:id="@+id/btn_tv_dangnhap"
+            android:id="@+id/btn_dk_tv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_dn"
+            android:fontFamily="@font/fonttieudeextrabold"
             android:text="Trở Về"
-            android:background="@drawable/btn_dn_bg"
-            android:textColor="@color/colortextChu"
-            />
+            android:textColor="@color/colortextChu" />
     </LinearLayout>
 
     <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_dk"
         android:layout_width="120dp"
         android:layout_height="120dp"
+        android:layout_gravity="end"
         android:layout_marginTop="90dp"
+        android:layout_marginRight="10dp"
         app:lottie_autoPlay="true"
         app:lottie_rawRes="@raw/nnvt"
-        android:layout_gravity="end"
-        android:layout_marginRight="10dp"
-        app:lottie_repeatCount="@integer/material_motion_duration_long_1"
-        />
-
-
+        app:lottie_repeatCount="@integer/material_motion_duration_long_1" />
 </LinearLayout>

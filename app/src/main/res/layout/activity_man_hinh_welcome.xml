@@ -18,22 +18,19 @@
         />
 
     <TextView
-        android:id="@+id/animatedTextView"
+        android:id="@+id/tv_wc_cm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Chào Bạn Đến Với Ứng Dụng Chúng Tớ"
+
+        android:text="Chào bạn đến với ứng dụng của nhóm mình"
         android:textStyle="bold|italic"
-        android:textColor="#6AE8E8"
-        android:textSize="20dp"
+        android:textColor="@color/colortextChu"
+        android:fontFamily="@font/fonttieuderegular"
+        android:textSize="18dp"
+
         android:layout_below="@+id/lottie_welcome"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        />
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/animatedTextView"
         />
 
 </RelativeLayout>

@@ -4,41 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/background"
+    android:orientation="vertical"
     tools:context=".DangNhap">
 
     <TextView
-        android:id="@+id/tv_login"
+        android:id="@+id/tv_dn_dn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Đăng Nhập"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:textColor="#4F5A95"
-        />
+        android:fontFamily="@font/fonttieudesemibold"
+        android:gravity="center_horizontal"
+        android:text="Đăng Nhập"
+        android:textColor="@color/colortextChu"
+        android:textSize="30dp" />
+
     <ViewFlipper
+        android:id="@+id/viewflipper_dn_img"
         android:layout_width="390dp"
         android:layout_height="300dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
         android:autoStart="true"
         android:flipInterval="2000"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
         android:inAnimation="@android:anim/slide_in_left"
-        android:outAnimation="@android:anim/slide_out_right"
-        >
+        android:outAnimation="@android:anim/slide_out_right">
+
         <ImageView
-            android:id="@+id/img_view_1"
+            android:id="@+id/img_dn_1"
             android:layout_width="390dp"
             android:layout_height="300dp"
             android:src="@drawable/imgview1" />
+
         <ImageView
-            android:id="@+id/img_view_2"
+            android:id="@+id/img_dn_2"
             android:layout_width="390dp"
             android:layout_height="300dp"
             android:src="@drawable/imgview2" />
@@ -46,97 +48,125 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="220dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="30dp"
-        >
-        <EditText
-            android:id="@+id/edt_dn_us"
-            android:layout_width="371dp"
-            android:layout_height="48dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/edit_dn_bg"
-            android:hint="Nhập tài khoản"
-            android:textColorHint="@color/colortextChu"
-            android:paddingLeft="10dp"
-            android:drawableRight="@drawable/account"
+        android:layout_marginRight="10dp">
 
-            />
-        <EditText
-            android:id="@+id/edt_dn_ps"
-            android:layout_width="371dp"
-            android:layout_height="48dp"
-            android:hint="Nhập mật khẩu"
-            android:layout_marginTop="5dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_dn_tk"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/edit_dn_bg"
-            android:layout_below="@+id/edt_dn_us"
+
+
+            android:hint="Nhập tài khoản"
+            android:paddingBottom="10dp"
             android:textColorHint="@color/colortextChu"
-            android:paddingLeft="10dp"
-            android:drawableEnd="@drawable/password"
-            />
-        <CheckBox
-            android:id="@+id/chk_remember"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/edt_dn_ps"
-            android:text="Ghi nhớ tài khoản"
-            android:layout_alignStart="@+id/edt_dn_ps"
-            android:textColor="@color/colortextChu"
-            />
-        <TextView
-            android:id="@+id/tv_forgotpass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/quen_mk"
-            android:textColor="@color/colortextChu"
-            android:layout_below="@+id/chk_remember"
-            android:layout_alignEnd="@+id/edt_dn_ps"
-            />
+            app:errorEnabled="true"
+            app:errorTextColor="#F10000">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiedt_dn_tk"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+
+                android:background="@drawable/edit_dn"
+                android:drawableLeft="@drawable/account"
+
+
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_dn_ps"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+
+            android:layout_below="@+id/til_dn_tk"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+
+            android:hint="Nhập mật khẩu"
+            android:textColorHint="@color/colortextChu"
+            app:errorEnabled="true"
+            app:errorTextColor="#F10000">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiedt_dn_ps"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+                android:background="@drawable/edit_dn"
+                android:drawableLeft="@drawable/password"
+                android:inputType="text"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:id="@+id/chk_dn_remember"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/til_dn_ps"
+                    android:text="Ghi nhớ tài khoản"
+                    android:fontFamily="@font/fonttieudeextrabold"
+                    android:layout_alignStart="@+id/til_dn_tk"
+                    android:textColor="@color/colortextChu"
+                    />
+                <TextView
+                    android:id="@+id/tv_dn_forgotps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/quen_mk"
+                    android:textColor="@color/colortextChu"
+                    android:layout_below="@+id/chk_dn_remember"
+                    android:layout_alignEnd="@+id/til_dn_ps"
+                    android:fontFamily="@font/fonttieudemedium"
+                    />
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="20dp"
-        >
+        android:layout_marginRight="10dp">
 
         <Button
-            android:id="@+id/btn_dn_dangnhap"
+            android:id="@+id/btn_dn_dn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/btn_dn_bg"
+            android:background="@drawable/btn_dn"
+            android:fontFamily="@font/fonttieudeextrabold"
             android:text="Đăng Nhập"
             android:textColor="@color/colortextChu" />
 
         <Button
-            android:id="@+id/btn_tv_dangnhap"
+            android:id="@+id/btn_dn_tv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_dn"
+            android:fontFamily="@font/fonttieudeextrabold"
             android:text="Trở Về"
-            android:background="@drawable/btn_dn_bg"
-            android:textColor="@color/colortextChu"
-            />
+            android:textColor="@color/colortextChu" />
     </LinearLayout>
+
     <TextView
-        android:id="@+id/tv_signup"
+        android:id="@+id/tv_dn_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bạn chưa có tài khoản ? Nhấn vào đây  "
-        android:textColor="@color/colortextChu"
-        android:textSize="18dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        />
+        android:fontFamily="@font/fonttieudeextrabold"
+        android:text="Bạn chưa có tài khoản ? Nhấn vào đây  "
+        android:textColor="@color/colortextChu"
+        android:textSize="18dp" />
 
 </LinearLayout>
