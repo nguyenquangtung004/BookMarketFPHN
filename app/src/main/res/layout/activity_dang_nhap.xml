@@ -8,6 +8,18 @@
     android:background="@drawable/background"
     tools:context=".DangNhap">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Đăng Nhập"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="#4F5A95"
+        />
     <ViewFlipper
         android:layout_width="390dp"
         android:layout_height="300dp"
@@ -94,15 +106,16 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="20dp"
         >
+
         <Button
             android:id="@+id/btn_dn_dangnhap"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Đăng Nhập"
             android:background="@drawable/btn_dn_bg"
-            android:textColor="@color/colortextChu"
-            />
+            android:text="Đăng Nhập"
+            android:textColor="@color/colortextChu" />
+
         <Button
             android:id="@+id/btn_tv_dangnhap"
             android:layout_width="match_parent"
@@ -125,13 +138,4 @@
         android:layout_marginTop="10dp"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Version 1.0.0"
-        android:textColor="@color/colortextChu"
-        android:layout_gravity="end"
-        android:layout_marginTop="90dp"
-        android:layout_marginRight="10dp"
-        />
 </LinearLayout>
