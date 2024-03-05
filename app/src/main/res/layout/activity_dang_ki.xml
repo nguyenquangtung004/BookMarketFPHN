@@ -9,10 +9,11 @@
     tools:context=".DangKi">
 
     <TextView
+        android:id="@+id/tv_dk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Đăng Kí Tài Khoản"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="70dp"
         android:textSize="40dp"
         android:textStyle="bold"
         android:textColor="@color/colortextChu"
@@ -120,11 +121,12 @@
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="90dp"
         app:lottie_autoPlay="true"
         app:lottie_rawRes="@raw/nnvt"
         android:layout_gravity="end"
         android:layout_marginRight="10dp"
+        app:lottie_repeatCount="@integer/material_motion_duration_long_1"
         />
 
 

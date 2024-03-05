@@ -7,15 +7,33 @@
     android:background="@drawable/background"
     tools:context=".ManHinhWelcome">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_welcome"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/welcome"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        />
+
     <TextView
         android:id="@+id/animatedTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="-49dp"
-        android:text=""
-        android:textColor="@color/athens_grey"
-        android:textSize="25dp" />
+        android:text="Chào Bạn Đến Với Ứng Dụng Chúng Tớ"
+        android:textStyle="bold|italic"
+        android:textColor="#6AE8E8"
+        android:textSize="20dp"
+        android:layout_below="@+id/lottie_welcome"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        />
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/animatedTextView"
+        />
 
 </RelativeLayout>
