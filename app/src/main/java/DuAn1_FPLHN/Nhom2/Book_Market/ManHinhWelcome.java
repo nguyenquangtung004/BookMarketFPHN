@@ -27,7 +27,6 @@ public class ManHinhWelcome extends AppCompatActivity {
         animationText();
         animationText2();
 
-
     }
 
     private void animationText2() {
