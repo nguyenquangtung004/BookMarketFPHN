@@ -52,7 +52,8 @@ public class DangNhap extends AppCompatActivity {
                     });
                     builder.show();
                 }else {
-
+                    Intent intent = new Intent(DangNhap.this, MainActivity.class);
+                    startActivity(intent);
                 }
             }
         });
