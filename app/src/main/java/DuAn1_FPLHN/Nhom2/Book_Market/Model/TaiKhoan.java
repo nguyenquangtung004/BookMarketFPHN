@@ -11,9 +11,25 @@ public class TaiKhoan {
 
     public TaiKhoan() {
     }
+    public TaiKhoan(int matk, String taikhoan, String matkhau, String hoten, String sdt, String diachi) {
+        this.matk = matk;
+        this.taikhoan = taikhoan;
+        this.matkhau = matkhau;
+        this.hoten = hoten;
+        this.sdt = sdt;
+        this.diachi = diachi;
+    }
 
     public TaiKhoan(int matk, String taikhoan, String matkhau, String hoten, String sdt, String diachi, String loaitaikhoan) {
         this.matk = matk;
+        this.taikhoan = taikhoan;
+        this.matkhau = matkhau;
+        this.hoten = hoten;
+        this.sdt = sdt;
+        this.diachi = diachi;
+        this.loaitaikhoan = loaitaikhoan;
+    }
+    public TaiKhoan(String taikhoan, String matkhau, String hoten, String sdt, String diachi, String loaitaikhoan) {
         this.taikhoan = taikhoan;
         this.matkhau = matkhau;
         this.hoten = hoten;

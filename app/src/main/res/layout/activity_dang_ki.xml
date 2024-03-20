@@ -25,7 +25,7 @@
         android:layout_height="80dp"
 
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
 
         android:hint="Nhập tài khoản"
@@ -103,20 +103,72 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_dk_em"
+        android:id="@+id/til_dk_ht"
         android:layout_width="match_parent"
         android:layout_height="80dp"
 
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
 
-        android:hint="Nhập email"
+        android:hint="Nhập họ tên"
         android:textColorHint="@color/colortextChu"
         app:errorEnabled="true"
         app:errorTextColor="#F10000">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tiedt_dk_em"
+            android:id="@+id/tiedt_dk_ht"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/edit_dn"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+
+            android:drawableLeft="@drawable/email"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_dk_sdt"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+
+        android:hint="Nhập SDT"
+        android:textColorHint="@color/colortextChu"
+        app:errorEnabled="true"
+        app:errorTextColor="#F10000">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiedt_dk_sdt"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/edit_dn"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+
+            android:drawableLeft="@drawable/email"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_dk_dc"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+
+        android:hint="Nhập địa chỉ"
+        android:textColorHint="@color/colortextChu"
+        app:errorEnabled="true"
+        app:errorTextColor="#F10000">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiedt_dk_dc"
             android:layout_width="match_parent"
             android:layout_height="50dp"
 

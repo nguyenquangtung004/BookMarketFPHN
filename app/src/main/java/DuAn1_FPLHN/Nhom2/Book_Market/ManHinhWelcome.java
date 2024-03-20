@@ -13,8 +13,7 @@ public class ManHinhWelcome extends AppCompatActivity {
     TextView tvWelcome, tvSlide;
     LottieAnimationView lottie;
     private String[] quotes = {"Đọc sách hôm nay, thành công mai sau.",
-            "Cả thế giới mở ra với tôi khi tôi học đọc.",
-            "Đọc sách rất quan trọng. Nếu biết cách đọc, cả thế giới sẽ mở ra với bạn."};
+            "Cả thế giới mở ra với tôi khi tôi học đọc."};
     private int currentIndex = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +53,7 @@ public class ManHinhWelcome extends AppCompatActivity {
                 Intent intent = new Intent(ManHinhWelcome.this, DangNhap.class);
                 startActivity(intent);
             }
-        }, 7000);
+        }, 5000);
     }
 
     private void animationText() {

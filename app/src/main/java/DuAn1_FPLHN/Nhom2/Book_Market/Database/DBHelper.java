@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public DBHelper(Context context){super(context, "BookMarket", null, 1);}
+    public DBHelper(Context context){super(context, "BookMarket", null, 2);}
     @Override
     public void onCreate(SQLiteDatabase db) {
         //bang san pham
@@ -29,9 +29,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL("insert into THELOAI values (1, 'Cơm'), (2, 'Cháo'), (3, 'Bún, Phở'), (4, 'Đồ uống')");
 
-        db.execSQL("insert into HOADON values (1, '09/11/2023', 1, 'Lăng Văn Thoại', '0862556262', 'Kim Chung - Hoài Đức - Hà Nội', 90000, 'Cháo gà x1', 0), (2, '03/11/2023', 2, 'Trần Tuấn Đạt', '0979991999', 'Duy Tiên - Hà Nam', 110000, 'Cơm bò x1', 1)");
+        db.execSQL("insert into HOADON values (1, '09/11/2023', 1, 'Vuong Dinh Hien', '0866815906', 'Kim Chung - Hoài Đức - Hà Nội', 90000, 'Cháo gà x1', 0), (2, '03/11/2023', 2, 'HienDinh', '0979991999', 'Duy Tiên - Hà Nam', 110000, 'Cơm bò x1', 1)");
 
-        db.execSQL("insert into TAIKHOAN values (1, 'admin', '123', 'Vuong Dinh Hien', '0866815906', 'Kim Chung - Hoài Đức - Hà Nội','admin'), (2, 'ad01', '123', 'Trần Tuấn Đạt', '0979991999', 'Duy Tiên - Hà Nam','khách hàng')");
+        db.execSQL("insert into TAIKHOAN values (1, 'admin', '123', 'Vuong Dinh Hien', '0866815906', 'Kim Chung - Hoài Đức - Hà Nội','admin'), (2, 'hienvd', '123', 'HienDinh', '0979991999', 'Duy Tiên - Hà Nam','khách hàng')");
     }
 
     @Override

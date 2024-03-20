@@ -10,12 +10,15 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+
+import DuAn1_FPLHN.Nhom2.Book_Market.DAO.TaiKhoanDAO;
 
 public class DangNhap extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -26,34 +29,44 @@ public class DangNhap extends AppCompatActivity {
     private TextView tvDangKi,tvDangNhap,tvDNFogotPS;
     private String textViewDN ="Đăng Nhập";
     private int soKiTu = 0;
-    private Button btnDNTV,btnDNDN ;
+    private Button btnDNDN ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_nhap);
+
+        TaiKhoanDAO taiKhoanDAO = new TaiKhoanDAO(this);
+
         tvDangKi = findViewById(R.id.tv_dn_signup);
         tvDangNhap = findViewById(R.id.tv_dn_dn);
+        tvDNFogotPS = findViewById(R.id.tv_dn_forgotps);
         btnDNDN = findViewById(R.id.btn_dn_dn);
+        tiledDNTaiKhoan = findViewById(R.id.tiedt_dn_tk);
+        tiledDNMatKhau = findViewById(R.id.tiedt_dn_ps);
+
         anhxa();
         animationText();
 
         btnDNDN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (tiledDNTaiKhoan.getText().toString().trim().isEmpty() || tiledDNMatKhau.getText().toString().trim().isEmpty()){
-                    AlertDialog.Builder builder = new AlertDialog.Builder(DangNhap.this);
-                    builder.setTitle("Lỗi");
-                    builder.setMessage("Vui lòng nhập đầy đủ thông tin");
-                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                        }
-                    });
-                    builder.show();
-                }else {
-                    Intent intent = new Intent(DangNhap.this, MainActivity.class);
-                    startActivity(intent);
+                String taikhoan = tiledDNTaiKhoan.getText().toString();
+                String matkhau = tiledDNMatKhau.getText().toString();
+
+                if (taikhoan.isEmpty()){
+                    Toast.makeText(DangNhap.this, "Vui lòng nhập tài khoản", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (matkhau.isEmpty()){
+                    Toast.makeText(DangNhap.this, "Vui lòng nhập mật khẩu", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (taiKhoanDAO.checkDangNhap(taikhoan, matkhau)){
+                        startActivity(new Intent(DangNhap.this, MainActivity.class));
+                        Toast.makeText(DangNhap.this, "Hello, wellcome to App Order Food", Toast.LENGTH_SHORT).show();
+                } else {
+                        Toast.makeText(DangNhap.this, "Tài khoản hặc mật khẩu không chính xác", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -63,6 +76,14 @@ public class DangNhap extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(DangNhap.this, DangKi.class);
                 startActivity(intent);
+            }
+        });
+
+
+        tvDNFogotPS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DangNhap.this, QuenMatKhau.class));
             }
         });
 

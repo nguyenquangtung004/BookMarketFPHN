@@ -53,6 +53,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginRight="10dp">
 
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_dn_tk"
             android:layout_width="match_parent"
@@ -107,66 +108,55 @@
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
-                <CheckBox
-                    android:id="@+id/chk_dn_remember"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/til_dn_ps"
-                    android:text="Ghi nhớ tài khoản"
-                    android:fontFamily="@font/fonttieudeextrabold"
-                    android:layout_alignStart="@+id/til_dn_tk"
-                    android:textColor="@color/colortextChu"
-                    />
-                <TextView
-                    android:id="@+id/tv_dn_forgotps"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/quen_mk"
-                    android:textColor="@color/colortextChu"
-                    android:layout_below="@+id/chk_dn_remember"
-                    android:layout_alignEnd="@+id/til_dn_ps"
-                    android:fontFamily="@font/fonttieudemedium"
-                    />
+        <CheckBox
+            android:id="@+id/chk_dn_remember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/til_dn_ps"
+            android:text="Ghi nhớ tài khoản"
+            android:fontFamily="@font/fonttieudeextrabold"
+            android:layout_alignStart="@+id/til_dn_tk"
+            android:textColor="@color/colortextChu"
+            />
+        <TextView
+            android:id="@+id/tv_dn_forgotps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/chk_dn_remember"
+            android:layout_alignEnd="@+id/til_dn_ps"
+            android:layout_marginEnd="-8dp"
+            android:fontFamily="@font/fonttieudemedium"
+            android:text="@string/quen_mk"
+            android:textColor="@color/colortextChu" />
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp">
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="50dp"
+android:layout_marginLeft="10dp"
+android:layout_marginTop="20dp"
+android:layout_marginRight="10dp">
 
-        <Button
-            android:id="@+id/btn_dn_dn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/btn_dn"
-            android:fontFamily="@font/fonttieudeextrabold"
-            android:text="Đăng Nhập"
-            android:textColor="@color/colortextChu" />
+<Button
+    android:id="@+id/btn_dn_dn"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="@drawable/btn_dn"
+    android:fontFamily="@font/fonttieudeextrabold"
+    android:text="Đăng Nhập"
+    android:textColor="@color/colortextChu" />
+</LinearLayout>
 
-        <Button
-            android:id="@+id/btn_dn_tv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/btn_dn"
-            android:fontFamily="@font/fonttieudeextrabold"
-            android:text="Trở Về"
-            android:textColor="@color/colortextChu" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tv_dn_signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/fonttieudeextrabold"
-        android:text="Bạn chưa có tài khoản ? Nhấn vào đây  "
-        android:textColor="@color/colortextChu"
-        android:textSize="18dp" />
+<TextView
+android:id="@+id/tv_dn_signup"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_gravity="center"
+android:layout_marginTop="10dp"
+android:fontFamily="@font/fonttieudeextrabold"
+android:text="Bạn chưa có tài khoản ? Nhấn vào đây  "
+android:textColor="@color/colortextChu"
+android:textSize="18dp" />
 
 </LinearLayout>

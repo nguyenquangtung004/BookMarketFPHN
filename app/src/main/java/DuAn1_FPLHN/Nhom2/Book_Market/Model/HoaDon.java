@@ -11,7 +11,7 @@ public class HoaDon {
     private String tongsanpham;
     private int trangthai;
 
-    public HoaDon() {
+    public HoaDon(int anInt, String string, int cursorInt, int i, int anInt1) {
     }
 
     public HoaDon(int mahd, String ngaylap, int matk, String hoten, String sdt, String diachi, int tongtien, String tongsanpham, int trangthai) {
