@@ -9,7 +9,7 @@ public class SanPham {
     private int maloai;
     private String tenloai;
 
-    public SanPham() {
+    public SanPham(int anInt, String string, byte[] blob, String cursorString, String s, int cursorInt) {
     }
 
     public SanPham(int masp, String tensp, byte[] anhsp, String motasp, int giasp, int maloai, String tenloai) {
