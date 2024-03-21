@@ -14,7 +14,7 @@ import DuAn1_FPLHN.Nhom2.Book_Market.DAO.TaiKhoanDAO;
 public class QuenMatKhau extends AppCompatActivity {
 
     EditText ed_taikhoan, ed_matkhaumoi, ed_matkhaumoi_confirm;
-    TextView btn_quenmatkhau;
+    TextView btn_quenmatkhau, btn_quenmatkhau_tv;
 
 
     @Override
@@ -27,6 +27,7 @@ public class QuenMatKhau extends AppCompatActivity {
         ed_matkhaumoi = findViewById(R.id.ed_matkhaumoi);
         ed_matkhaumoi_confirm = findViewById(R.id.ed_matkhaumoi_confirm);
         btn_quenmatkhau = findViewById(R.id.btn_quenmatkhau);
+        btn_quenmatkhau_tv = findViewById(R.id.btn_quenmatkhau_tv);
 
 
         TaiKhoanDAO taiKhoanDAO = new TaiKhoanDAO(this);
@@ -63,6 +64,14 @@ public class QuenMatKhau extends AppCompatActivity {
                     Toast.makeText(QuenMatKhau.this, "Thay doi mat khau thanh cong", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(QuenMatKhau.this, DangNhap.class));
                 }
+            }
+        });
+
+        btn_quenmatkhau_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(QuenMatKhau.this, DangNhap.class);
+                startActivity(intent);
             }
         });
     }

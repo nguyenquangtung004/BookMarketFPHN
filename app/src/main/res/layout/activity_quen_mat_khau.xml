@@ -111,8 +111,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="10dp"
-            app:cardElevation="5dp"
-            >
+            app:cardElevation="5dp">
             <TextView
                 android:id="@+id/btn_quenmatkhau"
                 android:text="THAY ĐỔI"
@@ -120,6 +119,24 @@
                 android:fontFamily="@font/open_sans_bold"
                 android:textColor="#FFFF"
                 android:background="@drawable/btn_qmk"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                />
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp">
+            <TextView
+                android:id="@+id/btn_quenmatkhau_tv"
+                android:text="TRỞ VỀ"
+                android:textSize="20sp"
+                android:fontFamily="@font/open_sans_bold"
+                android:textColor="#FFFF"
+                android:background="@color/imaginary_mauve"
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"

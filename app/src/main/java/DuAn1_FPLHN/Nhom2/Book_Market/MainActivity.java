@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.ProgressDialog;
@@ -15,6 +16,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private BottomNavigationView bottomNavigationView;
     ProgressDialog progressDialog;
+    private FragmentContainerView fragmentContainerView;
     private TextView tvUser;
     ImageView imgAvt;
 //    private final ThongTSallerFragment thongTSallerFragment;
@@ -46,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         anhXa();
 //        Thực Hiện Việc Thêm ToolBar
         /*Đặt thanh hành động của activity thành thanh toolbar -> Sử dụng thanh hành động thay vì ActionBar mặc định*/
@@ -66,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
 
         callFragment(new TrangChuFragment());
+
+        /////
+        View headerLayout = findViewById(R.id.dl_am);
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -150,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.tb_am);
         navigationView = findViewById(R.id.nv_am);
         bottomNavigationView = findViewById(R.id.bnv_am);
+        fragmentContainerView = findViewById(R.id.fcv_am);
         imgAvt = navigationView.getHeaderView(0).findViewById(R.id.imgAvt);
         tvUser = navigationView.getHeaderView(0).findViewById(R.id.tvUser);
         setThongtin();

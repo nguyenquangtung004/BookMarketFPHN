@@ -94,6 +94,13 @@ public class DangKi extends AppCompatActivity {
                 }
             }
         });
+        btn_dk_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DangKi.this, DangNhap.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void animateText() {
