@@ -17,11 +17,12 @@
             android:layout_height="?attr/actionBarSize" />
 
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fcv_am"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/fcv_am"
+            />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bnv_am"

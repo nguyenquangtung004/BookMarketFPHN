@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public DBHelper(Context context){super(context, "BookMarket", null, 2);}
+    public DBHelper(Context context){super(context, "BookMarket", null, 3);}
     @Override
     public void onCreate(SQLiteDatabase db) {
         //bang san pham
@@ -27,7 +27,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //du lieu mau
 
-        db.execSQL("insert into THELOAI values (1, 'Cơm'), (2, 'Cháo'), (3, 'Bún, Phở'), (4, 'Đồ uống')");
+        db.execSQL("insert into THELOAI values (1, 'Thiếu nhi'), (2, 'Tài liệu'), (3, 'Ngụ ngôn'), (4, 'Truyện hài')");
 
         db.execSQL("insert into HOADON values (1, '09/11/2023', 1, 'Vuong Dinh Hien', '0866815906', 'Kim Chung - Hoài Đức - Hà Nội', 90000, 'Cháo gà x1', 0), (2, '03/11/2023', 2, 'HienDinh', '0979991999', 'Duy Tiên - Hà Nam', 110000, 'Cơm bò x1', 1)");
 
