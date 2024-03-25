@@ -169,6 +169,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
             public void onClick(DialogInterface dialog, int which) {
             }
         });
+        //
         dialogDelete.setNegativeButton("XÓA", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
