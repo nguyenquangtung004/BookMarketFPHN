@@ -31,7 +31,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL("insert into HOADON values (1, '09/11/2023', 1, 'Vuong Dinh Hien', '0866815906', 'Kim Chung - Hoài Đức - Hà Nội', 90000, 'Cháo gà x1', 0), (2, '03/11/2023', 2, 'HienDinh', '0979991999', 'Duy Tiên - Hà Nam', 110000, 'Cơm bò x1', 1)");
 
-        db.execSQL("insert into TAIKHOAN values (1, 'admin', '123', 'Vuong Dinh Hien', '0866815906', 'Kim Chung - Hoài Đức - Hà Nội','admin'), (2, 'hienvd', '123', 'HienDinh', '0979991999', 'Duy Tiên - Hà Nam','khách hàng')");
+        db.execSQL("insert into TAIKHOAN values (1, 'admin', '123', 'Vuong Dinh Hien', '0866815906', 'Kim Chung - Hoài Đức - Hà Nội','admin'), (2, 'tungnq', '123', 'QuangTung', '0877956178', 'Hoàng Mai - Hà Nội','khách hàng')");
     }
 
     @Override
