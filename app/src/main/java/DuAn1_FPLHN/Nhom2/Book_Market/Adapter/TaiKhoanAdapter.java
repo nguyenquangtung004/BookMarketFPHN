@@ -31,6 +31,7 @@ public class TaiKhoanAdapter extends RecyclerView.Adapter<TaiKhoanAdapter.ViewHo
         this.context = context;
         this.list = list;
     }
+    //
 
     @NonNull
     @Override
