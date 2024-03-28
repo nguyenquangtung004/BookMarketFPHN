@@ -78,7 +78,7 @@ public class TaiKhoanAdapter extends RecyclerView.Adapter<TaiKhoanAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
