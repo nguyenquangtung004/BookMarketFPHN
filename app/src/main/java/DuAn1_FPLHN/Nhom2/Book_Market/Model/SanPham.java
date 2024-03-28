@@ -12,6 +12,7 @@ public class SanPham {
     public SanPham(int anInt, String string, byte[] blob, String cursorString, String s, int cursorInt) {
     }
 
+
     public SanPham(int masp, String tensp, byte[] anhsp, String motasp, int giasp, int maloai, String tenloai) {
         this.masp = masp;
         this.tensp = tensp;
@@ -21,6 +22,36 @@ public class SanPham {
         this.maloai = maloai;
         this.tenloai = tenloai;
     }
+    public SanPham(String tensp, byte[] anhsp, String motasp, int giasp, int maloai) {
+        this.tensp = tensp;
+        this.anhsp = anhsp;
+        this.motasp = motasp;
+        this.giasp = giasp;
+        this.maloai = maloai;
+    }
+    public SanPham(int masp, String tensp, byte[] anhsp, String motasp, int giasp, int maloai) {
+        this.masp = masp;
+        this.tensp = tensp;
+        this.anhsp = anhsp;
+        this.motasp = motasp;
+        this.giasp = giasp;
+        this.maloai = maloai;
+    }
+    public SanPham(int masp, String tensp, byte[] anhsp, String motasp, int giasp) {
+        this.masp = masp;
+        this.tensp = tensp;
+        this.anhsp = anhsp;
+        this.motasp = motasp;
+        this.giasp = giasp;
+    }
+
+    public SanPham(String tensp, byte[] anhsp, String motasp, int giasp) {
+        this.tensp = tensp;
+        this.anhsp = anhsp;
+        this.motasp = motasp;
+        this.giasp = giasp;
+    }
+
 
     public int getMasp() {
         return masp;

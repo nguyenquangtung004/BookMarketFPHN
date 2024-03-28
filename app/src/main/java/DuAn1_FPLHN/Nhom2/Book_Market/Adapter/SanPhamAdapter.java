@@ -50,11 +50,11 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
         final SanPham sanPham = list.get(position);
 
         byte[] image = sanPham.getAnhsp();
         Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
-
         holder.img_anhsp.setImageBitmap(bitmap);
 
         holder.tv_masp.setText("Mã: " + sanPham.getMasp());
@@ -97,7 +97,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -152,6 +152,47 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         }
         spn_loaiSP.setSelection(postion);
         //btn_edit
+
+        btn_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int maSP = sanPham.getMasp();
+                String tenSP = ed_tenSP.getText().toString();
+                String giaSP = ed_giaSP.getText().toString();
+                String motaSP = ed_motaSP.getText().toString();
+                //ma loai
+                HashMap<String, Object> hs = (HashMap<String, Object>) spn_loaiSP.getSelectedItem();
+                int maloai = (int) hs.get("maloai");
+                //anh san pham
+                byte[] anhSP = sanPham.getAnhsp();
+
+                if (tenSP.isEmpty()){
+                    ed_tenSP.setError("Nhap ten san pham");
+                    return;
+                }
+                if (giaSP.isEmpty()) {
+                    ed_giaSP.setError("Nhập giá sản phẩm");
+                    return;
+                }
+                if (motaSP.isEmpty()) {
+                    ed_motaSP.setError("Nhập số lượng sản phẩm");
+                    return;
+                }
+                SanPham sanPham = new SanPham(maSP, tenSP, anhSP, motaSP, Integer.parseInt(giaSP), maloai);
+                boolean check = sanPhamDAO.suaSanPham(sanPham);
+                if (check){
+                    notifyDataSetChanged();
+                    list.clear();
+                    list = sanPhamDAO.getDSSanPham();
+                    Toast.makeText(context, "Sua thanh cong", Toast.LENGTH_SHORT).show();
+                    sheetDialog.dismiss();
+                }else {
+                    Toast.makeText(context, "Sua that bai", Toast.LENGTH_SHORT).show();
+                    sheetDialog.dismiss();
+                }
+            }
+        });
+
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -189,7 +230,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         dialogDelete.show();
     }
 
-    private ArrayList<HashMap<String, Object>> getDataTheLoai(Spinner spnLoaiSP) {
+    private ArrayList<HashMap<String, Object>> getDataTheLoai(Spinner spn_theloai) {
         TheLoaiDAO theLoaiDAO = new TheLoaiDAO(context);
         ArrayList<TheLoai> list = theLoaiDAO.getDSTheLoai();
 
@@ -203,8 +244,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         }
 
         SimpleAdapter simpleAdapter = new SimpleAdapter(context, listHM, android.R.layout.simple_list_item_1, new String[]{"tenloai"}, new int[]{android.R.id.text1});
-        //spn_theloai.setAdapter(simpleAdapter);
-
+        spn_theloai.setAdapter(simpleAdapter);
         return listHM;
     }
 
