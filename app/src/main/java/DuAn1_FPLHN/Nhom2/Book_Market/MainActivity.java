@@ -30,6 +30,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.DanhMucFragment;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.DoiMatKhauFragment;
+import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.FragmentQLTaiKhoan;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.HoaDonFragment;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.LichSuMHFragment;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.ThongTSallerFragment;
@@ -91,7 +92,11 @@ public class MainActivity extends AppCompatActivity {
                     callFragment(new HoaDonFragment());
                     toolbar.setTitle("Hóa Đơn");
                 }
-                return false;
+                if (item.getItemId() == R.id.bt_taikhoan){
+                    callFragment(new FragmentQLTaiKhoan());
+                    toolbar.setTitle("QL Tai Khoan");
+                }
+                return true;
             }
         });
 
