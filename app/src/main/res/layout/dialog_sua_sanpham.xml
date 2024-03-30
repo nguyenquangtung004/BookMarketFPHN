@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@color/athens_grey"
     >
 
     <ImageView
@@ -20,9 +21,9 @@
         android:padding="10dp"
         android:text="SỬA SẢN PHẨM"
         android:textAlignment="center"
-        android:textColor="#3F51B5"
+        android:textColor="@color/colortextChu"
         android:textSize="22dp"
-        android:fontFamily="@font/open_sans_bold" />
+        android:fontFamily="@font/fonttieudeextrabold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,7 +52,8 @@
         <TextView
             android:id="@+id/tv_maSP"
             android:textSize="17sp"
-            android:fontFamily="@font/open_sans_regular"
+            android:fontFamily="@font/fonttieudeextrabold"
+            android:textColor="@color/colortextChu"
             android:textStyle="bold"
             android:text="Mã sản phẩm:"
             android:layout_width="wrap_content"
@@ -66,20 +68,22 @@
             android:layout_height="wrap_content"
             >
             <TextView
-                android:fontFamily="@font/open_sans_regular"
+                android:fontFamily="@font/fonttieudeextrabold"
                 android:text="Tên SP:"
                 android:textSize="16sp"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colortextChu"
                 />
             <EditText
                 android:id="@+id/ed_tenSP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_dn"
+                android:background="@drawable/edit_dn"
                 android:hint="Tên sản phẩm"
                 android:inputType="text"
                 android:padding="10dp"
+                android:drawableStart="@drawable/book30"
                 />
         </LinearLayout>
 
@@ -90,12 +94,14 @@
             android:orientation="horizontal">
 
             <TextView
-                android:fontFamily="@font/open_sans_regular"
+                android:fontFamily="@font/fonttieudeextrabold"
                 android:layout_width="90dp"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:text="Loại SP:  "
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="@color/colortextChu"
+                />
 
             <Spinner
                 android:fontFamily="@font/open_sans_regular"
@@ -115,21 +121,24 @@
             android:layout_height="wrap_content"
             >
             <TextView
-                android:fontFamily="@font/open_sans_regular"
+                android:fontFamily="@font/fonttieudeextrabold"
                 android:text="Mô tả SP:"
                 android:textSize="16sp"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colortextChu"
                 />
             <EditText
                 android:id="@+id/ed_motaSP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_dn"
+                android:background="@drawable/edit_dn"
                 android:gravity="center_vertical"
                 android:hint="Mô tả sản phẩm"
                 android:padding="10dp"
                 android:inputType="text"
+                android:drawableStart="@drawable/mess30"
+
                 />
         </LinearLayout>
 
@@ -140,22 +149,24 @@
             android:layout_height="wrap_content"
             >
             <TextView
-                android:fontFamily="@font/open_sans_regular"
+                android:fontFamily="@font/fonttieudeextrabold"
                 android:text="Giá SP:"
                 android:textSize="16sp"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colortextChu"
                 />
             <EditText
                 android:id="@+id/ed_giaSP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:background="@drawable/btn_dn"
+                android:background="@drawable/edit_dn"
                 android:gravity="center_vertical"
                 android:hint="Giá sản phẩm"
                 android:inputType="number"
                 android:padding="10dp"
+                android:drawableStart="@drawable/price30"
                 />
         </LinearLayout>
 
@@ -172,11 +183,11 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@drawable/btn_qmk"
+                android:background="@drawable/btn_dn"
                 android:text="CẬP NHẬT"
-                android:fontFamily="@font/open_sans_bold"
+                android:fontFamily="@font/fonttieudeextrabold"
                 android:textSize="18sp"
-                android:textColor="#ffff" />
+                android:textColor="@color/colortextChu" />
 
             <TextView
                 android:layout_marginLeft="10dp"
@@ -185,11 +196,11 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@drawable/btn_qmk"
+                android:background="@drawable/btn_dn"
                 android:text="HỦY"
-                android:fontFamily="@font/open_sans_bold"
+                android:fontFamily="@font/fonttieudeextrabold"
                 android:textSize="18sp"
-                android:textColor="#ffff" />
+                android:textColor="@color/colortextChu" />
 
         </LinearLayout>
 

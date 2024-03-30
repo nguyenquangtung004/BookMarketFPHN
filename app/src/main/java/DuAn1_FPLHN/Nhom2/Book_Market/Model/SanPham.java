@@ -9,10 +9,31 @@ public class SanPham {
     private int maloai;
     private String tenloai;
 
-    public SanPham(int anInt, String string, byte[] blob, String cursorString, String s, int cursorInt) {
+    public SanPham(int masp, String tensp, byte[] anhsp, String motasp, int giasp) {
+        this.masp = masp;
+        this.tensp = tensp;
+        this.anhsp = anhsp;
+        this.motasp = motasp;
+        this.giasp = giasp;
     }
 
-    public SanPham(int masp, String tensp, byte[] anhsp, String motasp, int giasp, int maloai, String tenloai) {
+    public SanPham(String tensp, byte[] anhsp, String motasp, int giasp) {
+        this.tensp = tensp;
+        this.anhsp = anhsp;
+        this.motasp = motasp;
+        this.giasp = giasp;
+    }
+
+    public SanPham(int masp, String tensp, byte[] anhsp, String tenloai, String motasp, int giasp) {
+        this.masp = masp;
+        this.tensp = tensp;
+        this.anhsp = anhsp;
+        this.tenloai = tenloai;
+        this.motasp = motasp;
+        this.giasp = giasp;
+    }
+
+    public SanPham(String tensp, byte[] anhsp, String motasp, int giasp, int maloai) {
         this.masp = masp;
         this.tensp = tensp;
         this.anhsp = anhsp;
@@ -20,6 +41,15 @@ public class SanPham {
         this.giasp = giasp;
         this.maloai = maloai;
         this.tenloai = tenloai;
+    }
+
+    public SanPham(int masp, String tensp, byte[] anhsp, String motasp, int giasp, int maloai) {
+        this.masp = masp;
+        this.tensp = tensp;
+        this.anhsp = anhsp;
+        this.motasp = motasp;
+        this.giasp = giasp;
+        this.maloai = maloai;
     }
 
     public int getMasp() {

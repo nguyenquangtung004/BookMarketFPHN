@@ -100,7 +100,7 @@ public class HoaDonKHAdapter extends RecyclerView.Adapter<HoaDonKHAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

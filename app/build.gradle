@@ -46,4 +46,11 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     //Thư viện picaso đọc dữ liệu hình ảnh từ Internet
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    // Thư viện android-gif-drawable được sử dụng để tải và hiển thị ảnh gif trong ứng dụng.
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.28'
+    // Thư viện Floating Action Button được sử dụng để hiển thị nút hành động nổi bật trong giao diện người dùng.
+    implementation 'com.getbase:floatingactionbutton:1.10.1'
+    // Thư viện EventBus được sử dụng để quản lý sự kiện và giao tiếp giữa các thành phần của ứng dụng.
+    implementation 'org.greenrobot:eventbus:3.3.1'
 }

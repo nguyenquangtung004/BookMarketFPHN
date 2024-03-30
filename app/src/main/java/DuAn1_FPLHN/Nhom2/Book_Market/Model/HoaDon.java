@@ -11,7 +11,51 @@ public class HoaDon {
     private String tongsanpham;
     private int trangthai;
 
-    public HoaDon(int anInt, String string, int cursorInt, int i, int anInt1) {
+    public HoaDon(int mahd, String ngaylap, int matk, int tongtien, int trangthai) {
+        this.mahd = mahd;
+        this.ngaylap = ngaylap;
+        this.matk = matk;
+        this.tongtien = tongtien;
+        this.trangthai = trangthai;
+    }
+
+    public HoaDon(String ngaylap, int matk, int tongtien, int trangthai) {
+        this.ngaylap = ngaylap;
+        this.matk = matk;
+        this.tongtien = tongtien;
+        this.trangthai = trangthai;
+    }
+
+    public HoaDon(int mahd, String ngaylap, int matk, String hoten, String sdt, String diachi, int tongtien, int trangthai) {
+        this.mahd = mahd;
+        this.ngaylap = ngaylap;
+        this.matk = matk;
+        this.hoten = hoten;
+        this.sdt = sdt;
+        this.diachi = diachi;
+        this.tongtien = tongtien;
+        this.trangthai = trangthai;
+    }
+
+    public HoaDon(String ngaylap, int matk, String hoten, String sdt, String diachi, int tongtien, int trangthai) {
+        this.ngaylap = ngaylap;
+        this.matk = matk;
+        this.hoten = hoten;
+        this.sdt = sdt;
+        this.diachi = diachi;
+        this.tongtien = tongtien;
+        this.trangthai = trangthai;
+    }
+
+    public HoaDon(String ngaylap, int matk, String hoten, String sdt, String diachi, int tongtien, String tongsanpham, int trangthai) {
+        this.ngaylap = ngaylap;
+        this.matk = matk;
+        this.hoten = hoten;
+        this.sdt = sdt;
+        this.diachi = diachi;
+        this.tongtien = tongtien;
+        this.tongsanpham = tongsanpham;
+        this.trangthai = trangthai;
     }
 
     public HoaDon(int mahd, String ngaylap, int matk, String hoten, String sdt, String diachi, int tongtien, String tongsanpham, int trangthai) {

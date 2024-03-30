@@ -30,8 +30,6 @@ public class SanPhamDAO {
         }
         return list;
     }
-
-    //
     // Tìm sản phẩm theo loại
     public ArrayList<SanPham> getDSSanPhamTheoLoai(Integer maloai){
         ArrayList<SanPham> list = new ArrayList<>();
@@ -40,7 +38,13 @@ public class SanPhamDAO {
         if (cursor.getCount() != 0){
             cursor.moveToFirst();
             do {
-                list.add(new SanPham(cursor.getInt(0), cursor.getString(1), cursor.getBlob(2), cursor.getString(3), cursor.getString(4), cursor.getInt(5)));
+                list.add(new SanPham(
+                        cursor.getInt(0),
+                        cursor.getString(1),
+                        cursor.getBlob(2),
+                        cursor.getString(3),
+                        cursor.getString(4),
+                        cursor.getInt(5)));
             } while (cursor.moveToNext());
         }
         return list;
@@ -60,7 +64,7 @@ public class SanPhamDAO {
         return check != -1;
     }
 
-    // Sủa thông tin sản phẩm
+    // Sửa thông tin sản phẩm
     public boolean suaSanPham(SanPham sanPham){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -76,11 +80,6 @@ public class SanPhamDAO {
     // Xóa sản phẩm
     public int xoaSanPham(int maSP){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-//        Cursor cursor = db.rawQuery("SELECT * FROM PHIEUMUON WHERE masach = ?", new String[]{String.valueOf(masach)});
-//        if (cursor.getCount() != 0){
-//            return -1;
-//        }
         long check = db.delete("SANPHAM", "masp = ?", new String[]{String.valueOf(maSP)});
         if (check == -1){
             return 0;

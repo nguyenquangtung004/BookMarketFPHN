@@ -19,6 +19,7 @@
         android:textColor="@color/colortextChu"
         android:textSize="40dp" />
 
+    <!--    Dòng 1-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_dk_tk"
         android:layout_width="match_parent"
@@ -41,13 +42,12 @@
 
             android:layout_gravity="center_vertical"
             android:background="@drawable/edit_dn"
-            android:inputType="text"
-            android:paddingLeft="10dp"
-
             android:drawableLeft="@drawable/account"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:inputType="text"
 
+            android:paddingLeft="10dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!--    Dòng 2-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_dk_ps"
         android:layout_width="match_parent"
@@ -68,13 +68,11 @@
 
             android:layout_gravity="center_vertical"
             android:background="@drawable/edit_dn"
-            android:inputType="text"
-            android:paddingLeft="10dp"
-
             android:drawableLeft="@drawable/password"
-            />
+            android:inputType="text"
+            android:paddingLeft="10dp" />
     </com.google.android.material.textfield.TextInputLayout>
-
+    <!--    Dòng 3-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_dk_reps"
         android:layout_width="match_parent"
@@ -95,13 +93,12 @@
 
             android:layout_gravity="center_vertical"
             android:background="@drawable/edit_dn"
-            android:inputType="text"
-            android:paddingLeft="10dp"
-
             android:drawableLeft="@drawable/password"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:inputType="text"
 
+            android:paddingLeft="10dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!--    Dòng 4-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_dk_ht"
         android:layout_width="match_parent"
@@ -122,12 +119,12 @@
 
             android:layout_gravity="center_vertical"
             android:background="@drawable/edit_dn"
+            android:drawableLeft="@drawable/name"
             android:inputType="text"
-            android:paddingLeft="10dp"
 
-            android:drawableLeft="@drawable/email"
-            />
+            android:paddingLeft="10dp" />
     </com.google.android.material.textfield.TextInputLayout>
+    <!--    Dòng 5-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_dk_sdt"
         android:layout_width="match_parent"
@@ -148,12 +145,12 @@
 
             android:layout_gravity="center_vertical"
             android:background="@drawable/edit_dn"
+            android:drawableLeft="@drawable/telephone"
             android:inputType="text"
-            android:paddingLeft="10dp"
 
-            android:drawableLeft="@drawable/email"
-            />
+            android:paddingLeft="10dp" />
     </com.google.android.material.textfield.TextInputLayout>
+    <!--    Dòng 6-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_dk_dc"
         android:layout_width="match_parent"
@@ -174,16 +171,13 @@
 
             android:layout_gravity="center_vertical"
             android:background="@drawable/edit_dn"
-            android:inputType="text"
-            android:paddingLeft="10dp"
-
             android:drawableLeft="@drawable/email"
-            />
+            android:inputType="text"
+
+            android:paddingLeft="10dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
-
-
-
+    <!--    2 Nút Đăng Kí và Trở Về-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -213,14 +207,4 @@
             android:textColor="@color/colortextChu" />
     </LinearLayout>
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottie_dk"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_gravity="end"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="10dp"
-        app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/nnvt"
-        app:lottie_repeatCount="@integer/material_motion_duration_long_1" />
 </LinearLayout>

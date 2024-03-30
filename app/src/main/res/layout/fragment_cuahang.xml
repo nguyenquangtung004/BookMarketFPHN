@@ -100,7 +100,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="3dp"
-            android:text="Loại Sách"
+            android:text="Danh Mục"
             android:fontFamily="@font/open_sans_bold"
             android:textSize="18sp"
             android:textColor="#FF3D00"
@@ -164,34 +164,34 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     >
+
                     <LinearLayout
-                        android:id="@+id/btn_bunpho"
-                        android:background="#F3F3F3"
-                        android:padding="7dp"
-                        android:gravity="center"
-                        android:orientation="vertical"
+                        android:id="@+id/btn_thieunhi"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        >
+                        android:background="#F3F3F3"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="7dp">
+
                         <androidx.cardview.widget.CardView
-                            app:cardCornerRadius="5dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            >
+                            app:cardCornerRadius="5dp">
+
                             <ImageView
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/anhtrangchu1"
                                 android:layout_width="80dp"
                                 android:layout_height="60dp"
-                                />
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/anhtrangchu1" />
                         </androidx.cardview.widget.CardView>
+
                         <TextView
-                            android:textSize="13sp"
-                            android:fontFamily="@font/open_sans_regular"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/open_sans_regular"
                             android:text="Thiếu nhi"
-                            />
+                            android:textSize="13sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -204,7 +204,7 @@
                     >
 
                     <LinearLayout
-                        android:id="@+id/btn_chao"
+                        android:id="@+id/btn_tailieu"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="#F3F3F3"
@@ -241,7 +241,7 @@
                     android:layout_height="wrap_content"
                     >
                     <LinearLayout
-                        android:id="@+id/btn_com"
+                        android:id="@+id/btn_ngungon"
                         android:padding="7dp"
                         android:gravity="center"
                         android:background="#F3F3F3"
@@ -279,7 +279,7 @@
                     android:layout_height="wrap_content"
                     >
                     <LinearLayout
-                        android:id="@+id/btn_douong"
+                        android:id="@+id/btn_truyen"
                         android:padding="7dp"
                         android:gravity="center"
                         android:background="#F3F3F3"
