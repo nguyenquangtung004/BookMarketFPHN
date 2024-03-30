@@ -37,25 +37,25 @@ public class CuaHangFragment extends Fragment {
     SanPhamDAO sanPhamDAO;
     private SanPhamKHadpter sanPhamKHAdapter;
     private EditText ed_timkiem;
-    LinearLayout btn_tatca, btn_bunpho, btn_com, btn_chao, btn_douong;
+    LinearLayout btn_tatca, btn_thieunhi, btn_tailieu, btn_ngungon, btn_truyen;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view  = LayoutInflater.from(getContext()).inflate(R.layout.fragment_cuahang, container, false);
-
+        //Thực Hiên Ánh Xạ Banner và Tìm Kiếm
         viewFlipper = view.findViewById(R.id.viewFlipper);
         ed_timkiem = view.findViewById(R.id.ed_timkiem);
 
+        // Thực Hiện Ánh Xạ Các Nút Button Trên HorizontalScrollView
         btn_tatca = view.findViewById(R.id.btn_tatca);
-        btn_bunpho = view.findViewById(R.id.btn_bunpho);
-        btn_com = view.findViewById(R.id.btn_com);
-        btn_chao = view.findViewById(R.id.btn_chao);
-        btn_douong = view.findViewById(R.id.btn_douong);
+        btn_thieunhi = view.findViewById(R.id.btn_thieunhi);
+        btn_tailieu = view.findViewById(R.id.btn_tailieu);
+        btn_ngungon = view.findViewById(R.id.btn_ngungon);
+        btn_truyen = view.findViewById(R.id.btn_truyen);
         recyclerSP = view.findViewById(R.id.recyclerSP);
         sanPhamDAO = new SanPhamDAO(getContext());
 
 //        loadDataSanPham();
-
         list = sanPhamDAO.getDSSanPham();
         listTemp = sanPhamDAO.getDSSanPham();
 
@@ -109,14 +109,15 @@ public class CuaHangFragment extends Fragment {
     }
 
     private void phanLoaiSanPham(){
+        //Button 1 : Đã Hoàn Thiện Việc Thay Đổi Màu Tất Cả
         btn_tatca.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 btn_tatca.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.echo_blue));
-                btn_com.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.echo_blue));
-                btn_chao.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.echo_blue));
-                btn_bunpho.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.echo_blue));
-                btn_douong.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.echo_blue));
+                btn_thieunhi.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.echo_blue));
+                btn_tailieu.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.echo_blue));
+                btn_ngungon.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.echo_blue));
+                btn_truyen.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.echo_blue));
                 list.clear();
                 for (SanPham sanPham : listTemp){
                     if (sanPham.getTensp().contains("")){
@@ -127,14 +128,15 @@ public class CuaHangFragment extends Fragment {
             }
         });
 
-        btn_com.setOnClickListener(new View.OnClickListener() {
+        //Button 2: Đã Hoàn Thiện Việc Thay Đổi Màu Nút Thiếu Nhi
+        btn_thieunhi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 btn_tatca.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
-                btn_com.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
-                btn_chao.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
-                btn_bunpho.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
-                btn_douong.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
+                btn_thieunhi.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.light_blue_1));
+                btn_tailieu.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
+                btn_ngungon.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
+                btn_truyen.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
                 list.clear();
                 for (SanPham sanPham : listTemp){
                     if (sanPham.getTenloai().contains("Cơm")){
@@ -145,14 +147,15 @@ public class CuaHangFragment extends Fragment {
             }
         });
 
-        btn_chao.setOnClickListener(new View.OnClickListener() {
+        //Button 3: Đã Hoàn Thiện Việc Thay Đổi Màu Nút Tài Liệu
+        btn_tailieu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 btn_tatca.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
-                btn_com.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
-                btn_chao.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
-                btn_bunpho.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
-                btn_douong.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
+                btn_thieunhi.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
+                btn_tailieu.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.light_blue_1));
+                btn_ngungon.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
+                btn_truyen.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
                 list.clear();
                 for (SanPham sanPham : listTemp){
                     if (sanPham.getTenloai().contains("Cháo")){
@@ -163,14 +166,15 @@ public class CuaHangFragment extends Fragment {
             }
         });
 
-        btn_bunpho.setOnClickListener(new View.OnClickListener() {
+        //Button 4: Đã Hoàn Thiện Việc Thay Đổi Màu Nút Ngụ Ngôn
+        btn_ngungon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 btn_tatca.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
-                btn_com.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
-                btn_chao.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
-                btn_bunpho.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.echo_blue));
-                btn_douong.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
+                btn_thieunhi.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
+                btn_tailieu.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
+                btn_ngungon.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.light_blue_1));
+                btn_truyen.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
                 list.clear();
                 for (SanPham sanPham : listTemp){
                     if (sanPham.getTenloai().contains("Bún")){
@@ -181,14 +185,15 @@ public class CuaHangFragment extends Fragment {
             }
         });
 
-        btn_douong.setOnClickListener(new View.OnClickListener() {
+        //Button 5: Đã Hoàn Thiện Việc Thay Đổi Màu Nút Truyện
+        btn_truyen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 btn_tatca.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
-                btn_com.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
-                btn_chao.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
-                btn_bunpho.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
-                btn_douong.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.echo_blue));
+                btn_thieunhi.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
+                btn_tailieu.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
+                btn_ngungon.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
+                btn_truyen.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.light_blue_1));
                 list.clear();
                 for (SanPham sanPham : listTemp){
                     if (sanPham.getTenloai().contains("Đồ uống")){
@@ -198,6 +203,8 @@ public class CuaHangFragment extends Fragment {
                 }
             }
         });
+
+
     }
 
 }

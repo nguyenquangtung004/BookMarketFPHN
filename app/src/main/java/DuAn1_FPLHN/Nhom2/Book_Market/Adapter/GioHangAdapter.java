@@ -22,7 +22,6 @@ import DuAn1_FPLHN.Nhom2.Book_Market.Model.GioHang;
 import DuAn1_FPLHN.Nhom2.Book_Market.R;
 
 public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHolder> {
-
     private final Context context;
     private ArrayList<GioHang> list;
     private GioHangDAO gioHangDAO;

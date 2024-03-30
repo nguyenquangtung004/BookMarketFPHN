@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@color/athens_grey"
     >
 
     <ImageView
@@ -17,8 +18,8 @@
         android:layout_marginTop="10dp"
         android:text="ĐỔI MẬT KHẨU"
         android:textSize="22dp"
-        android:textColor="#3F51B5"
-        android:fontFamily="@font/open_sans_bold"
+        android:textColor="@color/colortextChu"
+        android:fontFamily="@font/fonttieudesemibold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
@@ -36,8 +37,9 @@
             android:layout_height="wrap_content"
             >
             <TextView
-                android:fontFamily="@font/open_sans_regular"
-                android:text="Mật kẩu cũ:"
+                android:fontFamily="@font/fonttieudeextrabold"
+                android:text="Mật khẩu cũ:"
+                android:textColor="@color/colortextChu"
                 android:textSize="16sp"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
@@ -46,7 +48,7 @@
                 android:id="@+id/ed_matkhaucu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_dn"
+                android:background="@drawable/edit_dn"
                 android:hint="Mật khẩu"
                 android:inputType="text"
                 android:padding="10dp"
@@ -60,18 +62,19 @@
             android:orientation="horizontal">
 
             <TextView
-                android:fontFamily="@font/open_sans_regular"
+                android:fontFamily="@font/fonttieudeextrabold"
                 android:layout_width="120dp"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:text="Mật khẩu mới:  "
+                android:textColor="@color/colortextChu"
                 android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/ed_matkhaumoi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_dn"
+                android:background="@drawable/edit_dn"
                 android:hint="Mật khẩu mới"
                 android:inputType="text"
                 android:padding="10dp"
@@ -87,9 +90,10 @@
             >
 
             <TextView
-                android:fontFamily="@font/open_sans_regular"
+                android:fontFamily="@font/fonttieudeextrabold"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colortextChu"
                 android:text="Nhập lại mật khẩu mới:"
                 android:textSize="16sp" />
 
@@ -97,7 +101,7 @@
                 android:id="@+id/ed_confirm_matkhaumoi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_dn"
+                android:background="@drawable/edit_dn"
                 android:hint="Nhập lại mật khẩu mới"
                 android:inputType="text"
                 android:padding="10dp"
@@ -118,11 +122,11 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@drawable/btn_qmk"
+                android:background="@drawable/btn_dn"
                 android:text="CẬP NHẬT"
                 android:fontFamily="@font/open_sans_bold"
                 android:textSize="18sp"
-                android:textColor="#ffff" />
+                android:textColor="@color/colortextChu" />
 
             <TextView
                 android:layout_marginLeft="10dp"
@@ -131,11 +135,11 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:background="@drawable/btn_qmk"
+                android:background="@drawable/btn_dn"
                 android:text="HỦY"
                 android:fontFamily="@font/open_sans_bold"
                 android:textSize="18sp"
-                android:textColor="#ffff" />
+                android:textColor="@color/colortextChu" />
 
         </LinearLayout>
 

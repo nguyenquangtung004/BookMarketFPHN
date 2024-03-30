@@ -77,7 +77,7 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHolder
                     list = hoaDonDAO.getDSHoaDon();
                     notifyDataSetChanged();
                 }else {
-                    Toast.makeText(context, "Thay doi trang thai that bai", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Thay đổi trạng thái thất bại !", Toast.LENGTH_SHORT).show();
                 }
             }
         });

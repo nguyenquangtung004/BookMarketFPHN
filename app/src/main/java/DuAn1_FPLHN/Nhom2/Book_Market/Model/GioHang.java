@@ -7,11 +7,15 @@ public class GioHang {
     private int giasp;
     private int soluong;
 
-    public GioHang() {
-    }
-
     public GioHang(int id, String tensp, byte[] anhsp, int giasp, int soluong) {
         this.id = id;
+        this.tensp = tensp;
+        this.anhsp = anhsp;
+        this.giasp = giasp;
+        this.soluong = soluong;
+    }
+
+    public GioHang(String tensp, byte[] anhsp, int giasp, int soluong) {
         this.tensp = tensp;
         this.anhsp = anhsp;
         this.giasp = giasp;

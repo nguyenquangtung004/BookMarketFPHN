@@ -11,42 +11,40 @@
         android:id="@+id/lottie_welcome"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/welcome"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        />
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/welcome" />
 
     <TextView
         android:id="@+id/tv_wc_cm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="Chào bạn đến với ứng dụng của nhóm mình"
-        android:textStyle="bold|italic"
-        android:textColor="@color/colortextChu"
-        android:fontFamily="@font/fonttieuderegular"
-        android:textSize="18dp"
-
         android:layout_below="@+id/lottie_welcome"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        />
+        android:fontFamily="@font/fonttieuderegular"
+        android:text="Chào bạn đến với ứng dụng của nhóm mình"
+
+        android:textColor="@color/colortextChu"
+        android:textSize="18dp"
+        android:textStyle="bold|italic" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tv_wc_cm"
-        >
+        android:layout_below="@+id/tv_wc_cm">
 
         <TextView
             android:id="@+id/tv_wc_sl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/fontviettay"
-            android:textSize="20dp"
-            android:textStyle="bold"
             android:text=""
             android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"

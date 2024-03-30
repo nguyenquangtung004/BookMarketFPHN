@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@color/athens_grey"
     >
 
     <ImageView
@@ -20,9 +21,9 @@
         android:padding="10dp"
         android:text="SỬA TÀI KHOẢN"
         android:textAlignment="center"
-        android:textColor="#3F51B5"
+        android:textColor="@color/colortextChu"
         android:textSize="22dp"
-        android:fontFamily="@font/open_sans_bold" />
+        android:fontFamily="@font/fonttieudeextrabold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,11 +35,12 @@
         >
 
         <TextView
-            android:fontFamily="@font/open_sans_regular"
+            android:fontFamily="@font/fonttieudeextrabold"
             android:id="@+id/tv_maTK"
             android:textSize="17sp"
             android:textStyle="bold"
             android:text="Mã tài khoản:"
+            android:textColor="@color/colortextChu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -51,20 +53,22 @@
             android:layout_height="wrap_content"
             >
             <TextView
-                android:fontFamily="@font/open_sans_regular"
+                android:fontFamily="@font/fonttieudeextrabold"
                 android:text="Tài khoản:"
                 android:textSize="16sp"
                 android:layout_width="110dp"
+                android:textColor="@color/colortextChu"
                 android:layout_height="wrap_content"
                 />
             <EditText
                 android:id="@+id/ed_taikhoan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_dn"
+                android:background="@drawable/edit_dn"
                 android:hint="Tài khoản"
                 android:inputType="text"
                 android:padding="10dp"
+
                 />
         </LinearLayout>
 
@@ -75,21 +79,24 @@
             android:orientation="horizontal">
 
             <TextView
-                android:fontFamily="@font/open_sans_regular"
+                android:fontFamily="@font/fonttieudeextrabold"
                 android:layout_width="110dp"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:text="Mật khẩu:"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="@color/colortextChu"
+                />
 
             <EditText
                 android:id="@+id/ed_matkhau"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_dn"
+                android:background="@drawable/edit_dn"
                 android:hint="Mật khẩu"
                 android:inputType="text"
                 android:padding="10dp"
+
                 />
         </LinearLayout>
 
@@ -100,21 +107,23 @@
             android:layout_height="wrap_content"
             >
             <TextView
-                android:fontFamily="@font/open_sans_regular"
+                android:fontFamily="@font/fonttieudeextrabold"
                 android:text="Họ tên:"
                 android:textSize="16sp"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colortextChu"
                 />
             <EditText
                 android:id="@+id/ed_hoten"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_dn"
+                android:background="@drawable/edit_dn"
                 android:gravity="center_vertical"
                 android:hint="Họ tên"
                 android:padding="10dp"
                 android:inputType="text"
+
                 />
         </LinearLayout>
 
@@ -125,18 +134,19 @@
             android:layout_height="wrap_content"
             >
             <TextView
-                android:fontFamily="@font/open_sans_regular"
+                android:fontFamily="@font/fonttieudeextrabold"
                 android:text="Số điện thoại:"
                 android:textSize="16sp"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colortextChu"
                 />
             <EditText
                 android:id="@+id/ed_sdt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:background="@drawable/btn_dn"
+                android:background="@drawable/edit_dn"
                 android:gravity="center_vertical"
                 android:hint="Giá sản phẩm"
                 android:inputType="number"
@@ -151,17 +161,18 @@
             android:layout_height="wrap_content"
             >
             <TextView
-                android:fontFamily="@font/open_sans_regular"
+                android:fontFamily="@font/fonttieudeextrabold"
                 android:text="Địa chỉ:"
                 android:textSize="16sp"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colortextChu"
                 />
             <EditText
                 android:id="@+id/ed_diachi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_dn"
+                android:background="@drawable/edit_dn"
                 android:gravity="center_vertical"
                 android:hint="Họ tên"
                 android:padding="10dp"
@@ -184,9 +195,9 @@
                 android:layout_weight="1"
                 android:background="@drawable/btn_qmk"
                 android:text="CẬP NHẬT"
-                android:fontFamily="@font/open_sans_bold"
+                android:fontFamily="@font/fonttieudeextrabold"
                 android:textSize="18sp"
-                android:textColor="#ffff" />
+                android:textColor="@color/colortextChu" />
 
             <TextView
                 android:layout_marginLeft="10dp"
@@ -197,9 +208,9 @@
                 android:layout_weight="1"
                 android:background="@drawable/btn_qmk"
                 android:text="HỦY"
-                android:fontFamily="@font/open_sans_bold"
+                android:fontFamily="@font/fonttieudeextrabold"
                 android:textSize="18sp"
-                android:textColor="#ffff" />
+                android:textColor="@color/colortextChu" />
 
         </LinearLayout>
 

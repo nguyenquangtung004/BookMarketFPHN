@@ -97,7 +97,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -151,7 +151,45 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
             index++;
         }
         spn_loaiSP.setSelection(postion);
-        //btn_edit
+        btn_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int maSP = sanPham.getMasp();
+                String tenSP = ed_tenSP.getText().toString();
+                String giaSP = ed_giaSP.getText().toString();
+                String motaSP = ed_motaSP.getText().toString();
+                // Mã loại
+                HashMap<String, Object> hs = (HashMap<String, Object>) spn_loaiSP.getSelectedItem();
+                int maloai = (int) hs.get("maloai");
+                // Ảnh sản phẩm
+                byte[] anhSP = sanPham.getAnhsp();
+
+                if (tenSP.isEmpty()) {
+                    ed_tenSP.setError("Nhập tên sản phẩm");
+                    return;
+                }
+                if (giaSP.isEmpty()) {
+                    ed_giaSP.setError("Nhập giá sản phẩm");
+                    return;
+                }
+                if (motaSP.isEmpty()) {
+                    ed_motaSP.setError("Nhập số lượng sản phẩm");
+                    return;
+                }
+                SanPham sanPham = new SanPham(maSP, tenSP, anhSP, motaSP, Integer.parseInt(giaSP), maloai);
+                boolean check = sanPhamDAO.suaSanPham(sanPham);
+                if (check){
+                    notifyDataSetChanged();
+                    list.clear();
+                    list = sanPhamDAO.getDSSanPham();
+                    Toast.makeText(context, "Sủa thành công", Toast.LENGTH_SHORT).show();
+                    sheetDialog.dismiss();
+                } else {
+                    Toast.makeText(context, "Sửa thất bại", Toast.LENGTH_SHORT).show();
+                    sheetDialog.dismiss();
+                }
+            }
+        });
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -203,7 +241,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         }
 
         SimpleAdapter simpleAdapter = new SimpleAdapter(context, listHM, android.R.layout.simple_list_item_1, new String[]{"tenloai"}, new int[]{android.R.id.text1});
-        //spn_theloai.setAdapter(simpleAdapter);
+        spnLoaiSP.setAdapter(simpleAdapter);
 
         return listHM;
     }

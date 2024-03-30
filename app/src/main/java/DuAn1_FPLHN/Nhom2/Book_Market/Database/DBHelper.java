@@ -6,32 +6,43 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public DBHelper(Context context){super(context, "BookMarket", null, 3);}
+    public DBHelper(Context context){super(context, "BookMarket", null, 4);}
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //bang san pham
-        String dbSANPHAM = "create table SANPHAM(masp integer primary key autoincrement, tensp text, maloai integer, anhsp blob, motasp text, giasp integer)";
+        //Bảng Sản Phẩm Gồm 6 Thuộc Tính
+        //masp,tensp,maloai,anhsp,motasp,giasp
+        String dbSANPHAM = "CREATE TABLE SANPHAM(masp integer primary key autoincrement, tensp text, maloai integer, anhsp blob, motasp text, giasp integer)";
         db.execSQL(dbSANPHAM);
-        //bang the loai
-        String dbTHELOAI = "CREATE TABLE THELOAI(maloai integer primary key autoincrement, tenloai text)";
+        //Cần Dữ Liệu Mẫu
+        /*<----------------------------------------------->*/
+
+        //Bảng Thể Loại Gồm 2 Thuộc Tính
+        //maloai,tenloai
+        String dbTHELOAI = "CREATE TABLE THELOAI(maloai integer PRIMARY KEY AUTOINCREMENT, tenloai text)";
         db.execSQL(dbTHELOAI);
-        //bang gio hang
+        db.execSQL("INSERT INTO THELOAI VALUES (1, 'Giáo Khoa'), (2, 'Tài liệu'), (3, 'Bộ Đề'), (4, 'Truyện')");
+        /*<----------------------------------------------->*/
+
+        //Bảng Giỏ Hàng Gồm 5 Thuộc Tính
+        //id,tensp,anhsp,giasp,soluong
         String dbGIOHANG = "create table GIOHANG(id integer primary key autoincrement, tensp text, anhsp blob, giasp integer, soluong integer)";
         db.execSQL(dbGIOHANG);
-        //bang hoa don
+        /*<----------------------------------------------->*/
+
+        //Bảng Hóa Đơn Gồm 9 Thuộc Tính
+        //mahd,ngaylap,matk,hoten,sdt,diachi,tongtien,tongsanpham,trangthai
         String dbHOADON = "create table HOADON(mahd integer primary key autoincrement, ngaylap text, matk integer references TAIKHOAN(matk), hoten text, sdt text, diachi text, tongtien integer, tongsanpham text, trangthai integer)";
         db.execSQL(dbHOADON);
-        //bang tai khoan
+        /*<----------------------------------------------->*/
+
+        //Bảng Tài Khoản Gồm
+        //matk,taikhoan,matkhau,hoten,sdt,diachi,loaitaikhoan
         String dbTAIKHOAN = "create table TAIKHOAN(matk integer primary key autoincrement, taikhoan text, matkhau text, hoten text, sdt text, diachi text, loaitaikhoan text)";
         db.execSQL(dbTAIKHOAN);
-
-        //du lieu mau
-
-        db.execSQL("insert into THELOAI values (1, 'Thiếu nhi'), (2, 'Tài liệu'), (3, 'Ngụ ngôn'), (4, 'Truyện hài')");
-
-        db.execSQL("insert into HOADON values (1, '09/11/2023', 1, 'Vuong Dinh Hien', '0866815906', 'Kim Chung - Hoài Đức - Hà Nội', 90000, 'Cháo gà x1', 0), (2, '03/11/2023', 2, 'HienDinh', '0979991999', 'Duy Tiên - Hà Nam', 110000, 'Cơm bò x1', 1)");
-
-        db.execSQL("insert into TAIKHOAN values (1, 'admin', '123', 'Vuong Dinh Hien', '0866815906', 'Kim Chung - Hoài Đức - Hà Nội','admin'), (2, 'tungnq', '123', 'QuangTung', '0877956178', 'Hoàng Mai - Hà Nội','khách hàng')");
+        /*<----------------------------------------------->*/
+        db.execSQL("insert into TAIKHOAN values " +
+                "(1, 'admin', '123', 'Vương Đình Hiến', '0866815906', 'Kim Chung - Hoài Đức - Hà Nội','admin'), " +
+                "(2, 'tungnq', '123', 'Nguyễn Quang Tùng', '0877956178', 'Hoàng Mai - Hà Nội','buyer')");
     }
 
     @Override

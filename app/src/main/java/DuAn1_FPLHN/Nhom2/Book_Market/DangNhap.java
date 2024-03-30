@@ -21,10 +21,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import DuAn1_FPLHN.Nhom2.Book_Market.DAO.TaiKhoanDAO;
 
 public class DangNhap extends AppCompatActivity {
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    FirebaseAuth auth = FirebaseAuth.getInstance();
-    FirebaseUser user;
-
     TextInputEditText tiledDNTaiKhoan,tiledDNMatKhau;
     private TextView tvDangKi,tvDangNhap,tvDNFogotPS;
     private String textViewDN ="Đăng Nhập";

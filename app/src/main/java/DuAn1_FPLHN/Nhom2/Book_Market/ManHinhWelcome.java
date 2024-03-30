@@ -15,6 +15,7 @@ public class ManHinhWelcome extends AppCompatActivity {
     private String[] quotes = {"Đọc sách hôm nay, thành công mai sau.",
             "Cả thế giới mở ra với tôi khi tôi học đọc."};
     private int currentIndex = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
