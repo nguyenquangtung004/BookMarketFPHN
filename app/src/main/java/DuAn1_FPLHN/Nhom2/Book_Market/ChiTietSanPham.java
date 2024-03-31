@@ -79,9 +79,9 @@ public class ChiTietSanPham extends AppCompatActivity {
             Bitmap bitmapAnhSP = ConvertData.ConvertBitmap(byte_anhSP);
             img_anhSP.setImageBitmap(bitmapAnhSP);
 
-            tv_tenSP.setText(tenSP);
-            tv_giaSP.setText(String.valueOf(giaSP));
-            tv_motaSP.setText(motaSP);
+            tv_tenSP.setText("Tên sản phẩm: "+tenSP);
+            tv_giaSP.setText("Giá sản phẩm: "+String.valueOf(giaSP));
+            tv_motaSP.setText("Mô tả: "+motaSP);
 
             btn_themGioHang.setOnClickListener(new View.OnClickListener() {
                 @Override

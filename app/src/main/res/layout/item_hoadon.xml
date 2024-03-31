@@ -134,7 +134,7 @@
                     android:fontFamily="@font/fonttieuderegular"
                     android:gravity="center"
                     android:padding="3dp"
-                    android:text="THAY ĐỔI"
+                    android:text="Xác Nhận"
                     android:textColor="@color/colortextChu" />
             </LinearLayout>
 

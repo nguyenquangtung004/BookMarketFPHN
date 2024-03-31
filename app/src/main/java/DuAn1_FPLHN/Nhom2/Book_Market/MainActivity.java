@@ -31,6 +31,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
 import DuAn1_FPLHN.Nhom2.Book_Market.DAO.TaiKhoanDAO;
+import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.GIoHangFragment;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.HoaDonFragment;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.QuanLyHoaDon;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.QuanLySanPham;
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 progressDialog.show();
                 // Trang Chủ Người Mua và Người Bán Có
-                if (item.getItemId() == R.id.bt_trangchu) {
+                if (item.getItemId() == R.id.mQLTrangChu) {
                     callFragment(new CuaHangFragment());
                     toolbar.setTitle("Trang Chủ");
                 }
@@ -148,25 +149,6 @@ public class MainActivity extends AppCompatActivity {
                     toolbar.setTitle("Thông tin đội ngũ phát triển");
                 }
                 /*<---------------------->*/
-
-//                if (item.getItemId() == R.id.bt_giohang){
-//                    startActivity(new Intent(getApplicationContext(), GioHangActivity.class));
-//                }
-
-                //Thông tin tài khoản của người dùng
-                if (item.getItemId() == R.id.bt_taikhoan) {
-                    callFragment(new ThongTSallerFragment());
-                    toolbar.setTitle("Thông tin khách hàng");
-                }
-                /*<---------------------->*/
-
-                //Thông tin hóa đơn của người dùng
-                if (item.getItemId() == R.id.bt_hoadon) {
-                    callFragment(new HoaDonFragment());
-                    toolbar.setTitle("Hóa Đơn");
-                }
-                /*<---------------------->*/
-
                 //Đăng Xuất
                 if (item.getItemId() == R.id.mDangXuat) {
                     SharedPreferences myPrefs = getSharedPreferences("Activity", MODE_PRIVATE);
@@ -190,11 +172,27 @@ public class MainActivity extends AppCompatActivity {
                     callFragment(new CuaHangFragment());
                     toolbar.setTitle("Trang chủ");
                 }
+                if (item.getItemId() == R.id.bt_giohang){
+                   callFragment(new GIoHangFragment());
+                   toolbar.setTitle("Giỏ Hàng");
+                }
+                //Thông tin tài khoản của người dùng
+                if (item.getItemId() == R.id.bt_taikhoan) {
+                    callFragment(new ThongTSallerFragment());
+                    toolbar.setTitle("Thông tin khách hàng");
+                }
+                /*<---------------------->*/
+                //Thông tin hóa đơn của người dùng
+                if (item.getItemId() == R.id.bt_hoadon) {
+                    callFragment(new HoaDonFragment());
+                    toolbar.setTitle("Hóa Đơn");
+                }
+                /*<---------------------->*/
 
                 return true;
             }
         });
-        // Ẩn/hiện chức năng cho Admin
+        // Ẩn chức năng dành cho người mua
         if (!loaiTK.equals("admin")) {
             Menu menu = navigationView.getMenu();
             menu.findItem(R.id.mQLHoaDon).setVisible(false); // Ẩn chúc năng
@@ -202,6 +200,13 @@ public class MainActivity extends AppCompatActivity {
             menu.findItem(R.id.mQLTaiKhoan).setVisible(false);
             menu.findItem(R.id.mQLTheLoai).setVisible(false);
             menu.findItem(R.id.mThongKe).setVisible(false);
+        }
+
+        //Ẩn chức năng dành cho admin
+        if (!loaiTK.equals("buyer")){
+            Menu menu = bottomNavigationView.getMenu();
+            menu.findItem(R.id.bt_giohang).setVisible(false);
+            menu.findItem(R.id.bt_hoadon).setVisible(false);
         }
 
 

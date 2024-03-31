@@ -60,7 +60,6 @@ public class DangNhap extends AppCompatActivity {
                 }
                 if (taiKhoanDAO.checkDangNhap(taikhoan, matkhau)){
                         startActivity(new Intent(DangNhap.this, MainActivity.class));
-                        Toast.makeText(DangNhap.this, "Hello, wellcome to App Order Food", Toast.LENGTH_SHORT).show();
                 } else {
                         Toast.makeText(DangNhap.this, "Tài khoản hặc mật khẩu không chính xác", Toast.LENGTH_SHORT).show();
                 }
