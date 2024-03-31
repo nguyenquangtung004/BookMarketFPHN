@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@color/ethereal_blue"
     >
 
     <ImageView
@@ -17,8 +18,8 @@
         android:layout_marginTop="10dp"
         android:text="THÊM LOẠI SẢN PHẨM"
         android:textSize="22dp"
-        android:textColor="#3F51B5"
-        android:fontFamily="@font/open_sans_bold"
+        android:textColor="@color/colortextChu"
+        android:fontFamily="@font/fonttieudeextrabold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
@@ -30,10 +31,11 @@
         android:layout_height="wrap_content"
         >
         <TextView
-            android:fontFamily="@font/open_sans_regular"
+            android:fontFamily="@font/fonttieudeextrabold"
             android:text="Tên thể loại:"
             android:layout_marginBottom="5dp"
             android:textSize="17sp"
+            android:textColor="@color/colortextChu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -41,7 +43,8 @@
             android:id="@+id/ed_tenloai"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_dn"
+            android:background="@drawable/edit_dn"
+            android:drawableStart="@drawable/category_book"
             android:hint="Tên thể loại"
             android:inputType="text"
             android:padding="10dp"
@@ -66,9 +69,9 @@
             android:layout_weight="1"
             android:background="@drawable/btn_qmk"
             android:text="THÊM"
-            android:fontFamily="@font/open_sans_bold"
+            android:fontFamily="@font/fonttieudeextrabold"
             android:textSize="18sp"
-            android:textColor="#ffff" />
+            android:textColor="@color/colortextChu" />
 
         <TextView
             android:layout_marginLeft="10dp"
@@ -79,9 +82,9 @@
             android:layout_weight="1"
             android:background="@drawable/btn_qmk"
             android:text="HỦY"
-            android:fontFamily="@font/open_sans_bold"
+            android:fontFamily="@font/fonttieudeextrabold"
             android:textSize="18sp"
-            android:textColor="#ffff" />
+            android:textColor="@color/colortextChu" />
 
     </LinearLayout>
 

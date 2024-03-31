@@ -42,6 +42,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/open_sans_regular"
                     android:text="Mã hóa đơn"
+                    android:textColor="@color/colortextChu"
                     android:textSize="13sp"
                     android:textStyle="bold" />
 
@@ -61,9 +62,11 @@
                 android:id="@+id/tv_tongsanpham"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_bold"
+                android:fontFamily="@font/fonttieuderegular"
                 android:text="Tổng sản phẩm"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:textColor="@color/colortextChu"
+                />
 
             <TextView
                 android:id="@+id/tv_matk"

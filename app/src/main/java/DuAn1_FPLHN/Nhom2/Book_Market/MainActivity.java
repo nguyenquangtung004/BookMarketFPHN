@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                 //Đổi mật khẩu của người mua
                 if (item.getItemId() == R.id.mDoiMatKhau) {
                     showDialogDoiMK(maTK);
-                    Toast.makeText(MainActivity.this, "Ok", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
                 }
                 /*<---------------------->*/
 
@@ -203,10 +203,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //Ẩn chức năng dành cho admin
-        if (!loaiTK.equals("buyer")){
+        if (loaiTK.equals("admin")){
             Menu menu = bottomNavigationView.getMenu();
-            menu.findItem(R.id.bt_giohang).setVisible(false);
-            menu.findItem(R.id.bt_hoadon).setVisible(false);
+//            menu.findItem(R.id.bt_giohang).setVisible(false);
+//            menu.findItem(R.id.bt_hoadon).setVisible(false);
         }
 
 
