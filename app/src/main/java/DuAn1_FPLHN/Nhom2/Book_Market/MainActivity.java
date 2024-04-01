@@ -31,6 +31,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
 import DuAn1_FPLHN.Nhom2.Book_Market.DAO.TaiKhoanDAO;
+import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.GIoHangFragment;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.HoaDonFragment;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.QuanLyHoaDon;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.QuanLySanPham;
@@ -57,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         anhXa();
         View headerLayout = navigationView.getHeaderView(0);
-        TextView tv_hoten = headerLayout.findViewById(R.id.tv_hoten);
-        TextView tv_taikhoan = headerLayout.findViewById(R.id.tv_taikhoan);
+        TextView tv_hoten = headerLayout.findViewById(R.id.tvHeaderName);
+        TextView tv_taikhoan = headerLayout.findViewById(R.id.tvHeaderAccount);
 
         // Lấy thông tin người dùng từ SharedPreferences
         SharedPreferences sharedPreferences = this.getSharedPreferences("ThongTinTaiKhoan", MODE_PRIVATE);
@@ -66,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
         String hoten = sharedPreferences.getString("hoten", "");
         String taikhoan = sharedPreferences.getString("taikhoan", "");
         String loaiTK = sharedPreferences.getString("loaitaikhoan", "");
-//        tv_hoten.setText(hoten);
-//        tv_taikhoan.setText(taikhoan);
+        tv_hoten.setText("Tên : "+hoten);
+        tv_taikhoan.setText("Quyền :"+loaiTK);
 
 
 //        Thực Hiện Việc Thêm ToolBar
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 progressDialog.show();
                 // Trang Chủ Người Mua và Người Bán Có
-                if (item.getItemId() == R.id.bt_trangchu) {
+                if (item.getItemId() == R.id.mQLTrangChu) {
                     callFragment(new CuaHangFragment());
                     toolbar.setTitle("Trang Chủ");
                 }
@@ -138,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                 //Đổi mật khẩu của người mua
                 if (item.getItemId() == R.id.mDoiMatKhau) {
                     showDialogDoiMK(maTK);
-                    Toast.makeText(MainActivity.this, "Ok", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
                 }
                 /*<---------------------->*/
 
@@ -148,25 +149,6 @@ public class MainActivity extends AppCompatActivity {
                     toolbar.setTitle("Thông tin đội ngũ phát triển");
                 }
                 /*<---------------------->*/
-
-//                if (item.getItemId() == R.id.bt_giohang){
-//                    startActivity(new Intent(getApplicationContext(), GioHangActivity.class));
-//                }
-
-                //Thông tin tài khoản của người dùng
-                if (item.getItemId() == R.id.bt_taikhoan) {
-                    callFragment(new ThongTSallerFragment());
-                    toolbar.setTitle("Thông tin khách hàng");
-                }
-                /*<---------------------->*/
-
-                //Thông tin hóa đơn của người dùng
-                if (item.getItemId() == R.id.bt_hoadon) {
-                    callFragment(new HoaDonFragment());
-                    toolbar.setTitle("Hóa Đơn");
-                }
-                /*<---------------------->*/
-
                 //Đăng Xuất
                 if (item.getItemId() == R.id.mDangXuat) {
                     SharedPreferences myPrefs = getSharedPreferences("Activity", MODE_PRIVATE);
@@ -190,11 +172,27 @@ public class MainActivity extends AppCompatActivity {
                     callFragment(new CuaHangFragment());
                     toolbar.setTitle("Trang chủ");
                 }
+                if (item.getItemId() == R.id.bt_giohang){
+                   callFragment(new GIoHangFragment());
+                   toolbar.setTitle("Giỏ Hàng");
+                }
+                //Thông tin tài khoản của người dùng
+                if (item.getItemId() == R.id.bt_taikhoan) {
+                    callFragment(new ThongTSallerFragment());
+                    toolbar.setTitle("Thông tin khách hàng");
+                }
+                /*<---------------------->*/
+                //Thông tin hóa đơn của người dùng
+                if (item.getItemId() == R.id.bt_hoadon) {
+                    callFragment(new HoaDonFragment());
+                    toolbar.setTitle("Hóa Đơn");
+                }
+                /*<---------------------->*/
 
                 return true;
             }
         });
-        // Ẩn/hiện chức năng cho Admin
+        // Ẩn chức năng dành cho người mua
         if (!loaiTK.equals("admin")) {
             Menu menu = navigationView.getMenu();
             menu.findItem(R.id.mQLHoaDon).setVisible(false); // Ẩn chúc năng
@@ -202,6 +200,13 @@ public class MainActivity extends AppCompatActivity {
             menu.findItem(R.id.mQLTaiKhoan).setVisible(false);
             menu.findItem(R.id.mQLTheLoai).setVisible(false);
             menu.findItem(R.id.mThongKe).setVisible(false);
+        }
+
+        //Ẩn chức năng dành cho admin
+        if (loaiTK.equals("admin")){
+            Menu menu = bottomNavigationView.getMenu();
+//            menu.findItem(R.id.bt_giohang).setVisible(false);
+//            menu.findItem(R.id.bt_hoadon).setVisible(false);
         }
 
 

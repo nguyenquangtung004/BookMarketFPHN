@@ -34,10 +34,12 @@
                 android:id="@+id/tv_masp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_regular"
+                android:fontFamily="@font/fonttieuderegular"
                 android:text="Mã sản phẩm"
                 android:textSize="13sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/colortextChu"
+                />
 
             <TextView
                 android:id="@+id/tv_tensp"

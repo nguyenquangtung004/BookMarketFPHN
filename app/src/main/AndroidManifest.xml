@@ -18,9 +18,6 @@
             android:name=".ChiTietSanPham"
             android:exported="false" />
         <activity
-            android:name=".GioHangActivity"
-            android:exported="false" />
-        <activity
             android:name=".QuenMatKhau"
             android:exported="false" />
         <activity

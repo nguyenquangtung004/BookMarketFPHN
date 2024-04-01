@@ -44,7 +44,7 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHolder
         HoaDonDAO hoaDonDAO =new HoaDonDAO(context);
 
         holder.tv_mahd.setText("Mã HĐ: "+ hoaDon.getMahd());
-        holder.tv_tongsanpham.setText(hoaDon.getTongsanpham());
+        holder.tv_tongsanpham.setText("Số lượng: "+hoaDon.getTongsanpham());
         holder.tv_matk.setText("Mở tài khoản: "+ hoaDon.getMatk());
         holder.tv_ngaylap.setText(hoaDon.getNgaylap());
         holder.tv_hoten.setText("Người nhận: " + hoaDon.getHoten());

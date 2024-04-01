@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#70cbff"
@@ -12,16 +12,37 @@
         android:id="@+id/imgAvt"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_gravity="center"
         android:src="@drawable/imgview1"/>
     <TextView
-        android:id="@+id/tvUser"
-        android:layout_width="match_parent"
+        android:id="@+id/tvWelcome"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Welcome"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        android:text="Chào bạn !"
+        android:layout_toRightOf="@id/imgAvt"
+        android:textColor="@color/colortextChu"
+        android:layout_marginLeft="10dp"
+        android:textSize="20dp"
+        android:fontFamily="@font/fonttieuderegular"
+        />
+    <TextView
+        android:id="@+id/tvHeaderName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nguyễn Quang Tùng"
+        android:layout_below="@id/tvWelcome"
+        android:layout_alignLeft="@+id/tvWelcome"
+        android:textColor="@color/colortextChu"
+        />
+    <TextView
+        android:id="@+id/tvHeaderAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvHeaderName"
+        android:layout_alignLeft="@+id/tvHeaderName"
+        android:text="Admin"
+        android:fontFamily="@font/fonttieuderegular"
+        android:textColor="@color/colortextChu"
+        />
 
-</LinearLayout>
+
+</RelativeLayout>

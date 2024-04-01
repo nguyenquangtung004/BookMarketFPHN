@@ -7,11 +7,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -59,8 +63,8 @@ public class DangNhap extends AppCompatActivity {
                     return;
                 }
                 if (taiKhoanDAO.checkDangNhap(taikhoan, matkhau)){
-                        startActivity(new Intent(DangNhap.this, MainActivity.class));
-                        Toast.makeText(DangNhap.this, "Hello, wellcome to App Order Food", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DangNhap.this, "Đăng nhập thành công !", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(DangNhap.this, MainActivity.class));
                 } else {
                         Toast.makeText(DangNhap.this, "Tài khoản hặc mật khẩu không chính xác", Toast.LENGTH_SHORT).show();
                 }
