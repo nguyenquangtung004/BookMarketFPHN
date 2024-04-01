@@ -58,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         anhXa();
         View headerLayout = navigationView.getHeaderView(0);
-        TextView tv_hoten = headerLayout.findViewById(R.id.tv_hoten);
-        TextView tv_taikhoan = headerLayout.findViewById(R.id.tv_taikhoan);
+        TextView tv_hoten = headerLayout.findViewById(R.id.tvHeaderName);
+        TextView tv_taikhoan = headerLayout.findViewById(R.id.tvHeaderAccount);
 
         // Lấy thông tin người dùng từ SharedPreferences
         SharedPreferences sharedPreferences = this.getSharedPreferences("ThongTinTaiKhoan", MODE_PRIVATE);
@@ -67,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
         String hoten = sharedPreferences.getString("hoten", "");
         String taikhoan = sharedPreferences.getString("taikhoan", "");
         String loaiTK = sharedPreferences.getString("loaitaikhoan", "");
-//        tv_hoten.setText(hoten);
-//        tv_taikhoan.setText(taikhoan);
+        tv_hoten.setText("Tên : "+hoten);
+        tv_taikhoan.setText("Quyền :"+loaiTK);
 
 
 //        Thực Hiện Việc Thêm ToolBar
