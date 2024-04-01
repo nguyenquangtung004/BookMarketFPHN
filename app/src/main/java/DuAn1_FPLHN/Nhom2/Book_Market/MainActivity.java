@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -52,7 +53,16 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private Fragment fragment;
     private FrameLayout frameLayout;
-
+//anh xa
+    private void anhXa() {
+        progressDialog = new ProgressDialog(this);
+        drawerLayout = findViewById(R.id.dl_am);
+        toolbar = findViewById(R.id.tb_am);
+        navigationView = findViewById(R.id.nv_am);
+        bottomNavigationView = findViewById(R.id.bnv_am);
+        frameLayout = findViewById(R.id.fcv_am);
+        imgAvt = navigationView.getHeaderView(0).findViewById(R.id.imgAvt);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +79,10 @@ public class MainActivity extends AppCompatActivity {
         String taikhoan = sharedPreferences.getString("taikhoan", "");
         String loaiTK = sharedPreferences.getString("loaitaikhoan", "");
         tv_hoten.setText("Tên : "+hoten);
-        tv_taikhoan.setText("Quyền :"+loaiTK);
+        tv_taikhoan.setText("Quyền :"+taikhoan);
+
+         CuaHangFragment cuaHangFragment = new CuaHangFragment();
+         getSupportFragmentManager().beginTransaction().replace(R.id.fcv_am, cuaHangFragment).commit();
 
 
 //        Thực Hiện Việc Thêm ToolBar
@@ -284,16 +297,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //    Thực hiện ánh xạ
-    private void anhXa() {
-        progressDialog = new ProgressDialog(this);
-        drawerLayout = findViewById(R.id.dl_am);
-        toolbar = findViewById(R.id.tb_am);
-        navigationView = findViewById(R.id.nv_am);
-        bottomNavigationView = findViewById(R.id.bnv_am);
-        frameLayout = findViewById(R.id.fcv_am);
-        imgAvt = navigationView.getHeaderView(0).findViewById(R.id.imgAvt);
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home){ // id của nút home
+            drawerLayout.openDrawer(GravityCompat.START);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
 }
 
