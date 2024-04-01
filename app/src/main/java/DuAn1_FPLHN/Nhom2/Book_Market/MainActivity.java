@@ -37,6 +37,7 @@ import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.QuanLyHoaDon;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.QuanLySanPham;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.QuanLyTaiKhoan;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.QuanLyTheLoai;
+import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.TaiKhoanFragment;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.ThongKeDoanhThu;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.ThongTSallerFragment;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.CuaHangFragment;
@@ -178,8 +179,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //Thông tin tài khoản của người dùng
                 if (item.getItemId() == R.id.bt_taikhoan) {
-                    callFragment(new ThongTSallerFragment());
-                    toolbar.setTitle("Thông tin khách hàng");
+                    callFragment(new TaiKhoanFragment());
+                    toolbar.setTitle("Thông tin tài khoản");
                 }
                 /*<---------------------->*/
                 //Thông tin hóa đơn của người dùng
@@ -205,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
         //Ẩn chức năng dành cho admin
         if (loaiTK.equals("admin")){
             Menu menu = bottomNavigationView.getMenu();
-//            menu.findItem(R.id.bt_giohang).setVisible(false);
+            menu.findItem(R.id.bt_giohang).setVisible(false);
 //            menu.findItem(R.id.bt_hoadon).setVisible(false);
         }
 
