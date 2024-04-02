@@ -37,53 +37,116 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHolder
         return new ViewHolder(view);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull HoaDonAdapter.ViewHolder holder, int position) {
-        final HoaDon hoaDon = list.get(holder.getAdapterPosition());
+//    @Override
+//    public void onBindViewHolder(@NonNull HoaDonAdapter.ViewHolder holder, int position) {
+//        final HoaDon hoaDon = list.get(holder.getAdapterPosition());
+//
+//        HoaDonDAO hoaDonDAO =new HoaDonDAO(context);
+//
+//        holder.tv_mahd.setText("Mã HĐ: "+ hoaDon.getMahd());
+//        holder.tv_tongsanpham.setText("Số lượng: "+hoaDon.getTongsanpham());
+//        holder.tv_matk.setText("Mở tài khoản: "+ hoaDon.getMatk());
+//        holder.tv_ngaylap.setText(hoaDon.getNgaylap());
+//        holder.tv_hoten.setText("Người nhận: " + hoaDon.getHoten());
+//        holder.tv_sdt.setText("SĐT: " + hoaDon.getSdt());
+//        holder.tv_diachi.setText("Giao đến: " + hoaDon.getDiachi());
+//        holder.tv_tongtien.setText("Số tiền: " + hoaDon.getTongtien() + " VNĐ");
+//
+//        if (hoaDon.getTrangthai() == 0) {
+//            holder.tv_trangthai.setText("Đang xử lý");
+//            holder.tv_trangthai.setTextColor(ContextCompat.getColor(context, R.color.light_blue_1));
+//        } else if (hoaDon.getTrangthai() == 1) {
+//            holder.tv_trangthai.setText("Đã xác nhận");
+//            holder.tv_trangthai.setTextColor(ContextCompat.getColor(context, R.color.light_blue_1));
+//        } else {
+//            holder.tv_trangthai.setText("Đã giao");
+//            holder.tv_trangthai.setTextColor(ContextCompat.getColor(context, R.color.natural_blue));
+//        }
+//
+//        holder.img_xoa.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                int maHD = hoaDon.getMahd();
+//                showDiaLogDeleteHD(maHD);
+//            }
+//        });
+//
+//        holder.btn_doitrangthai.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                boolean KiemTra = hoaDonDAO.thayDoiTrangThai(hoaDon);
+//                if (KiemTra){
+//                    list.clear();
+//                    list = hoaDonDAO.getDSHoaDon();
+//                    notifyDataSetChanged();
+//                }else {
+//                    Toast.makeText(context, "Thay đổi trạng thái thất bại !", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+//
+//
+//    }
+@Override
+public void onBindViewHolder(@NonNull HoaDonAdapter.ViewHolder holder, int position) {
+    final HoaDon hoaDon = list.get(holder.getAdapterPosition());
 
-        HoaDonDAO hoaDonDAO =new HoaDonDAO(context);
+    HoaDonDAO hoaDonDAO = new HoaDonDAO(context);
 
-        holder.tv_mahd.setText("Mã HĐ: "+ hoaDon.getMahd());
-        holder.tv_tongsanpham.setText("Số lượng: "+hoaDon.getTongsanpham());
-        holder.tv_matk.setText("Mở tài khoản: "+ hoaDon.getMatk());
-        holder.tv_ngaylap.setText(hoaDon.getNgaylap());
-        holder.tv_hoten.setText("Người nhận: " + hoaDon.getHoten());
-        holder.tv_sdt.setText("SĐT: " + hoaDon.getSdt());
-        holder.tv_diachi.setText("Giao đến: " + hoaDon.getDiachi());
-        holder.tv_tongtien.setText("Số tiền: " + hoaDon.getTongtien() + " VNĐ");
+    holder.tv_mahd.setText("Mã HĐ: " + hoaDon.getMahd());
+    holder.tv_tongsanpham.setText("Số lượng: " + hoaDon.getTongsanpham());
+    holder.tv_matk.setText("Mở tài khoản: " + hoaDon.getMatk());
+    holder.tv_ngaylap.setText(hoaDon.getNgaylap());
+    holder.tv_hoten.setText("Người nhận: " + hoaDon.getHoten());
+    holder.tv_sdt.setText("SĐT: " + hoaDon.getSdt());
+    holder.tv_diachi.setText("Giao đến: " + hoaDon.getDiachi());
+    holder.tv_tongtien.setText("Số tiền: " + hoaDon.getTongtien() + " VNĐ");
 
-        if (hoaDon.getTrangthai()==1){
-            holder.tv_trangthai.setText("Đã nhận hàng");
-            holder.tv_trangthai.setTextColor(ContextCompat.getColor(context, R.color.light_blue_1));
-        }else {
-            holder.tv_trangthai.setText("Chưa nhận hàng");
-            holder.tv_trangthai.setTextColor(ContextCompat.getColor(context, R.color.honeysuckle));
-        }
-
-        holder.img_xoa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int maHD = hoaDon.getMahd();
-                showDiaLogDeleteHD(maHD);
-            }
-        });
-
-        holder.btn_doitrangthai.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                boolean KiemTra = hoaDonDAO.thayDoiTrangThai(hoaDon);
-                if (KiemTra){
-                    list.clear();
-                    list = hoaDonDAO.getDSHoaDon();
-                    notifyDataSetChanged();
-                }else {
-                    Toast.makeText(context, "Thay đổi trạng thái thất bại !", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-
+    if (hoaDon.getTrangthai() == 0) {
+        holder.tv_trangthai.setText("Đang xử lý");
+        holder.tv_trangthai.setTextColor(ContextCompat.getColor(context, R.color.light_blue_1));
+    } else if (hoaDon.getTrangthai() == 1) {
+        holder.tv_trangthai.setText("Đã xác nhận");
+        holder.tv_trangthai.setTextColor(ContextCompat.getColor(context, R.color.light_blue_1));
+    } else if (hoaDon.getTrangthai() == 2){
+        holder.tv_trangthai.setText("Đã giao");
+        holder.tv_trangthai.setTextColor(ContextCompat.getColor(context, R.color.natural_blue));
     }
+
+    // Xử lý sự kiện khi nhấn vào nút btn_doitrangthai
+    holder.btn_doitrangthai.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            // Kiểm tra xem người dùng đã nhấn vào nút này hay chưa
+            if (!holder.isButtonClicked) {
+                // Nếu chưa, thực hiện thay đổi trạng thái và cập nhật giao diện
+                boolean KiemTra = hoaDonDAO.thayDoiTrangThai(hoaDon);
+                if (KiemTra) {
+                    list.clear();
+                    list.addAll(hoaDonDAO.getDSHoaDon());
+                    notifyDataSetChanged();
+                } else {
+                    Toast.makeText(context, "Thay đổi trạng thái thất bại!", Toast.LENGTH_SHORT).show();
+                }
+                // Đặt giá trị của biến isButtonClicked thành true để biết rằng người dùng đã nhấn vào nút này
+                holder.isButtonClicked = true;
+            }
+        }
+    });
+
+    // Thiết lập giá trị mặc định cho biến isButtonClicked
+    holder.isButtonClicked = false;
+
+    // Xử lý sự kiện khi nhấn vào nút xóa
+    holder.img_xoa.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            int maHD = hoaDon.getMahd();
+            showDiaLogDeleteHD(maHD);
+        }
+    });
+}
+
     @Override
     public int getItemCount() {
         return list.size();
@@ -92,6 +155,7 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView tv_mahd, tv_ngaylap, tv_hoten, tv_sdt, tv_diachi, tv_tongtien, tv_tongsanpham, tv_trangthai, tv_matk, btn_doitrangthai;
         ImageView img_xoa;
+        boolean isButtonClicked; // Biến để kiểm tra xem người dùng đã nhấn vào nút btn_doitrangthai hay chưa
         public ViewHolder(@NonNull View itemview){
             super(itemview);
 

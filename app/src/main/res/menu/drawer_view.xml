@@ -44,11 +44,11 @@
                 android:title="Thông tin ứng dụng"
                 android:icon="@drawable/info"
                 />
-            <item
-                android:id="@+id/mDoiMatKhau"
-                android:title="Đổi mật khẩu"
-                android:icon="@drawable/ic_key"
-                />
+<!--            <item-->
+<!--                android:id="@+id/mDoiMatKhau"-->
+<!--                android:title="Đổi mật khẩu"-->
+<!--                android:icon="@drawable/ic_key"-->
+<!--                />-->
         </menu>
     </item>
 
