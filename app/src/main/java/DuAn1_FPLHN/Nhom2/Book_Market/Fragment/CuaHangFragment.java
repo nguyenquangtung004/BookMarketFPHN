@@ -139,7 +139,7 @@ public class CuaHangFragment extends Fragment {
                 btn_truyen.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
                 list.clear();
                 for (SanPham sanPham : listTemp){
-                    if (sanPham.getTenloai().contains("Cơm")){
+                    if (sanPham.getTenloai().contains("Thiếu nhi")){
                         list.add(sanPham);
                     }
                     sanPhamKHAdapter.notifyDataSetChanged();
@@ -158,7 +158,7 @@ public class CuaHangFragment extends Fragment {
                 btn_truyen.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
                 list.clear();
                 for (SanPham sanPham : listTemp){
-                    if (sanPham.getTenloai().contains("Cháo")){
+                    if (sanPham.getTenloai().contains("Tài liệu")){
                         list.add(sanPham);
                     }
                     sanPhamKHAdapter.notifyDataSetChanged();
@@ -177,7 +177,7 @@ public class CuaHangFragment extends Fragment {
                 btn_truyen.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.plantinum));
                 list.clear();
                 for (SanPham sanPham : listTemp){
-                    if (sanPham.getTenloai().contains("Bún")){
+                    if (sanPham.getTenloai().contains("Ngụ ngôn")){
                         list.add(sanPham);
                     }
                     sanPhamKHAdapter.notifyDataSetChanged();
@@ -196,7 +196,7 @@ public class CuaHangFragment extends Fragment {
                 btn_truyen.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.light_blue_1));
                 list.clear();
                 for (SanPham sanPham : listTemp){
-                    if (sanPham.getTenloai().contains("Đồ uống")){
+                    if (sanPham.getTenloai().contains("Truyện")){
                         list.add(sanPham);
                     }
                     sanPhamKHAdapter.notifyDataSetChanged();

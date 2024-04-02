@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public DBHelper(Context context){super(context, "BookMarket", null, 4);}
+    public DBHelper(Context context){super(context, "BookMarket", null, 5);}
     @Override
     public void onCreate(SQLiteDatabase db) {
         //Bảng Sản Phẩm Gồm 6 Thuộc Tính
@@ -20,7 +20,7 @@ public class DBHelper extends SQLiteOpenHelper {
         //maloai,tenloai
         String dbTHELOAI = "CREATE TABLE THELOAI(maloai integer PRIMARY KEY AUTOINCREMENT, tenloai text)";
         db.execSQL(dbTHELOAI);
-        db.execSQL("INSERT INTO THELOAI VALUES (1, 'Giáo Khoa'), (2, 'Tài liệu'), (3, 'Bộ Đề'), (4, 'Truyện')");
+        db.execSQL("INSERT INTO THELOAI VALUES (1, 'Thiếu nhi'), (2, 'Tài liệu'), (3, 'Ngụ ngôn'), (4, 'Truyện')");
         /*<----------------------------------------------->*/
 
         //Bảng Giỏ Hàng Gồm 5 Thuộc Tính
