@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,10 +32,15 @@ public class DangNhap extends AppCompatActivity {
     private String textViewDN ="Đăng Nhập";
     private int soKiTu = 0;
     private Button btnDNDN ;
+    private SharedPreferences sharedPreferences;
+    private CheckBox checkBoxRemember;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_nhap);
+        //hoan thien ghi nho tai khoan
+        sharedPreferences = getSharedPreferences("MySharedPreferences",MODE_PRIVATE);
+        checkBoxRemember = findViewById(R.id.chk_dn_remember);
 
         TaiKhoanDAO taiKhoanDAO = new TaiKhoanDAO(this);
 
@@ -46,6 +53,13 @@ public class DangNhap extends AppCompatActivity {
 
         anhxa();
         animationText();
+
+        // Load thông tin tài khoản nếu đã được ghi nhớ trước đó
+        if (sharedPreferences.contains("taikhoan") && sharedPreferences.contains("matkhau")) {
+            tiledDNTaiKhoan.setText(sharedPreferences.getString("taikhoan", ""));
+            tiledDNMatKhau.setText(sharedPreferences.getString("matkhau", ""));
+            checkBoxRemember.setChecked(true);
+        }
 
         btnDNDN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +75,13 @@ public class DangNhap extends AppCompatActivity {
                 if (matkhau.isEmpty()){
                     Toast.makeText(DangNhap.this, "Vui lòng nhập mật khẩu", Toast.LENGTH_SHORT).show();
                     return;
+                }
+                // Lưu thông tin tài khoản nếu người dùng đã chọn "Ghi nhớ"
+                if (checkBoxRemember.isChecked()) {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("taikhoan", taikhoan);
+                    editor.putString("matkhau", matkhau);
+                    editor.apply();
                 }
                 if (taiKhoanDAO.checkDangNhap(taikhoan, matkhau)){
                     Toast.makeText(DangNhap.this, "Đăng nhập thành công !", Toast.LENGTH_SHORT).show();

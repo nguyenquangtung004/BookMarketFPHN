@@ -125,9 +125,10 @@
             android:layout_below="@+id/chk_dn_remember"
             android:layout_alignEnd="@+id/til_dn_ps"
             android:layout_marginEnd="-8dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/fonttieudemedium"
             android:text="@string/quen_mk"
-            android:textColor="@color/colortextChu" />
+            android:textColor="#B61C1C" />
     </RelativeLayout>
 
     <LinearLayout
@@ -155,8 +156,9 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/fonttieudeextrabold"
-        android:text="Bạn chưa có tài khoản ? Nhấn vào đây  "
-        android:textColor="@color/colortextChu"
+        android:text="Bạn chưa có tài khoản ? Đăng Kí  "
+        android:textColor="#2D40AE"
         android:textSize="18dp" />
+
 
 </LinearLayout>
