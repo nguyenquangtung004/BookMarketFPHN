@@ -2,7 +2,6 @@ package DuAn1_FPLHN.Nhom2.Book_Market;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -11,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -40,7 +38,6 @@ import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.QuanLyTaiKhoan;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.QuanLyTheLoai;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.TaiKhoanFragment;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.ThongKeDoanhThu;
-import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.ThongTSallerFragment;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.CuaHangFragment;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.ThongTinApp;
 
@@ -151,10 +148,10 @@ public class MainActivity extends AppCompatActivity {
                 /*<---------------------->*/
 
                 //Đổi mật khẩu của người mua
-                if (item.getItemId() == R.id.mDoiMatKhau) {
-                    showDialogDoiMK(maTK);
-                    Toast.makeText(MainActivity.this, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
-                }
+//                if (item.getItemId() == R.id.mDoiMatKhau) {
+//                    showDialogDoiMK(maTK);
+//                    Toast.makeText(MainActivity.this, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
+//                }
                 /*<---------------------->*/
 
                 //Thông tin đội ngũ phát triển ứng dựng
@@ -174,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 /*<---------------------->*/
-                return false;
+                return true;
             }
         });
 

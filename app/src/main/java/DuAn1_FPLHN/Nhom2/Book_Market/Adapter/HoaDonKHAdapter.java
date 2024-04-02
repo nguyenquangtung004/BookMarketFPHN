@@ -55,13 +55,14 @@ public class HoaDonKHAdapter extends RecyclerView.Adapter<HoaDonKHAdapter.ViewHo
         holder.tv_tongtien.setText("Số tiền: " + hoaDon.getTongtien() + " VNĐ");
 
         if (hoaDon.getTrangthai() == 0) {
-            holder.tv_trangthai.setText("Chưa nhận hàng");
-            holder.btn_doitrangthai.setVisibility(View.VISIBLE);
+            holder.tv_trangthai.setText("Đang xử lý");
             holder.tv_trangthai.setTextColor(ContextCompat.getColor(context, R.color.light_blue_1));
-        }else {
-            holder.tv_trangthai.setText("Đã nhận hàng");
-            holder.btn_doitrangthai.setVisibility(View.GONE);
-            holder.tv_trangthai.setTextColor(ContextCompat.getColor(context, R.color.honeysuckle));
+        } else if (hoaDon.getTrangthai() == 1) {
+            holder.tv_trangthai.setText("Đã xác nhận");
+            holder.tv_trangthai.setTextColor(ContextCompat.getColor(context, R.color.light_blue_1));
+        } else if (hoaDon.getTrangthai() == 2){
+            holder.tv_trangthai.setText("Đã giao");
+            holder.tv_trangthai.setTextColor(ContextCompat.getColor(context, R.color.natural_blue));
         }
         //lay ma hoa don
         int mahd = hoaDon.getMahd();
@@ -85,16 +86,25 @@ public class HoaDonKHAdapter extends RecyclerView.Adapter<HoaDonKHAdapter.ViewHo
         holder.btn_doitrangthai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean KiemTra = hoaDonDAO.thayDoiTrangThai(hoaDon);
-                if (KiemTra){
-                    list.clear();
-                    list = hoaDonDAO.getDSHoaDonTheoKH(matk);
-                    notifyDataSetChanged();
-                }else {
-                    Toast.makeText(context, "Thay đổi trạng thái thất bại", Toast.LENGTH_SHORT).show();
+                // Kiểm tra xem người dùng đã nhấn vào nút này hay chưa
+                if (!holder.isButtonClicked) {
+                    // Nếu chưa, thực hiện thay đổi trạng thái và cập nhật giao diện
+                    boolean KiemTra = hoaDonDAO.thayDoiTrangThai(hoaDon);
+                    if (KiemTra) {
+                        list.clear();
+                        list.addAll(hoaDonDAO.getDSHoaDon());
+                        notifyDataSetChanged();
+                    } else {
+                        Toast.makeText(context, "Thay đổi trạng thái thất bại!", Toast.LENGTH_SHORT).show();
+                    }
+                    // Đặt giá trị của biến isButtonClicked thành true để biết rằng người dùng đã nhấn vào nút này
+                    holder.isButtonClicked = true;
                 }
             }
         });
+
+        // Thiết lập giá trị mặc định cho biến isButtonClicked
+        holder.isButtonClicked = false;
 
     }
 
@@ -107,6 +117,7 @@ public class HoaDonKHAdapter extends RecyclerView.Adapter<HoaDonKHAdapter.ViewHo
         TextView tv_mahd, tv_ngaylap, tv_hoten, tv_sdt, tv_diachi, tv_tongtien, tv_trangthai, tv_tongsanpham;
         ImageView img_delete;
         TextView btn_doitrangthai;
+        boolean isButtonClicked;
         public ViewHolder(@NonNull View itemView){
             super(itemView);
 

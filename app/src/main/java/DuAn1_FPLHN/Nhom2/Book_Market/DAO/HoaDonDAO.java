@@ -83,9 +83,12 @@ public class HoaDonDAO {
         ContentValues contentValues = new ContentValues();
         if (hoaDon.getTrangthai() == 1){
             contentValues.put("trangthai", 0);
-        } else {
+        } else if (hoaDon.getTrangthai() == 0){
             contentValues.put("trangthai", 1);
+        } else if (hoaDon.getTrangthai() == 1){
+            contentValues.put("trangthai", 2);
         }
+
         long check = db.update("HOADON", contentValues, "mahd = ?", new String[]{String.valueOf(hoaDon.getMahd())});
         return check != -1;
     }
