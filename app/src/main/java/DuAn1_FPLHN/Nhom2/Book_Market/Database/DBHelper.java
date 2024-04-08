@@ -57,6 +57,5 @@ public class DBHelper extends SQLiteOpenHelper {
             db.execSQL("drop table if exists TAIKHOAN");
             onCreate(db);
         }
-
     }
 }

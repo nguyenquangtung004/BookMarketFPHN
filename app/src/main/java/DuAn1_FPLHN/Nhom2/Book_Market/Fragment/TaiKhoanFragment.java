@@ -222,10 +222,22 @@ public class TaiKhoanFragment extends Fragment {
 
         dialogEdit.show();
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == 1){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                callCSKH();
+            }else {
+                Toast.makeText(getContext(), "Quyền gọi điện bị từ chối", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
     //callCSKH
     private void callCSKH() {
         Intent callIntent = new Intent(Intent.ACTION_CALL);
-        callIntent.setData(Uri.parse("tel:(+84)866815906"));
+        callIntent.setData(Uri.parse("tel:0877956178"));
         if (ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions((Activity) getContext(), new String[]{android.Manifest.permission.CALL_PHONE}, 1);
         } else {
