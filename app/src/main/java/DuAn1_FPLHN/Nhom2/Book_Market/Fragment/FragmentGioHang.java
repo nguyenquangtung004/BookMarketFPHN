@@ -4,11 +4,6 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +11,12 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -34,7 +35,7 @@ import DuAn1_FPLHN.Nhom2.Book_Market.Model.HoaDon;
 import DuAn1_FPLHN.Nhom2.Book_Market.Model.TaiKhoan;
 import DuAn1_FPLHN.Nhom2.Book_Market.R;
 
-public class GIoHangFragment extends Fragment {
+public class FragmentGioHang extends Fragment {
 
     private RecyclerView recyclerGioHang;
     private GioHangDAO gioHangDAO;
@@ -47,9 +48,9 @@ public class GIoHangFragment extends Fragment {
     private LinearLayout linear_giohangtrong;
     private GioHangAdapter gioHangAdapter;
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view  = LayoutInflater.from(getContext()).inflate(R.layout.fragment_g_io_hang, container, false);
 
         linear_giohangtrong = view.findViewById(R.id.linear_giohangtrong);
@@ -89,7 +90,9 @@ public class GIoHangFragment extends Fragment {
         });
 
         return view;
+
     }
+
     private void loadDataGioHang() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerGioHang.setLayoutManager(linearLayoutManager);
@@ -172,4 +175,5 @@ public class GIoHangFragment extends Fragment {
             tv_tongtien.setText(tongtien + " VNĐ");
         }
     }
+
 }
