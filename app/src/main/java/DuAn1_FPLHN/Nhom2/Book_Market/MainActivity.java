@@ -2,15 +2,14 @@ package DuAn1_FPLHN.Nhom2.Book_Market;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -31,14 +30,14 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
 import DuAn1_FPLHN.Nhom2.Book_Market.DAO.TaiKhoanDAO;
-import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.GIoHangFragment;
-import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.HoaDonFragment;
-import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.QuanLyHoaDon;
+import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.FragmentGioHang;
+import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.FragmentHoaDon;
+import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.FragmentQLHoaDon;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.QuanLySanPham;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.QuanLyTaiKhoan;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.QuanLyTheLoai;
+import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.TaiKhoanFragment;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.ThongKeDoanhThu;
-import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.ThongTSallerFragment;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.CuaHangFragment;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.ThongTinApp;
 
@@ -51,7 +50,16 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private Fragment fragment;
     private FrameLayout frameLayout;
-
+//anh xa
+    private void anhXa() {
+        progressDialog = new ProgressDialog(this);
+        drawerLayout = findViewById(R.id.dl_am);
+        toolbar = findViewById(R.id.tb_am);
+        navigationView = findViewById(R.id.nv_am);
+        bottomNavigationView = findViewById(R.id.bnv_am);
+        frameLayout = findViewById(R.id.fcv_am);
+        imgAvt = navigationView.getHeaderView(0).findViewById(R.id.imgAvt);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +76,10 @@ public class MainActivity extends AppCompatActivity {
         String taikhoan = sharedPreferences.getString("taikhoan", "");
         String loaiTK = sharedPreferences.getString("loaitaikhoan", "");
         tv_hoten.setText("Tên : "+hoten);
-        tv_taikhoan.setText("Quyền :"+loaiTK);
+        tv_taikhoan.setText("Quyền :"+taikhoan);
+
+         CuaHangFragment cuaHangFragment = new CuaHangFragment();
+         getSupportFragmentManager().beginTransaction().replace(R.id.fcv_am, cuaHangFragment).commit();
 
 
 //        Thực Hiện Việc Thêm ToolBar
@@ -117,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //Quản Lý Hóa Đơn của Admin
                 if (item.getItemId() == R.id.mQLHoaDon) {
-                    callFragment(new QuanLyHoaDon());
+                    callFragment(new FragmentQLHoaDon());
                     toolbar.setTitle("Quản lý hóa đơn");
                 }
                 /*<---------------------->*/
@@ -137,10 +148,10 @@ public class MainActivity extends AppCompatActivity {
                 /*<---------------------->*/
 
                 //Đổi mật khẩu của người mua
-                if (item.getItemId() == R.id.mDoiMatKhau) {
-                    showDialogDoiMK(maTK);
-                    Toast.makeText(MainActivity.this, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
-                }
+//                if (item.getItemId() == R.id.mDoiMatKhau) {
+//                    showDialogDoiMK(maTK);
+//                    Toast.makeText(MainActivity.this, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
+//                }
                 /*<---------------------->*/
 
                 //Thông tin đội ngũ phát triển ứng dựng
@@ -160,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 /*<---------------------->*/
-                return false;
+                return true;
             }
         });
 
@@ -173,18 +184,18 @@ public class MainActivity extends AppCompatActivity {
                     toolbar.setTitle("Trang chủ");
                 }
                 if (item.getItemId() == R.id.bt_giohang){
-                   callFragment(new GIoHangFragment());
+                   callFragment(new FragmentGioHang());
                    toolbar.setTitle("Giỏ Hàng");
                 }
                 //Thông tin tài khoản của người dùng
                 if (item.getItemId() == R.id.bt_taikhoan) {
-                    callFragment(new ThongTSallerFragment());
-                    toolbar.setTitle("Thông tin khách hàng");
+                    callFragment(new TaiKhoanFragment());
+                    toolbar.setTitle("Thông tin tài khoản");
                 }
                 /*<---------------------->*/
                 //Thông tin hóa đơn của người dùng
                 if (item.getItemId() == R.id.bt_hoadon) {
-                    callFragment(new HoaDonFragment());
+                    callFragment(new FragmentHoaDon());
                     toolbar.setTitle("Hóa Đơn");
                 }
                 /*<---------------------->*/
@@ -205,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
         //Ẩn chức năng dành cho admin
         if (loaiTK.equals("admin")){
             Menu menu = bottomNavigationView.getMenu();
-//            menu.findItem(R.id.bt_giohang).setVisible(false);
+            menu.findItem(R.id.bt_giohang).setVisible(false);
 //            menu.findItem(R.id.bt_hoadon).setVisible(false);
         }
 
@@ -283,16 +294,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //    Thực hiện ánh xạ
-    private void anhXa() {
-        progressDialog = new ProgressDialog(this);
-        drawerLayout = findViewById(R.id.dl_am);
-        toolbar = findViewById(R.id.tb_am);
-        navigationView = findViewById(R.id.nv_am);
-        bottomNavigationView = findViewById(R.id.bnv_am);
-        frameLayout = findViewById(R.id.fcv_am);
-        imgAvt = navigationView.getHeaderView(0).findViewById(R.id.imgAvt);
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home){ // id của nút home
+            drawerLayout.openDrawer(GravityCompat.START);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
 }
 

@@ -13,7 +13,6 @@ import DuAn1_FPLHN.Nhom2.Book_Market.Model.HoaDon;
 public class HoaDonDAO {
     private final DBHelper dbHelper;
     Context context;
-
     public HoaDonDAO(Context context){
         dbHelper = new DBHelper(context);
     }
@@ -78,14 +77,13 @@ public class HoaDonDAO {
     }
 
     // Thay đổi trạng thái hóa đơn
-    public boolean thayDoiTrangThai(HoaDon hoaDon){
+    public boolean thayDoiTrangThai(HoaDon hoaDon) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        if (hoaDon.getTrangthai() == 1){
-            contentValues.put("trangthai", 0);
-        } else {
-            contentValues.put("trangthai", 1);
-        }
+
+        // Cập nhật với giá trị ngược lại của trạng thái hiện tại
+        contentValues.put("trangthai", hoaDon.getTrangthai() == 0 ? 1 : 0);
+
         long check = db.update("HOADON", contentValues, "mahd = ?", new String[]{String.valueOf(hoaDon.getMahd())});
         return check != -1;
     }

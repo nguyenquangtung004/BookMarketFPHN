@@ -144,7 +144,39 @@ public class QuanLySanPham extends Fragment {
 
                 String tensp = ed_tensp.getText().toString();
                 String motasp = ed_motasp.getText().toString();
-                int giasp = Integer.parseInt(ed_giasp.getText().toString());
+                String giaSpString = ed_giasp.getText().toString();
+
+                // Kiểm tra rỗng
+                if (tensp.isEmpty() || motasp.isEmpty() || giaSpString.isEmpty() || bitmapImages == null) {
+                    Toast.makeText(getContext(), "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Kiểm tra mô tả sản phẩm phải trên 12 kí tự
+                if (motasp.length() < 12) {
+                    Toast.makeText(getContext(), "Mô tả sản phẩm phải trên 12 kí tự", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Kiểm tra giá sản phẩm phải là số và lớn hơn 1000
+                int giasp;
+                try {
+                    giasp = Integer.parseInt(giaSpString);
+                    if (giasp <= 1000) {
+                        Toast.makeText(getContext(), "Giá sản phẩm phải lớn hơn 1000", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getContext(), "Giá sản phẩm phải là số", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Kiểm tra ảnh không được rỗng
+                if (bitmapImages == null) {
+                    Toast.makeText(getContext(), "Vui lòng chọn ảnh cho sản phẩm", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 byte[] img_sp = ConvertData.ConvertImages(bitmapImages);
 
                 SanPham sanPham = new SanPham(tensp, img_sp, motasp, giasp, maloai);

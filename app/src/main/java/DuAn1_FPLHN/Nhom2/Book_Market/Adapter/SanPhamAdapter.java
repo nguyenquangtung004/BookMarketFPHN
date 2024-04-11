@@ -35,32 +35,29 @@ import DuAn1_FPLHN.Nhom2.Book_Market.R;
 public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHolder> {
     private final Context context;
     private ArrayList<SanPham> list;
-
+    // Khởi tạo adapter với context và danh sách sản phẩm
     public SanPhamAdapter(Context context, ArrayList<SanPham> list) {
         this.context = context;
         this.list = list;
     }
 
+    // Tạo ViewHolder mới
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_sanpham, parent, false);
         return new ViewHolder(view);
     }
-
+    // Gán dữ liệu cho ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final SanPham sanPham = list.get(position);
-
         byte[] image = sanPham.getAnhsp();
         Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0, image.length);
-
         holder.img_anhsp.setImageBitmap(bitmap);
-
         holder.tv_masp.setText("Mã: " + sanPham.getMasp());
         holder.tv_tensp.setText(sanPham.getTensp());
         holder.tv_loaisp.setText("Loại: " + sanPham.getTenloai());
-
         String motasp = sanPham.getMotasp();
         if (motasp.length() > 40){
             String mota = motasp.substring(0, 40);
@@ -68,9 +65,9 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         } else {
             holder.tv_motasp.setText("Mô tả: " + motasp);
         }
-
         holder.tv_giasp.setText(sanPham.getGiasp() + " VNĐ");
 
+        // Thiết lập menu context cho từng item
         holder.img_chucnang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,12 +91,12 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         });
 
     }
-
+    // Trả về số lượng item trong list
     @Override
     public int getItemCount() {
         return list.size();
     }
-
+    // ViewHolder giữ các view cần thiết để hiển thị một item
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView img_anhsp, img_chucnang;
         TextView tv_tensp, tv_motasp, tv_giasp, tv_loaisp, tv_masp;
@@ -115,7 +112,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         }
     }
 
-    //
+    // Hiển thị dialog để sửa thông tin sản phẩm
     private void showDialogSuaSP(SanPham sanPham){
         View view = LayoutInflater.from(context).inflate(R.layout.dialog_sua_sanpham, null);
         BottomSheetDialog sheetDialog = new BottomSheetDialog(context);
@@ -182,7 +179,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
                     notifyDataSetChanged();
                     list.clear();
                     list = sanPhamDAO.getDSSanPham();
-                    Toast.makeText(context, "Sủa thành công", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
                     sheetDialog.dismiss();
                 } else {
                     Toast.makeText(context, "Sửa thất bại", Toast.LENGTH_SHORT).show();
@@ -198,6 +195,8 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         });
         sheetDialog.show();
     }
+
+    // Hiển thị dialog xác nhận xóa sản phẩm
     private void showDialogDelete(int maSP){
         AlertDialog.Builder dialogDelete = new AlertDialog.Builder(context);
         dialogDelete.setIcon(R.drawable.logo_delete);
@@ -227,6 +226,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         dialogDelete.show();
     }
 
+    // Lấy dữ liệu thể loại từ database và đổ vào Spinner
     private ArrayList<HashMap<String, Object>> getDataTheLoai(Spinner spnLoaiSP) {
         TheLoaiDAO theLoaiDAO = new TheLoaiDAO(context);
         ArrayList<TheLoai> list = theLoaiDAO.getDSTheLoai();

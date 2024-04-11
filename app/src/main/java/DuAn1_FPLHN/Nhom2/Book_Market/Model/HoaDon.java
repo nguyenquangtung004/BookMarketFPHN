@@ -70,6 +70,14 @@ public class HoaDon {
         this.trangthai = trangthai;
     }
 
+    public String getTongsanpham() {
+        return tongsanpham;
+    }
+
+    public void setTongsanpham(String tongsanpham) {
+        this.tongsanpham = tongsanpham;
+    }
+
     public int getMahd() {
         return mahd;
     }
@@ -92,6 +100,22 @@ public class HoaDon {
 
     public void setMatk(int matk) {
         this.matk = matk;
+    }
+
+    public int getTongtien() {
+        return tongtien;
+    }
+
+    public void setTongtien(int tongtien) {
+        this.tongtien = tongtien;
+    }
+
+    public int getTrangthai() {
+        return trangthai;
+    }
+
+    public void setTrangthai(int trangthai) {
+        this.trangthai = trangthai;
     }
 
     public String getHoten() {
@@ -118,27 +142,5 @@ public class HoaDon {
         this.diachi = diachi;
     }
 
-    public int getTongtien() {
-        return tongtien;
-    }
 
-    public void setTongtien(int tongtien) {
-        this.tongtien = tongtien;
-    }
-
-    public String getTongsanpham() {
-        return tongsanpham;
-    }
-
-    public void setTongsanpham(String tongsanpham) {
-        this.tongsanpham = tongsanpham;
-    }
-
-    public int getTrangthai() {
-        return trangthai;
-    }
-
-    public void setTrangthai(int trangthai) {
-        this.trangthai = trangthai;
-    }
 }
