@@ -30,9 +30,9 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
 import DuAn1_FPLHN.Nhom2.Book_Market.DAO.TaiKhoanDAO;
-import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.GIoHangFragment;
-import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.HoaDonFragment;
-import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.QuanLyHoaDon;
+import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.FragmentGioHang;
+import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.FragmentHoaDon;
+import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.FragmentQLHoaDon;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.QuanLySanPham;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.QuanLyTaiKhoan;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.QuanLyTheLoai;
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //Quản Lý Hóa Đơn của Admin
                 if (item.getItemId() == R.id.mQLHoaDon) {
-                    callFragment(new QuanLyHoaDon());
+                    callFragment(new FragmentQLHoaDon());
                     toolbar.setTitle("Quản lý hóa đơn");
                 }
                 /*<---------------------->*/
@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
                     toolbar.setTitle("Trang chủ");
                 }
                 if (item.getItemId() == R.id.bt_giohang){
-                   callFragment(new GIoHangFragment());
+                   callFragment(new FragmentGioHang());
                    toolbar.setTitle("Giỏ Hàng");
                 }
                 //Thông tin tài khoản của người dùng
@@ -195,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
                 /*<---------------------->*/
                 //Thông tin hóa đơn của người dùng
                 if (item.getItemId() == R.id.bt_hoadon) {
-                    callFragment(new HoaDonFragment());
+                    callFragment(new FragmentHoaDon());
                     toolbar.setTitle("Hóa Đơn");
                 }
                 /*<---------------------->*/

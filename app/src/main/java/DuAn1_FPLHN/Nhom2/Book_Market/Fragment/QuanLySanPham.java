@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import DuAn1_FPLHN.Nhom2.Book_Market.Adapter.SanPhamAdapter;
+import DuAn1_FPLHN.Nhom2.Book_Market.ChiTietSanPham;
 import DuAn1_FPLHN.Nhom2.Book_Market.ConvertData;
 import DuAn1_FPLHN.Nhom2.Book_Market.DAO.SanPhamDAO;
 import DuAn1_FPLHN.Nhom2.Book_Market.DAO.TheLoaiDAO;
@@ -90,7 +91,7 @@ public class QuanLySanPham extends Fragment {
             }
         });
 
-//        loadDataSanPham();
+
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerSanPham.setLayoutManager(linearLayoutManager);
@@ -120,6 +121,7 @@ public class QuanLySanPham extends Fragment {
         Spinner spn_theloai = view.findViewById(R.id.spn_theloai);
         EditText ed_motasp = view.findViewById(R.id.ed_motasp);
         EditText ed_giasp = view.findViewById(R.id.ed_giasp);
+        EditText ed_solgtonkho = view.findViewById(R.id.ed_solgTonKhoSP_them);
         TextView btn_add = view.findViewById(R.id.btn_add);
         TextView btn_cancel = view.findViewById(R.id.btn_cancel);
 
@@ -144,10 +146,56 @@ public class QuanLySanPham extends Fragment {
 
                 String tensp = ed_tensp.getText().toString();
                 String motasp = ed_motasp.getText().toString();
-                int giasp = Integer.parseInt(ed_giasp.getText().toString());
+                String giaSpString = ed_giasp.getText().toString();
+                String solgTonKho = ed_solgtonkho.getText().toString();
+
+                // Kiểm tra rỗng
+                if (tensp.isEmpty() || motasp.isEmpty() || giaSpString.isEmpty() || solgTonKho.isEmpty() || bitmapImages == null) {
+                    Toast.makeText(getContext(), "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Kiểm tra mô tả sản phẩm phải trên 12 kí tự
+                if (motasp.length() < 12) {
+                    Toast.makeText(getContext(), "Mô tả sản phẩm phải trên 12 kí tự", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Kiểm tra giá sản phẩm phải là số và lớn hơn 1000
+                int giasp;
+                try {
+                    giasp = Integer.parseInt(giaSpString);
+                    if (giasp <= 1000) {
+                        Toast.makeText(getContext(), "Giá sản phẩm phải lớn hơn 1000", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getContext(), "Giá sản phẩm phải là số", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Kiểm tra giá sản phẩm phải là số và lớn hơn 1000
+                int solgtonkhoint;
+                try {
+                     solgtonkhoint = Integer.parseInt(solgTonKho);
+                    if (solgtonkhoint <= 100) {
+                        Toast.makeText(getContext(), "Số lượng hàng tồn sản phẩm phải lớn hơn 100", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                } catch (NumberFormatException e) {
+                    Toast.makeText(getContext(), "Số lượng hàng tồn sản phẩm phải là số", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Kiểm tra ảnh không được rỗng
+                if (bitmapImages == null) {
+                    Toast.makeText(getContext(), "Vui lòng chọn ảnh cho sản phẩm", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 byte[] img_sp = ConvertData.ConvertImages(bitmapImages);
 
-                SanPham sanPham = new SanPham(tensp, img_sp, motasp, giasp, maloai);
+                SanPham sanPham = new SanPham(tensp, img_sp, motasp, giasp, maloai,solgtonkhoint);
                 boolean KiemTra = sanPhamDAO.themSanPham(sanPham);
                 if (KiemTra){
                     Toast.makeText(getContext(), "Thêm sản phẩm thành công", Toast.LENGTH_SHORT).show();
@@ -157,6 +205,7 @@ public class QuanLySanPham extends Fragment {
                     Toast.makeText(getContext(), "Thêm sản phẩm thất bại", Toast.LENGTH_SHORT).show();
                     dialogAdd.dismiss();
                 }
+
             }
         });
 

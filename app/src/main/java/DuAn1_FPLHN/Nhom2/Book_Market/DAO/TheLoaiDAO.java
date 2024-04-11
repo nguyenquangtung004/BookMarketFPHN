@@ -16,7 +16,46 @@ public class TheLoaiDAO {
     public TheLoaiDAO(Context context){
         dbHelper= new DBHelper(context);
     }
-    // lay danh sach the loai
+    // Hàm thêm thể loại
+    // Nhận vào tham số là tên thể loại
+    // Trả về true nếu thêm thành công, false nếu thêm thất bại
+    public boolean themTheLoai(String tenloai){
+        SQLiteDatabase db= dbHelper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("tenloai", tenloai);
+        long check = db.insert("THELOAI", null, contentValues);
+        return check != -1;
+    }
+
+    // Hàm sửa thể loại
+    // Nhận vào tham số là mã thể loại và tên thể loại mới
+    // Trả về true nếu sửa thành công, false nếu sửa thất bại
+    public boolean suaTheLoai(int maloai, String tenloai){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("tenloai", tenloai);
+        long check = db.update("THELOAI", contentValues, "maloai = ?", new String[]{String.valueOf(maloai)});
+        return check != -1;
+    }
+
+    // Hàm xóa thể loại
+    // Nhận vào tham số là mã thể loại
+    // Trả về 1 nếu xóa thành công, -1 nếu xóa thất bại, 0 nếu thể loại tồn tại trong mục sản phẩm
+    public int xoaTheLoai(int maloai){
+        SQLiteDatabase db= dbHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM SANPHAM WHERE maloai = ?", new String[]{String.valueOf(maloai)});
+        if (cursor.getCount() !=0 ){
+            return -1;
+        }
+        long check=db.delete("THELOAI", "maloai=?", new String[]{String.valueOf(maloai)});
+        if (check == -1){
+            return 0;
+        }
+        return 1;
+    }
+
+    // Hàm lấy danh sách thể loại
+    // Trả về danh sách các thể loại có trong cơ sở dữ liệu
     public ArrayList<TheLoai> getDSTheLoai(){
         ArrayList<TheLoai> list= new ArrayList<>();
         SQLiteDatabase db= dbHelper.getReadableDatabase();
@@ -28,37 +67,5 @@ public class TheLoaiDAO {
             }while (cursor.moveToNext());
         }
         return list;
-    }
-
-    //them the loai
-    public boolean themTheLoai(String tenloai){
-        SQLiteDatabase db= dbHelper.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("tenloai", tenloai);
-        long check = db.insert("THELOAI", null, contentValues);
-        return check != -1;
-    }
-
-    //sua the loai
-    public boolean suaTheLoai(int maloai, String tenloai){
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("tenloai", tenloai);
-        long check = db.update("THELOAI", contentValues, "maloai = ?", new String[]{String.valueOf(maloai)});
-        return check != -1;
-    }
-
-    //xoa the loai: 1-xoa thanh cong, -1-xoa that bai, 0-co the loai ton tai trong muc san pham
-    public int xoaTheLoai(int maloai){
-        SQLiteDatabase db= dbHelper.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM SANPHAM WHERE maloai = ?", new String[]{String.valueOf(maloai)});
-        if (cursor.getCount() !=0 ){
-            return -1;
-        }
-        long check =db.delete("THELOAI", "maloai=?", new String[]{String.valueOf(maloai)});
-        if (check == -1){
-            return 0;
-        }
-        return 1;
     }
 }

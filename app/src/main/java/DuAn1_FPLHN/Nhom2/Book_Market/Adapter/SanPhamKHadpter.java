@@ -25,11 +25,13 @@ public class SanPhamKHadpter extends RecyclerView.Adapter<SanPhamKHadpter.ViewHo
     private final Context context;
     private final ArrayList<SanPham> list;
 
+    // Khởi tạo adapter với context và danh sách sản phẩm
     public SanPhamKHadpter(Context context, ArrayList<SanPham> list) {
         this.context = context;
         this.list = list;
     }
 
+    // Tạo ViewHolder mới
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -37,16 +39,16 @@ public class SanPhamKHadpter extends RecyclerView.Adapter<SanPhamKHadpter.ViewHo
         return new ViewHolder(view);
     }
 
+    // Gán dữ liệu cho ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final SanPham sanPham = list.get(position);
-
+        // Chuyển byte array về bitmap và đặt ảnh cho ImageView
         byte[] image = sanPham.getAnhsp();
         Bitmap bitmap = BitmapFactory.decodeByteArray(image,0, image.length);
         holder.img_anhsp.setImageBitmap(bitmap);
-
+        // Đặt text cho các TextView
         holder.tv_tensp.setText(sanPham.getTensp());
-
         String motasp = sanPham.getMotasp();
         if (motasp.length() > 40){
             String mota = motasp.substring(0, 40);
@@ -54,18 +56,20 @@ public class SanPhamKHadpter extends RecyclerView.Adapter<SanPhamKHadpter.ViewHo
         } else {
             holder.tv_motasp.setText("Mô tả: " + motasp);
         }
-
         holder.tv_giasp.setText(sanPham.getGiasp() + " VNĐ");
 
         holder.linear_sanpham_kh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Tạo một bundle và đưa dữ liệu vào
                 Bundle bundle = new Bundle();
                 bundle.putString("tensp", sanPham.getTensp());
                 bundle.putInt("giasp", sanPham.getGiasp());
                 bundle.putString("motasp", sanPham.getMotasp());
                 bundle.putByteArray("anhsp", sanPham.getAnhsp());
+                bundle.putInt("soluongtonkho",sanPham.getSoLuongTonKho());
 
+                // Khởi tạo intent, đặt bundle vào và khởi động Activity
                 Intent intent = new Intent(context, ChiTietSanPham.class);
                 intent.putExtra("dataSP", bundle);
 
@@ -73,15 +77,15 @@ public class SanPhamKHadpter extends RecyclerView.Adapter<SanPhamKHadpter.ViewHo
             }
         });
     }
-
+    // Trả về số lượng item trong list
     @Override
     public int getItemCount() {
         return list.size();
     }
-
+    // ViewHolder giữ các view cần thiết để hiển thị một item
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView img_anhsp;
-        TextView tv_tensp, tv_motasp, tv_giasp, tv_loaisp;
+        TextView tv_tensp, tv_motasp, tv_giasp;
         LinearLayout linear_sanpham_kh;
 
         public ViewHolder(@NonNull View itemView) {
