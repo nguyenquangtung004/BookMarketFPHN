@@ -25,7 +25,7 @@ public class GioHangDAO {
         if (cursor.getCount() != 0){
             cursor.moveToFirst();
             do {
-                list.add(new GioHang(cursor.getInt(0), cursor.getString(1), cursor.getBlob(2), cursor.getInt(3), cursor.getInt(4)));
+                list.add(new GioHang(cursor.getInt(0), cursor.getString(1), cursor.getBlob(2), cursor.getInt(3), cursor.getInt(4), cursor.getInt(5)));
             } while (cursor.moveToNext());
         }
         return list;
@@ -38,7 +38,7 @@ public class GioHangDAO {
         contentValues.put("anhsp", gioHang.getAnhsp());
         contentValues.put("giasp", gioHang.getGiasp());
         contentValues.put("soluong", gioHang.getSoluong());
-
+        contentValues.put("solgtonkho", gioHang.getSoLuongTonKho());
         long check = db.insert("GIOHANG", null, contentValues);
         return check != -1;
     }

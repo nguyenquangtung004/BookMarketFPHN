@@ -65,7 +65,8 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         } else {
             holder.tv_motasp.setText("Mô tả: " + motasp);
         }
-        holder.tv_giasp.setText(sanPham.getGiasp() + " VNĐ");
+        holder.tv_giasp.setText("Giá: "+sanPham.getGiasp() + " VNĐ");
+        holder.tv_soluongTonKho.setText("Số lượng tồn kho: " + sanPham.getSoLuongTonKho());
 
         // Thiết lập menu context cho từng item
         holder.img_chucnang.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +100,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
     // ViewHolder giữ các view cần thiết để hiển thị một item
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView img_anhsp, img_chucnang;
-        TextView tv_tensp, tv_motasp, tv_giasp, tv_loaisp, tv_masp;
+        TextView tv_tensp, tv_motasp, tv_giasp, tv_loaisp, tv_masp,tv_soluongTonKho;
         public ViewHolder(@NonNull View itemView){
             super(itemView);
             img_anhsp= itemView.findViewById(R.id.img_anhsp);
@@ -108,6 +109,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
             tv_motasp = itemView.findViewById(R.id.tv_motasp);
             tv_giasp = itemView.findViewById(R.id.tv_giasp);
             tv_loaisp = itemView.findViewById(R.id.tv_loaisp);
+            tv_soluongTonKho = itemView.findViewById(R.id.tv_soluongTonKho);
             img_chucnang = itemView.findViewById(R.id.img_chucnang);
         }
     }
@@ -123,6 +125,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         EditText ed_tenSP = sheetDialog.findViewById(R.id.ed_tenSP);
         EditText ed_motaSP = sheetDialog.findViewById(R.id.ed_motaSP);
         EditText ed_giaSP = sheetDialog.findViewById(R.id.ed_giaSP);
+        EditText ed_soLgTonKho = sheetDialog.findViewById(R.id.ed_solgTonKhoSP);
         TextView tv_maSP = sheetDialog.findViewById(R.id.tv_maSP);
         ImageView img_sanpham = sheetDialog.findViewById(R.id.img_sanpham);
         Spinner spn_loaiSP = sheetDialog.findViewById(R.id.spn_loaiSP);
@@ -135,6 +138,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         ed_tenSP.setText(sanPham.getTensp());
         ed_motaSP.setText(sanPham.getMotasp());
         ed_giaSP.setText(String.valueOf(sanPham.getGiasp()));
+        ed_soLgTonKho.setText(String.valueOf(sanPham.getSoLuongTonKho()));
         img_sanpham.setImageBitmap(ConvertData.ConvertBitmap(sanPham.getAnhsp()));
 
         getDataTheLoai(spn_loaiSP);// đổ dữ liệu vào Spinner, set dữ liệu cho Spn
@@ -155,6 +159,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
                 String tenSP = ed_tenSP.getText().toString();
                 String giaSP = ed_giaSP.getText().toString();
                 String motaSP = ed_motaSP.getText().toString();
+                String soLuongTonKho = ed_soLgTonKho.getText().toString();
                 // Mã loại
                 HashMap<String, Object> hs = (HashMap<String, Object>) spn_loaiSP.getSelectedItem();
                 int maloai = (int) hs.get("maloai");
@@ -165,15 +170,31 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
                     ed_tenSP.setError("Nhập tên sản phẩm");
                     return;
                 }
+                // Kiểm tra giá sản phẩm
                 if (giaSP.isEmpty()) {
                     ed_giaSP.setError("Nhập giá sản phẩm");
                     return;
-                }
-                if (motaSP.isEmpty()) {
-                    ed_motaSP.setError("Nhập số lượng sản phẩm");
+                } else if (Integer.parseInt(giaSP) < 1000) {
+                    ed_giaSP.setError("Giá sản phẩm phải lớn hơn 1000");
                     return;
                 }
-                SanPham sanPham = new SanPham(maSP, tenSP, anhSP, motaSP, Integer.parseInt(giaSP), maloai);
+                // Kiểm tra mô tả sản phẩm
+                if (motaSP.isEmpty()) {
+                    ed_motaSP.setError("Nhập mô tả sản phẩm");
+                    return;
+                } else if (motaSP.length() < 12) {
+                    ed_motaSP.setError("Mô tả sản phẩm phải chứa ít nhất 12 kí tự");
+                    return;
+                }
+                // Kiểm tra số lượng tồn kho
+                if (soLuongTonKho.isEmpty()) {
+                    ed_soLgTonKho.setError("Nhập số lượng tồn kho");
+                    return;
+                } else if (Integer.parseInt(soLuongTonKho) < 100) {
+                    ed_soLgTonKho.setError("Số lượng tồn kho phải lớn hơn 100");
+                    return;
+                }
+                SanPham sanPham = new SanPham(maSP, tenSP, anhSP, motaSP, Integer.parseInt(giaSP), maloai,Integer.parseInt(soLuongTonKho));
                 boolean check = sanPhamDAO.suaSanPham(sanPham);
                 if (check){
                     notifyDataSetChanged();

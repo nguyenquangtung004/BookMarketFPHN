@@ -28,6 +28,7 @@ public class SanPhamDAO {
         contentValues.put("maloai", sanPham.getMaloai());
         contentValues.put("motasp", sanPham.getMotasp());
         contentValues.put("giasp", sanPham.getGiasp());
+        contentValues.put("soluongtonkho",sanPham.getSoLuongTonKho());
 
         long check = db.insert("SANPHAM", null, contentValues);
         return check != -1;
@@ -44,6 +45,7 @@ public class SanPhamDAO {
         contentValues.put("motasp", sanPham.getMotasp());
         contentValues.put("giasp", sanPham.getGiasp());
         contentValues.put("maloai", sanPham.getMaloai());
+        contentValues.put("soluongtonkho",sanPham.getSoLuongTonKho());
         long check = db.update("SANPHAM", contentValues, "masp = ?", new String[]{String.valueOf(sanPham.getMasp())});
         return check != -1;
     }
@@ -65,11 +67,11 @@ public class SanPhamDAO {
     public ArrayList<SanPham> getDSSanPham() {
         ArrayList<SanPham> list = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT sp.masp, sp.tensp, sp.anhsp, loai.tenloai, sp.motasp, sp.giasp  FROM SANPHAM sp, THELOAI loai WHERE sp.maloai = loai.maloai", null);
+        Cursor cursor = db.rawQuery("SELECT sp.masp, sp.tensp, sp.anhsp, loai.tenloai, sp.motasp, sp.giasp, sp.soluongtonkho  FROM SANPHAM sp, THELOAI loai WHERE sp.maloai = loai.maloai", null);
         if (cursor.getCount() != 0) {
             cursor.moveToFirst();
             do {
-                list.add(new SanPham(cursor.getInt(0), cursor.getString(1), cursor.getBlob(2), cursor.getString(3), cursor.getString(4), cursor.getInt(5)));
+                list.add(new SanPham(cursor.getInt(0), cursor.getString(1), cursor.getBlob(2), cursor.getString(3), cursor.getString(4), cursor.getInt(5),cursor.getInt(6)));
             } while (cursor.moveToNext());
         }
         return list;
@@ -81,7 +83,7 @@ public class SanPhamDAO {
     public ArrayList<SanPham> getDSSanPhamTheoLoai(Integer maloai) {
         ArrayList<SanPham> list = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT sp.masp, sp.tensp, sp.anhsp, loai.tenloai, sp.motasp, sp.giasp  FROM SANPHAM sp, THELOAI loai WHERE sp.maloai = loai.maloai AND sp.maloai = ?", new String[]{String.valueOf(maloai)});
+        Cursor cursor = db.rawQuery("SELECT sp.masp, sp.tensp, sp.anhsp, loai.tenloai, sp.motasp, sp.giasp,sp.soluongtonkho  FROM SANPHAM sp, THELOAI loai WHERE sp.maloai = loai.maloai AND sp.maloai = ?", new String[]{String.valueOf(maloai)});
         if (cursor.getCount() != 0) {
             cursor.moveToFirst();
             do {
@@ -91,7 +93,8 @@ public class SanPhamDAO {
                         cursor.getBlob(2),
                         cursor.getString(3),
                         cursor.getString(4),
-                        cursor.getInt(5)));
+                        cursor.getInt(5),
+                        cursor.getInt(6)));
             } while (cursor.moveToNext());
         }
         return list;

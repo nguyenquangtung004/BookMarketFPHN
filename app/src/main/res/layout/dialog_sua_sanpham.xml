@@ -107,7 +107,7 @@
                 android:fontFamily="@font/open_sans_regular"
                 android:layout_weight="1"
                 android:paddingLeft="5dp"
-                android:background="@drawable/btn_dn"
+                android:background="@drawable/edit_dn"
                 android:id="@+id/spn_loaiSP"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -167,6 +167,33 @@
                 android:inputType="number"
                 android:padding="10dp"
                 android:drawableStart="@drawable/price30"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:fontFamily="@font/fonttieudeextrabold"
+                android:text="Số lg tồn :"
+                android:textSize="16sp"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colortextChu"
+                />
+            <EditText
+                android:id="@+id/ed_solgTonKhoSP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/edit_dn"
+                android:gravity="center_vertical"
+                android:hint="Số lượng tồn kho"
+                android:inputType="number"
+                android:padding="10dp"
+                android:drawableStart="@drawable/quanity"
                 />
         </LinearLayout>
 

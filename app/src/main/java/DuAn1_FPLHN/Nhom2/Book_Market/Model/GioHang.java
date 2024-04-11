@@ -6,20 +6,23 @@ public class GioHang {
     private byte[] anhsp;
     private int giasp;
     private int soluong;
-
-    public GioHang(int id, String tensp, byte[] anhsp, int giasp, int soluong) {
+    private int soLuongTonKho;
+    //GioHangDAO
+    public GioHang(int id, String tensp, byte[] anhsp, int giasp, int soluong, int soLuongTonKho) {
         this.id = id;
         this.tensp = tensp;
         this.anhsp = anhsp;
         this.giasp = giasp;
         this.soluong = soluong;
+        this.soLuongTonKho = soLuongTonKho;
     }
-
-    public GioHang(String tensp, byte[] anhsp, int giasp, int soluong) {
+    //GioHangChiTietSanPham
+    public GioHang(String tensp, byte[] anhsp, int giasp, int soluong, int soLuongTonKho) {
         this.tensp = tensp;
         this.anhsp = anhsp;
         this.giasp = giasp;
         this.soluong = soluong;
+        this.soLuongTonKho = soLuongTonKho;
     }
 
     public int getId() {
@@ -60,5 +63,12 @@ public class GioHang {
 
     public void setSoluong(int soluong) {
         this.soluong = soluong;
+    }
+    public int getSoLuongTonKho() {
+        return soLuongTonKho;
+    }
+
+    public void setSoLuongTonKho(int soLuongTonKho) {
+        this.soLuongTonKho = soLuongTonKho;
     }
 }

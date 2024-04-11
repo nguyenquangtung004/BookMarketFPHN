@@ -67,6 +67,7 @@ public class SanPhamKHadpter extends RecyclerView.Adapter<SanPhamKHadpter.ViewHo
                 bundle.putInt("giasp", sanPham.getGiasp());
                 bundle.putString("motasp", sanPham.getMotasp());
                 bundle.putByteArray("anhsp", sanPham.getAnhsp());
+                bundle.putInt("soluongtonkho",sanPham.getSoLuongTonKho());
 
                 // Khởi tạo intent, đặt bundle vào và khởi động Activity
                 Intent intent = new Intent(context, ChiTietSanPham.class);
@@ -84,7 +85,7 @@ public class SanPhamKHadpter extends RecyclerView.Adapter<SanPhamKHadpter.ViewHo
     // ViewHolder giữ các view cần thiết để hiển thị một item
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView img_anhsp;
-        TextView tv_tensp, tv_motasp, tv_giasp, tv_loaisp;
+        TextView tv_tensp, tv_motasp, tv_giasp;
         LinearLayout linear_sanpham_kh;
 
         public ViewHolder(@NonNull View itemView) {

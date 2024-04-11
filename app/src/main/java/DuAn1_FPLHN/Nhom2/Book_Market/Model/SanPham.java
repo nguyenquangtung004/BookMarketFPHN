@@ -8,32 +8,37 @@ public class SanPham {
     private int giasp;
     private int maloai;
     private String tenloai;
+    private int soLuongTonKho;
 
-    public SanPham(int masp, String tensp, byte[] anhsp, String motasp, int giasp) {
-        this.masp = masp;
-        this.tensp = tensp;
-        this.anhsp = anhsp;
-        this.motasp = motasp;
-        this.giasp = giasp;
-    }
 
-    public SanPham(String tensp, byte[] anhsp, String motasp, int giasp) {
-        this.tensp = tensp;
-        this.anhsp = anhsp;
-        this.motasp = motasp;
-        this.giasp = giasp;
-    }
+//    public SanPham(int masp, String tensp, byte[] anhsp, String motasp, int giasp) {
+//        this.masp = masp;
+//        this.tensp = tensp;
+//        this.anhsp = anhsp;
+//        this.motasp = motasp;
+//        this.giasp = giasp;
+//    }
+//
+//    public SanPham(String tensp, byte[] anhsp, String motasp, int giasp) {
+//        this.tensp = tensp;
+//        this.anhsp = anhsp;
+//        this.motasp = motasp;
+//        this.giasp = giasp;
+//    }
 
-    public SanPham(int masp, String tensp, byte[] anhsp, String tenloai, String motasp, int giasp) {
+    //Dòng Này Là SanPham DAO
+    public SanPham(int masp, String tensp, byte[] anhsp, String tenloai, String motasp, int giasp, int soLuongTonKho) {
         this.masp = masp;
         this.tensp = tensp;
         this.anhsp = anhsp;
         this.tenloai = tenloai;
         this.motasp = motasp;
         this.giasp = giasp;
+        this.soLuongTonKho = soLuongTonKho;
     }
 
-    public SanPham(String tensp, byte[] anhsp, String motasp, int giasp, int maloai) {
+    //Dòng Này Là QuanLySanPham
+    public SanPham(String tensp, byte[] anhsp, String motasp, int giasp, int maloai,int soLuongTonKho) {
         this.masp = masp;
         this.tensp = tensp;
         this.anhsp = anhsp;
@@ -41,15 +46,18 @@ public class SanPham {
         this.giasp = giasp;
         this.maloai = maloai;
         this.tenloai = tenloai;
+        this.soLuongTonKho = soLuongTonKho;
     }
 
-    public SanPham(int masp, String tensp, byte[] anhsp, String motasp, int giasp, int maloai) {
+    //Dòng Này Là SanPhamAdapter
+    public SanPham(int masp, String tensp, byte[] anhsp, String motasp, int giasp, int maloai, int soLuongTonKho) {
         this.masp = masp;
         this.tensp = tensp;
         this.anhsp = anhsp;
         this.motasp = motasp;
         this.giasp = giasp;
         this.maloai = maloai;
+        this.soLuongTonKho = soLuongTonKho;
     }
 
     public int getMasp() {
@@ -106,5 +114,13 @@ public class SanPham {
 
     public void setTenloai(String tenloai) {
         this.tenloai = tenloai;
+    }
+
+    public int getSoLuongTonKho() {
+        return soLuongTonKho;
+    }
+
+    public void setSoLuongTonKho(int soLuongTonKho) {
+        this.soLuongTonKho = soLuongTonKho;
     }
 }
