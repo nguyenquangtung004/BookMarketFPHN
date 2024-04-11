@@ -91,20 +91,30 @@ public class HoaDonKHAdapter extends RecyclerView.Adapter<HoaDonKHAdapter.ViewHo
 
         holder.btn_doitrangthai.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                // Thay đổi trạng thái hóa đơn
-                boolean KiemTra = hoaDonDAO.thayDoiTrangThai(hoaDon);
-                if (KiemTra){
-                    list.clear();
-                    // Đang lỗi ở đây
-                    notifyDataSetChanged();
-                } else {
-                    Toast.makeText(context, "Thay đổi trạng thái thất bại", Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+                // Kiểm tra xem người dùng đã nhấn vào nút này hay chưa
+                if (!holder.isButtonClicked) {
+                    // Nếu chưa, thực hiện thay đổi trạng thái và cập nhật giao diện
+                    boolean KiemTra = hoaDonDAO.thayDoiTrangThai(hoaDon);
+                    if (KiemTra) {
+                        list.clear();
+                        list.addAll(hoaDonDAO.getDSHoaDon());
+                        notifyDataSetChanged();
+                    } else {
+                        Toast.makeText(context, "Thay đổi trạng thái thất bại!", Toast.LENGTH_SHORT).show();
+                    }
+                    // Đặt giá trị của biến isButtonClicked thành true để biết rằng người dùng đã nhấn vào nút này
+                    holder.isButtonClicked = true;
                 }
             }
         });
 
+        // Thiết lập giá trị mặc định cho biến isButtonClicked
+        holder.isButtonClicked = false;
+
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -115,6 +125,7 @@ public class HoaDonKHAdapter extends RecyclerView.Adapter<HoaDonKHAdapter.ViewHo
         TextView tv_mahd, tv_ngaylap, tv_hoten, tv_sdt, tv_diachi, tv_tongtien, tv_trangthai, tv_tongsanpham;
         ImageView img_delete;
         TextView btn_doitrangthai;
+        boolean isButtonClicked;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 

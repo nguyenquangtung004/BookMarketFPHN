@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public DBHelper(Context context){super(context, "BookMarket", null, 8);}
+    public DBHelper(Context context){super(context, "BookMarket", null, 9);}
     @Override
     public void onCreate(SQLiteDatabase db) {
         //Bảng Sản Phẩm Gồm 6 Thuộc Tính
@@ -33,8 +33,7 @@ public class DBHelper extends SQLiteOpenHelper {
         //mahd,ngaylap,matk,hoten,sdt,diachi,tongtien,tongsanpham,trangthai
         String dbHOADON = "create table HOADON(mahd integer primary key autoincrement, ngaylap text, matk integer references TAIKHOAN(matk), hoten text, sdt text, diachi text, tongtien integer, tongsanpham text, trangthai integer)";
         db.execSQL(dbHOADON);
-        db.execSQL("insert into HOADON values " +
-                "(1, '2024/04/01', 'admin', 'Vương Đình Hiến', '0999999999', 'HaNoi', 10000, '2', 'Đang xử lý')");
+
         /*<----------------------------------------------->*/
 
         //Bảng Tài Khoản Gồm
