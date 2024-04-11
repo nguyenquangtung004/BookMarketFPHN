@@ -25,7 +25,6 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
     private final Context context;
     private ArrayList<GioHang> list;
     private GioHangDAO gioHangDAO;
-    private Integer soluong;
     public GioHangAdapter(Context context, ArrayList<GioHang> list) {
         this.context = context;
         this.list = list;

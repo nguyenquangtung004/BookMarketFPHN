@@ -89,23 +89,56 @@ public class HoaDonKHAdapter extends RecyclerView.Adapter<HoaDonKHAdapter.ViewHo
             }
         });
 
+//        holder.btn_doitrangthai.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // Kiểm tra xem người dùng đã nhấn vào nút này hay chưa
+//                if (!holder.isButtonClicked) {
+//                    // Nếu chưa, thực hiện thay đổi trạng thái và cập nhật giao diện
+//                    boolean KiemTra = hoaDonDAO.thayDoiTrangThai(hoaDon);
+//                    if (KiemTra) {
+//                        list.clear();
+//                        list.addAll(hoaDonDAO.getDSHoaDon());
+//                        notifyDataSetChanged();
+//                    } else {
+//                        Toast.makeText(context, "Thay đổi trạng thái thất bại!", Toast.LENGTH_SHORT).show();
+//                    }
+//                    // Đặt giá trị của biến isButtonClicked thành true để biết rằng người dùng đã nhấn vào nút này
+//                    holder.isButtonClicked = true;
+//                }
+//            }
+//        });
         holder.btn_doitrangthai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Kiểm tra xem người dùng đã nhấn vào nút này hay chưa
-                if (!holder.isButtonClicked) {
-                    // Nếu chưa, thực hiện thay đổi trạng thái và cập nhật giao diện
-                    boolean KiemTra = hoaDonDAO.thayDoiTrangThai(hoaDon);
-                    if (KiemTra) {
-                        list.clear();
-                        list.addAll(hoaDonDAO.getDSHoaDon());
-                        notifyDataSetChanged();
-                    } else {
-                        Toast.makeText(context, "Thay đổi trạng thái thất bại!", Toast.LENGTH_SHORT).show();
+                // Tạo dialog xác nhận trước khi thay đổi trạng thái
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+                dialogBuilder.setTitle("Xác nhận thay đổi trạng thái");
+                dialogBuilder.setMessage("Bạn có chắc chắn muốn thay đổi trạng thái của hóa đơn này?");
+                dialogBuilder.setPositiveButton("Xác nhận", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Thực hiện thay đổi trạng thái
+                        boolean KiemTra = hoaDonDAO.thayDoiTrangThai(hoaDon);
+                        if (KiemTra) {
+                            list.clear();
+                            list.addAll(hoaDonDAO.getDSHoaDon());
+                            notifyDataSetChanged();
+                        } else {
+                            Toast.makeText(context, "Thay đổi trạng thái thất bại!", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                    // Đặt giá trị của biến isButtonClicked thành true để biết rằng người dùng đã nhấn vào nút này
-                    holder.isButtonClicked = true;
-                }
+                });
+                dialogBuilder.setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Đóng dialog nếu người dùng chọn huỷ
+                        dialogInterface.dismiss();
+                    }
+                });
+                // Hiển thị dialog
+                AlertDialog dialog = dialogBuilder.create();
+                dialog.show();
             }
         });
 
