@@ -40,14 +40,14 @@
     <item android:title="Người dùng">
         <menu>
             <item
-                android:id="@+id/mThongTinApp"
-                android:title="Thông tin ứng dụng"
-                android:icon="@drawable/info"
-                />
-            <item
                 android:id="@+id/mLichSuMuaHang"
                 android:title="Lịch sử mua hàng"
                 android:icon="@drawable/ic_history"
+                />
+            <item
+                android:id="@+id/mThongTinApp"
+                android:title="Thông tin ứng dụng"
+                android:icon="@drawable/info"
                 />
         </menu>
     </item>

@@ -73,8 +73,8 @@ public class ChiTietSanPham extends AppCompatActivity {
             Bitmap bitmapAnhSP = ConvertData.ConvertBitmap(byte_anhSP);
             img_anhSP.setImageBitmap(bitmapAnhSP);
 
-            tv_tenSP.setText("Tên sản phẩm: "+tenSP);
-            tv_giaSP.setText("Giá sản phẩm: "+String.valueOf(giaSP));
+            tv_tenSP.setText("Tên : "+tenSP);
+            tv_giaSP.setText("Giá : "+String.valueOf(giaSP));
             tv_motaSP.setText("Mô tả: "+motaSP);
             tv_soluongtonkho.setText("Số lượng tồn kho: " + String.valueOf(solgTonKho));
             //Viết ở đây 1000 để test

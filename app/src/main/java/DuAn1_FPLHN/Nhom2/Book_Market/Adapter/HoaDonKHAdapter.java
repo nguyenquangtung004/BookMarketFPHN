@@ -29,9 +29,6 @@ public class HoaDonKHAdapter extends RecyclerView.Adapter<HoaDonKHAdapter.ViewHo
 
     private final Context context;
     private ArrayList<HoaDon> list;
-
-    private int mahd;
-    private int matk;
     private HoaDonDAO hoaDonDAO;
 
     public HoaDonKHAdapter(Context context, ArrayList<HoaDon> list) {
@@ -89,25 +86,6 @@ public class HoaDonKHAdapter extends RecyclerView.Adapter<HoaDonKHAdapter.ViewHo
             }
         });
 
-//        holder.btn_doitrangthai.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                // Kiểm tra xem người dùng đã nhấn vào nút này hay chưa
-//                if (!holder.isButtonClicked) {
-//                    // Nếu chưa, thực hiện thay đổi trạng thái và cập nhật giao diện
-//                    boolean KiemTra = hoaDonDAO.thayDoiTrangThai(hoaDon);
-//                    if (KiemTra) {
-//                        list.clear();
-//                        list.addAll(hoaDonDAO.getDSHoaDon());
-//                        notifyDataSetChanged();
-//                    } else {
-//                        Toast.makeText(context, "Thay đổi trạng thái thất bại!", Toast.LENGTH_SHORT).show();
-//                    }
-//                    // Đặt giá trị của biến isButtonClicked thành true để biết rằng người dùng đã nhấn vào nút này
-//                    holder.isButtonClicked = true;
-//                }
-//            }
-//        });
         holder.btn_doitrangthai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -146,8 +124,6 @@ public class HoaDonKHAdapter extends RecyclerView.Adapter<HoaDonKHAdapter.ViewHo
         holder.isButtonClicked = false;
 
     }
-
-
 
     @Override
     public int getItemCount() {

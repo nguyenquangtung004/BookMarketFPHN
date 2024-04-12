@@ -218,6 +218,7 @@ public class MainActivity extends AppCompatActivity {
             Menu menu = bottomNavigationView.getMenu();
             Menu menu1 = navigationView.getMenu();
             menu.findItem(R.id.bt_giohang).setVisible(false);
+            menu.findItem(R.id.bt_hoadon).setVisible(false);
             menu1.findItem(R.id.mLichSuMuaHang).setVisible(false);
         }
 
