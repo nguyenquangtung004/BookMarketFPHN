@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,10 +56,10 @@ public class CuaHangFragment extends Fragment {
         recyclerSP = view.findViewById(R.id.recyclerSP);
         sanPhamDAO = new SanPhamDAO(getContext());
 
-//        loadDataSanPham();
         list = sanPhamDAO.getDSSanPham();
         listTemp = sanPhamDAO.getDSSanPham();
 
+        // Cài đặt bộ lắng nghe để cập nhật danh sách khi người dùng nhập vào thanh tìm kiếm
         ed_timkiem.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -78,7 +79,7 @@ public class CuaHangFragment extends Fragment {
             }
         });
 
-        // Phân loại sản phẩm
+        // Phân loại sản phẩm dựa trên sự lựa chọn của người dùng
         phanLoaiSanPham();
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -89,6 +90,7 @@ public class CuaHangFragment extends Fragment {
         return view;
     }
 
+    // Hàm này dùng để tải lại danh sách sản phẩm từ cơ sở dữ liệu
     public void loadDataSanPham(){
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerSP.setLayoutManager(linearLayoutManager);
@@ -96,20 +98,22 @@ public class CuaHangFragment extends Fragment {
         list = sanPhamDAO.getDSSanPham();
         sanPhamKHAdapter = new SanPhamKHadpter(getContext(), list);
         recyclerSP.setAdapter(sanPhamKHAdapter);
+        Log.d("CuaHangFragment", "Loaded " + list.size() + " sản phẩm từ cơ sở dữ liệu");
     }
 
+    // Hàm này dùng để tải lại danh sách thể loại từ cơ sở dữ liệu
     public void loadDataTheLoai(){
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerTL.setLayoutManager(linearLayoutManager);
 
         TheLoaiDAO theLoaiDAO = new TheLoaiDAO(getContext());
         listTL = theLoaiDAO.getDSTheLoai();
-//        theLoaiKHAdapter = new TheLoaiKHAdapter(getContext(), listTL);
-//        recyclerTL.setAdapter(theLoaiKHAdapter);
+        Log.d("CuaHangFragment", "Loaded " + listTL.size() + " thể loại từ cơ sở dữ liệu");
     }
 
+    // Hàm này dùng để phân loại sản phẩm dựa trên sự lựa chọn của người dùng
     private void phanLoaiSanPham(){
-        //Button 1 : Đã Hoàn Thiện Việc Thay Đổi Màu Tất Cả
+        // Button 1 : Tất cả sản phẩm
         btn_tatca.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,10 +129,11 @@ public class CuaHangFragment extends Fragment {
                     }
                     sanPhamKHAdapter.notifyDataSetChanged();
                 }
+                Log.d("CuaHangFragment", "Hiển thị tất cả sản phẩm");
             }
         });
 
-        //Button 2: Đã Hoàn Thiện Việc Thay Đổi Màu Nút Thiếu Nhi
+        // Button 2: Thiếu nhi
         btn_thieunhi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,10 +149,11 @@ public class CuaHangFragment extends Fragment {
                     }
                     sanPhamKHAdapter.notifyDataSetChanged();
                 }
+                Log.d("CuaHangFragment", "Hiển thị sản phẩm theo thể loại Thiếu nhi");
             }
         });
 
-        //Button 3: Đã Hoàn Thiện Việc Thay Đổi Màu Nút Tài Liệu
+        // Button 3: Tài liệu
         btn_tailieu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,10 +169,11 @@ public class CuaHangFragment extends Fragment {
                     }
                     sanPhamKHAdapter.notifyDataSetChanged();
                 }
+                Log.d("CuaHangFragment", "Hiển thị sản phẩm theo thể loại Tài liệu");
             }
         });
 
-        //Button 4: Đã Hoàn Thiện Việc Thay Đổi Màu Nút Ngụ Ngôn
+        // Button 4: Ngụ ngôn
         btn_ngungon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -182,6 +189,7 @@ public class CuaHangFragment extends Fragment {
                     }
                     sanPhamKHAdapter.notifyDataSetChanged();
                 }
+                Log.d("CuaHangFragment", "Hiển thị sản phẩm theo thể loại Ngụ ngôn");
             }
         });
 
@@ -201,6 +209,7 @@ public class CuaHangFragment extends Fragment {
                     }
                     sanPhamKHAdapter.notifyDataSetChanged();
                 }
+                Log.d("CuaHangFragment", "Hiển thị sản phẩm theo thể loại Truyện");
             }
         });
 

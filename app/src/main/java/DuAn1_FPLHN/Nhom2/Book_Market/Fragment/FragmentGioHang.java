@@ -4,6 +4,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,22 +54,24 @@ public class FragmentGioHang extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view  = LayoutInflater.from(getContext()).inflate(R.layout.fragment_g_io_hang, container, false);
 
+        // Khởi tạo các thành phần
         linear_giohangtrong = view.findViewById(R.id.linear_giohangtrong);
-
         recyclerGioHang = view.findViewById(R.id.recyclerGioHang);
         tv_tongtien = view.findViewById(R.id.tv_tongtien);
         btn_dathang = view.findViewById(R.id.btn_dathang);
-
         gioHangDAO = new GioHangDAO(getContext());
         hoaDonDAO = new HoaDonDAO(getContext());
 
+        // Load dữ liệu giỏ hàng
         loadDataGioHang();
+        // Tính tổng tiền
         tinhTongTien();
-
+        // Kiểm tra nếu giỏ hàng rỗng
         if (list.size()>0){
             linear_giohangtrong.setVisibility(View.GONE);
         }
 
+        // Xử lý khi người dùng nhấp vào nút đặt hàng
         btn_dathang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +81,7 @@ public class FragmentGioHang extends Fragment {
                     return;
                 }
 
-                // Lấy mã khách hàng
+                // Load thông tin tài khoản người dùng
                 SharedPreferences sharedPreferences = getContext().getSharedPreferences("ThongTinTaiKhoan", MODE_PRIVATE);
                 int matk = sharedPreferences.getInt("matk", 0);
 
@@ -92,7 +95,7 @@ public class FragmentGioHang extends Fragment {
         return view;
 
     }
-
+    // Hàm này được sử dụng để tải dữ liệu giỏ hàng từ cơ sở dữ liệu
     private void loadDataGioHang() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerGioHang.setLayoutManager(linearLayoutManager);
@@ -100,8 +103,10 @@ public class FragmentGioHang extends Fragment {
         list = gioHangDAO.getDSGioHang();
         gioHangAdapter = new GioHangAdapter(getContext(), list);
         recyclerGioHang.setAdapter(gioHangAdapter);
+        Log.d("FragmentGioHang", "Loaded " + list.size() + " items from database");
     }
 
+    // Hàm này hiển thị hộp thoại xác nhận đặt hàng
     private void showDiaLogDatHang(TaiKhoan taiKhoan){
         BottomSheetDialog dialogTT = new BottomSheetDialog(getContext());
         View view = LayoutInflater.from(getContext()).inflate(R.layout.dialog_xacnhan_thanhtoan, null);
@@ -145,18 +150,20 @@ public class FragmentGioHang extends Fragment {
                 String ngay = simpleDateFormat.format(currentTime);
 
                 HoaDon hoaDon = new HoaDon(ngay, matk, hoten, sdt, diachi , tongtien, tongsanpham, 0);
-
+                // Thêm hóa đơn vào cơ sở dữ liệu
                 boolean checkThemHD = hoaDonDAO.themHoaDon(hoaDon);
                 if (checkThemHD){
                     Toast.makeText(getContext(), "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
                     boolean checkClear = gioHangDAO.clearGioHang();
                     if (checkClear){
+                        // Tải lại dữ liệu giỏ hàng
                         loadDataGioHang();
                         tongtien = 0;
                         tongsanpham = "";
                         tv_tongtien.setText(tongtien + " VNĐ");
                         linear_giohangtrong.setVisibility(View.VISIBLE);
                         dialogTT.dismiss();
+                        Log.d("FragmentGioHang", "Order placed successfully");
                     }
                 } else {
                     Toast.makeText(getContext(), "Đặt hàng thất bại", Toast.LENGTH_SHORT).show();
@@ -166,6 +173,7 @@ public class FragmentGioHang extends Fragment {
         dialogTT.show();
     }
 
+    // Hàm này dùng để tính tổng tiền các mặt hàng trong giỏ hàng
     public void tinhTongTien(){
         for (GioHang gioHang : list){
             int soluong = gioHang.getSoluong();
@@ -174,6 +182,7 @@ public class FragmentGioHang extends Fragment {
             tongsanpham += gioHang.getTensp() + " x" + gioHang.getSoluong() + " ";
             tv_tongtien.setText(tongtien + " VNĐ");
         }
+        Log.d("FragmentGioHang", "Total amount calculated: " + tongtien + " VNĐ");
     }
 
 }
