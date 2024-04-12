@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,28 +37,25 @@ public class ThongKeDoanhThu extends Fragment {
                              Bundle savedInstanceState) {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_thong_ke_doanh_thu, container, false);
 
-
+        // Khởi tạo các thành phần
         ed_ngaybatdau = view.findViewById(R.id.ed_ngaybatdau);
         ed_ngayketthuc = view.findViewById(R.id.ed_ngayketthuc);
-
         tv_doanthu = view.findViewById(R.id.tv_doanhthu);
         tv_tonghoadon = view.findViewById(R.id.tv_tonghoadon);
         tv_tongsanpham = view.findViewById(R.id.tv_tongsanpham);
         tv_tongdoanhthu = view.findViewById(R.id.tv_tongdoanhthu);
         tv_tongtaikhoan = view.findViewById(R.id.tv_tongtaikhoan);
         tv_slhoadon = view.findViewById(R.id.tv_slhoadon);
-
         btn_thongke = view.findViewById(R.id.btn_thongke);
 
-        Calendar calendar = Calendar.getInstance();//lay ngay hien tai
+        // Lấy ngày hiện tại
+        Calendar calendar = Calendar.getInstance();
+        // Khởi tạo DAOs
         TaiKhoanDAO taiKhoanDAO = new TaiKhoanDAO(getContext());
         SanPhamDAO sanPhamDAO = new SanPhamDAO(getContext());
         HoaDonDAO hoaDonDAO = new HoaDonDAO(getContext());
         ThongKeDAO thongKeDAO = new ThongKeDAO(getContext());
-
-
-
-        //Ngay bat dau
+        // Xử lý khi người dùng chọn ngày bắt đầu
         ed_ngaybatdau.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,12 +82,12 @@ public class ThongKeDoanhThu extends Fragment {
                         calendar.get(Calendar.DAY_OF_MONTH)
                 );
                 datePickerDialog.show();
-
+                Log.d("ThongKeDoanhThu", "Người dùng đã chọn ngày bắt đầu");
             }
         });
 
 
-        //ngay ket thuc
+        // Xử lý khi người dùng chọn ngày kết thúc
         ed_ngayketthuc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,6 +114,7 @@ public class ThongKeDoanhThu extends Fragment {
                         calendar.get(Calendar.DAY_OF_MONTH)
                 );
                 datePickerDialog.show();
+                Log.d("ThongKeDoanhThu", "Người dùng đã chọn ngày kết thúc");
             }
         });
 
@@ -137,6 +136,7 @@ public class ThongKeDoanhThu extends Fragment {
 
                 tv_doanthu.setText(doanhthu + "VND");
                 tv_slhoadon.setText(listHD.size() + "đơn");
+                Log.d("ThongKeDoanhThu", "Đã thống kê doanh thu từ ngày " + ngaybatdau + " đến ngày " + ngayketthuc);
             }
         });
 
