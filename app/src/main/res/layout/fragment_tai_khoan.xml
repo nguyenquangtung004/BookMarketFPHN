@@ -19,7 +19,8 @@
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
+            android:layout_marginRight="10dp"
+            >
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -29,141 +30,142 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
-                >
-            <LinearLayout
-                android:gravity="center"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
-                <TextView
-                    android:layout_marginBottom="5dp"
-                    android:fontFamily="@font/open_sans_regular"
-                    android:textSize="23sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/cinderella"
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/tv_hoten"
-                    android:text="Họ tên"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    app:cardCornerRadius="75dp"
-                    app:cardElevation="10dp"
-                    >
-                    <ImageView
-                        android:src="@drawable/avata"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        />
-                </androidx.cardview.widget.CardView>
+                >
 
                 <LinearLayout
-                    android:layout_margin="5dp"
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@drawable/background_thongtin"
                     >
 
-                    <LinearLayout
-                        android:gravity="center"
-                        android:weightSum="4"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/tv_hoten"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        >
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:text="Họ tên"
+                        android:textColor="@color/colortextChu"
+                        android:textSize="23sp"
+                        android:textStyle="bold" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        app:cardCornerRadius="75dp"
+                        app:cardElevation="10dp">
+
                         <ImageView
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="35dp"
-                            android:src="@drawable/account"
-                            />
-                        <TextView
-                            android:fontFamily="@font/open_sans_regular"
-                            android:id="@+id/tv_taikhoan"
-                            android:layout_weight="3"
-                            android:textSize="16sp"
-                            android:text="Tài khoản"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            />
-                    </LinearLayout>
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:src="@drawable/avata" />
+                    </androidx.cardview.widget.CardView>
 
                     <LinearLayout
-                        android:gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:weightSum="4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        >
-                        <ImageView
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="35dp"
-                            android:src="@drawable/password"
-                            />
-                        <TextView
-                            android:fontFamily="@font/open_sans_regular"
-                            android:layout_weight="3"
-                            android:textSize="16sp"
-                            android:text="******"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            />
-                    </LinearLayout>
+                        android:layout_margin="5dp"
+                        android:orientation="vertical">
 
-                    <LinearLayout
-                        android:gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:weightSum="4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        >
-                        <ImageView
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="35dp"
-                            android:src="@drawable/phone"
-                            />
-                        <TextView
-                            android:fontFamily="@font/open_sans_regular"
-                            android:id="@+id/tv_sdt"
-                            android:layout_weight="3"
-                            android:textSize="16sp"
-                            android:text="Số điện thoại"
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            />
-                    </LinearLayout>
+                            android:gravity="center"
+                            android:weightSum="4">
 
-                    <LinearLayout
-                        android:gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:weightSum="4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        >
-                        <ImageView
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="35dp"
-                            android:src="@drawable/address"
-                            />
-                        <TextView
-                            android:fontFamily="@font/open_sans_regular"
-                            android:id="@+id/tv_diachi"
-                            android:layout_weight="3"
-                            android:textSize="16sp"
-                            android:text="Địa chỉ"
-                            android:layout_width="0dp"
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="35dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/account" />
+
+                            <TextView
+                                android:id="@+id/tv_taikhoan"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="3"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="Tài khoản"
+                                android:textColor="@color/colortextChu"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            />
+                            android:layout_marginTop="5dp"
+                            android:gravity="center"
+                            android:weightSum="4">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="35dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/password" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="3"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="******"
+                                android:textColor="@color/colortextChu"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center"
+                            android:weightSum="4">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="35dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/phone" />
+
+                            <TextView
+                                android:id="@+id/tv_sdt"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="3"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="Số điện thoại"
+                                android:textColor="@color/colortextChu"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center"
+                            android:weightSum="4">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="35dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/address" />
+
+                            <TextView
+                                android:id="@+id/tv_diachi"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="3"
+                                android:fontFamily="@font/open_sans_regular"
+                                android:text="Địa chỉ"
+                                android:textColor="@color/colortextChu"
+                                android:textSize="16sp" />
+                        </LinearLayout>
                     </LinearLayout>
-        </LinearLayout>
-            </LinearLayout>
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
     </LinearLayout>
     </LinearLayout>
@@ -189,6 +191,7 @@
                 android:id="@+id/btn_CSKH"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/background_thongtin"
                 >
                 <androidx.cardview.widget.CardView
                     android:layout_marginLeft="20dp"
@@ -211,6 +214,7 @@
                     android:padding="5dp"
                     android:textSize="16sp"
                     android:text="Chăm sóc khách hàng"
+                    android:textColor="@color/colortextChu"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     />
@@ -229,6 +233,7 @@
                 android:id="@+id/btn_doiThongTin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/background_thongtin"
                 >
                 <androidx.cardview.widget.CardView
                     android:layout_marginLeft="20dp"
@@ -251,6 +256,7 @@
                     android:padding="5dp"
                     android:textSize="16sp"
                     android:text="Thay đổi thông tin"
+                    android:textColor="@color/colortextChu"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     />
@@ -269,6 +275,7 @@
                 android:id="@+id/btn_doimatkhau"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/background_thongtin"
                 >
                 <androidx.cardview.widget.CardView
                     android:layout_marginLeft="20dp"
@@ -293,6 +300,7 @@
                     android:text="Đổi mật khẩu"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:textColor="@color/colortextChu"
                     />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -309,6 +317,7 @@
                 android:id="@+id/btn_dangxuat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/background_thongtin"
                 >
                 <androidx.cardview.widget.CardView
                     android:layout_marginLeft="20dp"
@@ -333,6 +342,7 @@
                     android:text="Đăng xuất"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:textColor="@color/colortextChu"
                     />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
