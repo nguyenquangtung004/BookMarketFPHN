@@ -1,10 +1,10 @@
 - Tên Dự Án 1 : Book Market
-- Mô tả : Xây dựng siêu thị bán sách bằng JAVA + FIREBASE
+- Mô tả : Xây dựng siêu thị bán sách bằng JAVA
 -Người thực hiện dự án :
 + Trưởng nhóm :Nguyễn Quang Tùng
 + Thành Viên 1 : Vương Đình Hiến
 + Thành Viên 2 : 
--Thời gian thực hiện dự án 1 tháng 5/3/2024 - 5/4/2024
+-Thời gian thực hiện dự án 1 tháng 5/3/2024 - 13/4/2024
 - Một số quy tắc khi thực hiện dự án bắt buộc phải tuân theo:
   +Thực hiện việc chia nhánh trước khi gộp nhánh tránh lỗi bất đồng bộ
   +Thành viên tham gia cần commit lại những phần đã update 
