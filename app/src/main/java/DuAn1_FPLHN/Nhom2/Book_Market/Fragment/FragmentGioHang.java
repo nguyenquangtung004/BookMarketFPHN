@@ -262,7 +262,67 @@ public class FragmentGioHang extends Fragment {
     }
 
     private void showDiaLogDatHang(TaiKhoan taiKhoan) {
-        // Phương thức này không thay đổi, bạn có thể giữ nguyên
+        BottomSheetDialog dialogTT = new BottomSheetDialog(getContext());
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.dialog_xacnhan_thanhtoan, null);
+        dialogTT.setContentView(view);
+        dialogTT.setCanceledOnTouchOutside(false);
+
+        EditText ed_hoten = view.findViewById(R.id.ed_hoten);
+        EditText ed_sdt = view.findViewById(R.id.ed_sdt);
+        EditText ed_diachi = view.findViewById(R.id.ed_diachi);
+        TextView btn_dathang = view.findViewById(R.id.btn_dathang);
+        TextView btn_huy = view.findViewById(R.id.btn_huy);
+
+        ed_hoten.setText(taiKhoan.getHoten());
+        ed_sdt.setText(taiKhoan.getSdt());
+        ed_diachi.setText(taiKhoan.getDiachi());
+
+        btn_dathang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int matk = taiKhoan.getMatk();
+                String hoten = ed_hoten.getText().toString();
+                String sdt = ed_sdt.getText().toString();
+                String diachi = ed_diachi.getText().toString();
+
+                if (hoten.isEmpty()){
+                    ed_hoten.setError("Vui lòng nhập họ tên");
+                    return;
+                }
+                if (sdt.isEmpty()){
+                    ed_sdt.setError("Vui lòng nhập số điện thoại");
+                    return;
+                }
+                if (diachi.isEmpty()){
+                    ed_diachi.setError("Vui lòng nhập địa chỉ");
+                    return;
+                }
+
+                // Lấy gày hiện tại
+                Date currentTime = Calendar.getInstance().getTime();
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                String ngay = simpleDateFormat.format(currentTime);
+
+                HoaDon hoaDon = new HoaDon(ngay, matk, hoten, sdt, diachi , tongtien, tongsanpham, 0);
+
+                boolean checkThemHD = hoaDonDAO.themHoaDon(hoaDon);
+                if (checkThemHD){
+                    Toast.makeText(getContext(), "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
+                    boolean checkClear = gioHangDAO.clearGioHang();
+                    if (checkClear){
+                        loadDataGioHang();
+                        tongtien = 0;
+                        tongsanpham = "";
+                        tv_tongtien.setText(tongtien + " VNĐ");
+                        linear_giohangtrong.setVisibility(View.VISIBLE);
+                        dialogTT.dismiss();
+                    }
+                } else {
+                    Toast.makeText(getContext(), "Đặt hàng thất bại", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        dialogTT.show();
     }
 
     public void tinhTongTien() {

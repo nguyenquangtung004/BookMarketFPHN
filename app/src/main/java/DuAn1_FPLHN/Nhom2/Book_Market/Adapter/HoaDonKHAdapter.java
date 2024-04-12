@@ -204,4 +204,14 @@ public class HoaDonKHAdapter extends RecyclerView.Adapter<HoaDonKHAdapter.ViewHo
         dialogDelete.show();
     }
 
+    public void updateData(ArrayList<HoaDon> newList) {
+        this.list = newList;
+        notifyDataSetChanged();
+    }
+    public void refreshData(int matk) {
+        HoaDonDAO hoaDonDAO = new HoaDonDAO(context);
+        ArrayList<HoaDon> newList = hoaDonDAO.getDSHoaDonTheoKH(matk); // Đổi phương thức này tùy thuộc vào DAO của bạn
+        updateData(newList);
+    }
+
 }

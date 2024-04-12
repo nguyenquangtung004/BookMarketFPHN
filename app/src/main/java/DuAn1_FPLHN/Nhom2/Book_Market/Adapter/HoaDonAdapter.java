@@ -93,6 +93,12 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHolder
         this.list = newList;
         notifyDataSetChanged();
     }
+    public void refreshData() {
+        HoaDonDAO hoaDonDAO = new HoaDonDAO(context);
+        ArrayList<HoaDon> newList = hoaDonDAO.getDSHoaDon(); // Đổi phương thức này tùy thuộc vào DAO của bạn
+        updateData(newList);
+    }
+
 
 
 }
