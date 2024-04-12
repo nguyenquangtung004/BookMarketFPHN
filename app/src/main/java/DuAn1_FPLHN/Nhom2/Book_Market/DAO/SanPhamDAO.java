@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -28,9 +29,14 @@ public class SanPhamDAO {
         contentValues.put("maloai", sanPham.getMaloai());
         contentValues.put("motasp", sanPham.getMotasp());
         contentValues.put("giasp", sanPham.getGiasp());
-        contentValues.put("soluongtonkho",sanPham.getSoLuongTonKho());
+        contentValues.put("soluongtonkho", sanPham.getSoLuongTonKho());
 
         long check = db.insert("SANPHAM", null, contentValues);
+        if (check != -1) {
+            Log.d("SanPhamDAO", "Thêm sản phẩm " + sanPham.getTensp() + " vào cơ sở dữ liệu thành công!");  // Thêm log ở đây
+        } else {
+            Log.e("SanPhamDAO", "Thêm sản phẩm " + sanPham.getTensp() + " vào cơ sở dữ liệu thất bại!");  // Thêm log ở đây
+        }
         return check != -1;
     }
 
@@ -45,10 +51,16 @@ public class SanPhamDAO {
         contentValues.put("motasp", sanPham.getMotasp());
         contentValues.put("giasp", sanPham.getGiasp());
         contentValues.put("maloai", sanPham.getMaloai());
-        contentValues.put("soluongtonkho",sanPham.getSoLuongTonKho());
+        contentValues.put("soluongtonkho", sanPham.getSoLuongTonKho());
         long check = db.update("SANPHAM", contentValues, "masp = ?", new String[]{String.valueOf(sanPham.getMasp())});
+        if (check != -1) {
+            Log.d("SanPhamDAO", "Cập nhật thông tin sản phẩm " + sanPham.getTensp() + " thành công!");  // Thêm log ở đây
+        } else {
+            Log.e("SanPhamDAO", "Cập nhật thông tin sản phẩm " + sanPham.getTensp() + " thất bại!");
+        }
         return check != -1;
     }
+
 
     // Hàm xóa sản phẩm khỏi cơ sở dữ liệu
     // Nhận vào mã sản phẩm
@@ -56,10 +68,12 @@ public class SanPhamDAO {
     public int xoaSanPham(int maSP) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         long check = db.delete("SANPHAM", "masp = ?", new String[]{String.valueOf(maSP)});
-        if (check == -1) {
-            return 0;
+        if (check != -1) {
+            Log.d("SanPhamDAO", "Xóa sản phẩm có mã " + maSP + " khỏi cơ sở dữ liệu thành công!");  // Thêm log ở đây
+        } else {
+            Log.e("SanPhamDAO", "Xóa sản phẩm có mã " + maSP + " khỏi cơ sở dữ liệu thất bại!");  // Thêm log ở đây
         }
-        return 1;
+        return check != -1 ? 1 : 0;
     }
 
     // Hàm lấy danh sách sản phẩm từ cơ sở dữ liệu
@@ -68,10 +82,11 @@ public class SanPhamDAO {
         ArrayList<SanPham> list = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT sp.masp, sp.tensp, sp.anhsp, loai.tenloai, sp.motasp, sp.giasp, sp.soluongtonkho  FROM SANPHAM sp, THELOAI loai WHERE sp.maloai = loai.maloai", null);
+        Log.d("SanPhamDAO", "Số lượng sản phẩm trong cơ sở dữ liệu: " + cursor.getCount());
         if (cursor.getCount() != 0) {
             cursor.moveToFirst();
             do {
-                list.add(new SanPham(cursor.getInt(0), cursor.getString(1), cursor.getBlob(2), cursor.getString(3), cursor.getString(4), cursor.getInt(5),cursor.getInt(6)));
+                list.add(new SanPham(cursor.getInt(0), cursor.getString(1), cursor.getBlob(2), cursor.getString(3), cursor.getString(4), cursor.getInt(5), cursor.getInt(6)));
             } while (cursor.moveToNext());
         }
         return list;
@@ -84,6 +99,7 @@ public class SanPhamDAO {
         ArrayList<SanPham> list = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT sp.masp, sp.tensp, sp.anhsp, loai.tenloai, sp.motasp, sp.giasp,sp.soluongtonkho  FROM SANPHAM sp, THELOAI loai WHERE sp.maloai = loai.maloai AND sp.maloai = ?", new String[]{String.valueOf(maloai)});
+        Log.d("SanPhamDAO", "Số lượng sản phẩm thuộc loại " + maloai + " trong cơ sở dữ liệu: " + cursor.getCount());
         if (cursor.getCount() != 0) {
             cursor.moveToFirst();
             do {
