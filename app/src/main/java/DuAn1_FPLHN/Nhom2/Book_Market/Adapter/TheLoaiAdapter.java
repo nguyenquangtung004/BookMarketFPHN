@@ -2,6 +2,7 @@ package DuAn1_FPLHN.Nhom2.Book_Market.Adapter;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,7 +44,7 @@ public class TheLoaiAdapter extends RecyclerView.Adapter<TheLoaiAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final TheLoai theLoai = list.get(position);
-
+        Log.d("TheLoaiAdapter", "Binding data for category ID: " + theLoai.getMaloai());
         holder.tv_maloai.setText("Mã: " + theLoai.getMaloai());
         holder.tv_tenloai.setText("Thể loại: "+ theLoai.getTenloai());
 
@@ -55,6 +56,7 @@ public class TheLoaiAdapter extends RecyclerView.Adapter<TheLoaiAdapter.ViewHold
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
+                        Log.d("TheLoaiAdapter", "Clicked on options for category ID: " + theLoai.getMaloai());
                         if (item.getItemId() == R.id.menu_edit){
                             showDialogEdit(theLoai);
                         }
@@ -81,7 +83,7 @@ public class TheLoaiAdapter extends RecyclerView.Adapter<TheLoaiAdapter.ViewHold
         ImageView img_chucnang;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            Log.d("TheLoaiAdapter", "ViewHolder created");
             tv_maloai = itemView.findViewById(R.id.tv_maloai);
             tv_tenloai = itemView.findViewById(R.id.tv_tenloai);
             img_chucnang = itemView.findViewById(R.id.img_chucnang);
@@ -91,6 +93,7 @@ public class TheLoaiAdapter extends RecyclerView.Adapter<TheLoaiAdapter.ViewHold
 
     private void showDialogEdit(TheLoai theLoai){
         View view = LayoutInflater.from(context).inflate(R.layout.dialog_sua_theloai, null);
+        Log.d("TheLoaiAdapter", "Showing edit dialog for category ID: " + theLoai.getMaloai());
         BottomSheetDialog sheetDialog = new BottomSheetDialog(context);
         sheetDialog.setContentView(view);
         sheetDialog.setCanceledOnTouchOutside(false);
@@ -140,6 +143,7 @@ public class TheLoaiAdapter extends RecyclerView.Adapter<TheLoaiAdapter.ViewHold
 
     private void showDialogDelete(int maSP, String tenloai){
         AlertDialog.Builder dialogDelete = new AlertDialog.Builder(context);
+        Log.d("TheLoaiAdapter", "Showing delete dialog for category ID: " + maSP);
         dialogDelete.setIcon(R.drawable.logo_delete);
         dialogDelete.setTitle("Bạn có chắc chắn muốn xóa thể loại " + tenloai + " không ?");
         dialogDelete.setPositiveButton("HỦY", new DialogInterface.OnClickListener() {

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +57,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
             @Override
             public void onClick(View v) {
                 int maGH = gioHang.getId();
+                Log.d("GioHangAdapter", "Deleting item with ID: " + maGH);  // Thêm log ở đây
                 showDiaLogDelete(maGH);
             }
         });
@@ -89,6 +91,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
         dialogDelete.setPositiveButton("HỦY", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                Log.d("GioHangAdapter", "Delete cancelled for item with ID: " + maGH);  // Thêm log ở đây
             }
         });
         dialogDelete.setNegativeButton("XÓA", new DialogInterface.OnClickListener() {
@@ -101,7 +104,9 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
                     list.clear();
                     list = gioHangDAO.getDSGioHang();
                     Toast.makeText(context, "Xóa sản phẩm thành công", Toast.LENGTH_SHORT).show();
+                    Log.d("GioHangAdapter", "Successfully deleted item with ID: " + maGH);  // Thêm log ở đây
                 } else {
+                    Log.d("GioHangAdapter", "Failed to delete item with ID: " + maGH);  // Thêm log ở đây
                     Toast.makeText(context, "Xóa sản phẩm thất bại", Toast.LENGTH_SHORT).show();
                 }
             }

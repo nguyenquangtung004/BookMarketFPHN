@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,7 @@ public class SanPhamKHadpter extends RecyclerView.Adapter<SanPhamKHadpter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final SanPham sanPham = list.get(position);
+        Log.d("SanPhamKHadpter", "Binding data for product ID: " + sanPham.getMasp());
         // Chuyển byte array về bitmap và đặt ảnh cho ImageView
         byte[] image = sanPham.getAnhsp();
         Bitmap bitmap = BitmapFactory.decodeByteArray(image,0, image.length);
@@ -61,6 +63,7 @@ public class SanPhamKHadpter extends RecyclerView.Adapter<SanPhamKHadpter.ViewHo
         holder.linear_sanpham_kh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("SanPhamKHadpter", "Clicked on product ID: " + sanPham.getMasp());
                 // Tạo một bundle và đưa dữ liệu vào
                 Bundle bundle = new Bundle();
                 bundle.putString("tensp", sanPham.getTensp());
@@ -90,7 +93,7 @@ public class SanPhamKHadpter extends RecyclerView.Adapter<SanPhamKHadpter.ViewHo
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            Log.d("SanPhamKHadpter", "ViewHolder created");
             img_anhsp = itemView.findViewById(R.id.img_anhsp);
             tv_tensp = itemView.findViewById(R.id.tv_tensp);
             tv_motasp = itemView.findViewById(R.id.tv_motasp);

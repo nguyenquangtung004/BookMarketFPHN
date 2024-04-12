@@ -58,4 +58,5 @@ public class GioHangDAO {
         long check = db.delete("GIOHANG", "id = ?", new String[]{String.valueOf(magh)});
         return check != -1;
     }
+
 }

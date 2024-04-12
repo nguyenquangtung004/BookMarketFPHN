@@ -5,6 +5,7 @@ import static android.content.Context.MODE_PRIVATE;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,7 +85,7 @@ public class HoaDonKHAdapter extends RecyclerView.Adapter<HoaDonKHAdapter.ViewHo
                 // Lấy mã khách hàng
                 SharedPreferences sharedPreferences = context.getSharedPreferences("ThongTinTaiKhoan", MODE_PRIVATE);
                 int matk = sharedPreferences.getInt("matk", 0);
-
+                Log.d("HoaDonKHAdapter", "Deleting order with ID: " + mahd + " for user with ID: " + matk);
                 showDiaLogDelete(mahd, matk);
             }
         });
@@ -100,8 +101,10 @@ public class HoaDonKHAdapter extends RecyclerView.Adapter<HoaDonKHAdapter.ViewHo
                         list.clear();
                         list.addAll(hoaDonDAO.getDSHoaDon());
                         notifyDataSetChanged();
+                        Log.d("HoaDonKHAdapter", "Successfully changed the status of order with ID: " + hoaDon.getMahd());  // Thêm log ở đây
                     } else {
                         Toast.makeText(context, "Thay đổi trạng thái thất bại!", Toast.LENGTH_SHORT).show();
+                        Log.d("HoaDonKHAdapter", "Failed to change the status of order with ID: " + hoaDon.getMahd());  // Thêm log ở đây
                     }
                     // Đặt giá trị của biến isButtonClicked thành true để biết rằng người dùng đã nhấn vào nút này
                     holder.isButtonClicked = true;
@@ -150,6 +153,7 @@ public class HoaDonKHAdapter extends RecyclerView.Adapter<HoaDonKHAdapter.ViewHo
         dialogDelete.setPositiveButton("HỦY", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                Log.d("HoaDonKHAdapter", "Deletion cancelled for order with ID: " + mahd + " for user with ID: " + matk);
             }
         });
         dialogDelete.setNegativeButton("XÓA", new DialogInterface.OnClickListener() {
@@ -162,8 +166,10 @@ public class HoaDonKHAdapter extends RecyclerView.Adapter<HoaDonKHAdapter.ViewHo
                     list = hoaDonDAO.getDSHoaDonTheoKH(matk);
                     notifyDataSetChanged();
                     Toast.makeText(context, "Xóa hóa đơn thành công", Toast.LENGTH_SHORT).show();
+                    Log.d("HoaDonKHAdapter", "Successfully deleted order with ID: " + mahd + " for user with ID: " + matk);
                 } else {
                     Toast.makeText(context, "Xóa hóa đơn thất bại", Toast.LENGTH_SHORT).show();
+                    Log.d("HoaDonKHAdapter", "Failed to delete order with ID: " + mahd + " for user with ID: " + matk);
                 }
             }
         });

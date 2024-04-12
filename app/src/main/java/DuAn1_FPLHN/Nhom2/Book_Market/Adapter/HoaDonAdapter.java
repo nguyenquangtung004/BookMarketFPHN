@@ -2,6 +2,7 @@ package DuAn1_FPLHN.Nhom2.Book_Market.Adapter;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,9 +57,11 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHolder
         if (hoaDon.getTrangthai() == 1){
             holder.tv_trangthai.setText("Đã nhận hàng");
             holder.tv_trangthai.setTextColor(ContextCompat.getColor(context, R.color.anakiwa));
+            Log.d("HoaDonAdapter", "Order with ID: " + hoaDon.getMahd() + " has been received.");  // Thêm log ở đây
         } else {
             holder.tv_trangthai.setText("Chưa nhận hàng");
             holder.tv_trangthai.setTextColor(ContextCompat.getColor(context, R.color.black_pearl));
+            Log.d("HoaDonAdapter", "Order with ID: " + hoaDon.getMahd() + " has not been received yet.");  // Thêm log ở đây
         }
 
 
@@ -91,6 +94,7 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHolder
     }
     public void updateData(ArrayList<HoaDon> newList) {
         this.list = newList;
+        Log.d("HoaDonAdapter", "Data updated with " + newList.size() + " items.");  // Thêm log ở đây
         notifyDataSetChanged();
     }
 

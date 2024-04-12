@@ -2,6 +2,7 @@ package DuAn1_FPLHN.Nhom2.Book_Market.Adapter;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,7 +44,7 @@ public class TaiKhoanAdapter extends RecyclerView.Adapter<TaiKhoanAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final TaiKhoan taiKhoan = list.get(position);
-
+        Log.d("TaiKhoanAdapter", "Binding data for user ID: " + taiKhoan.getMatk());
         holder.tv_matk.setText("Mã: " + taiKhoan.getMatk());
         holder.tv_hoten.setText(taiKhoan.getHoten());
         holder.tv_taikhoan.setText("Tài khoản: " + taiKhoan.getTaikhoan());
@@ -55,6 +56,7 @@ public class TaiKhoanAdapter extends RecyclerView.Adapter<TaiKhoanAdapter.ViewHo
         holder.img_chucnang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("TaiKhoanAdapter", "Clicked on options for user ID: " + taiKhoan.getMatk());
                 PopupMenu popupMenu = new PopupMenu(context, holder.img_chucnang);
                 popupMenu.inflate(R.menu.menu_chucnang);
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -87,7 +89,7 @@ public class TaiKhoanAdapter extends RecyclerView.Adapter<TaiKhoanAdapter.ViewHo
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            Log.d("TaiKhoanAdapter", "ViewHolder created");
             tv_matk = itemView.findViewById(R.id.tv_matk);
             tv_taikhoan = itemView.findViewById(R.id.tv_taikhoan);
             tv_matkhau = itemView.findViewById(R.id.tv_matkhau);
@@ -103,6 +105,7 @@ public class TaiKhoanAdapter extends RecyclerView.Adapter<TaiKhoanAdapter.ViewHo
 
     private void showDialogEdit(TaiKhoan taiKhoan){
         View view = LayoutInflater.from(context).inflate(R.layout.dialog_sua_taikhoan, null);
+        Log.d("TaiKhoanAdapter", "Showing edit dialog for user ID: " + taiKhoan.getMatk());
         BottomSheetDialog sheetDialog = new BottomSheetDialog(context);
         sheetDialog.setContentView(view);
         sheetDialog.setCanceledOnTouchOutside(false);
@@ -181,6 +184,7 @@ public class TaiKhoanAdapter extends RecyclerView.Adapter<TaiKhoanAdapter.ViewHo
     }
     private void showDiaLogDelete(int maTK, String taikhoan) {
         AlertDialog.Builder dialogDelete = new AlertDialog.Builder(context);
+        Log.d("TaiKhoanAdapter", "Showing delete dialog for user ID: " + maTK);
         dialogDelete.setIcon(R.drawable.logo_delete);
         dialogDelete.setTitle("Bạn có chắc chắn muốn xóa tài khoản " + taikhoan + " không ?");
         dialogDelete.setPositiveButton("HỦY", new DialogInterface.OnClickListener() {

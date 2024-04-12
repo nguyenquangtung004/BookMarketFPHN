@@ -77,14 +77,13 @@ public class ChiTietSanPham extends AppCompatActivity {
             tv_giaSP.setText("Giá sản phẩm: "+String.valueOf(giaSP));
             tv_motaSP.setText("Mô tả: "+motaSP);
             tv_soluongtonkho.setText("Số lượng tồn kho: " + String.valueOf(solgTonKho));
-            //Viết ở đây 1000 để test
+
             gioHang = new GioHang(tenSP, byte_anhSP, giaSP, soluong,solgTonKho);
             Log.d("ChiTietSanPham", "Khởi tạo đối tượng GioHang với các thông số sau:\n" +
                     "tenSP: " + tenSP + "\n" +
                     "giaSP: " + giaSP + "\n" +
                     "soluong: " + soluong + "\n" +
                     "soluongtonkho: " + solgTonKho);
-            // Cập nhật số lượng hàng tồn kho ngay lập tức
 
 
             btn_themGioHang.setOnClickListener(new View.OnClickListener() {

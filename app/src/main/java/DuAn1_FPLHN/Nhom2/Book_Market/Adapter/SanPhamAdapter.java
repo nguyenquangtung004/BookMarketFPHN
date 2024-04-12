@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -74,6 +75,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
             public void onClick(View v) {
                 PopupMenu popupMenu = new PopupMenu(context, holder.img_chucnang);
                 popupMenu.inflate(R.menu.menu_chucnang);
+                Log.d("SanPhamAdapter", "Clicked on options for product ID: " + sanPham.getMasp());
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
@@ -120,6 +122,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         BottomSheetDialog sheetDialog = new BottomSheetDialog(context);
         sheetDialog.setContentView(view);
         sheetDialog.setCanceledOnTouchOutside(false);
+        Log.d("SanPhamAdapter", "Showing edit dialog for product ID: " + sanPham.getMasp());
 
         // anh xa
         EditText ed_tenSP = sheetDialog.findViewById(R.id.ed_tenSP);
@@ -222,6 +225,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         AlertDialog.Builder dialogDelete = new AlertDialog.Builder(context);
         dialogDelete.setIcon(R.drawable.logo_delete);
         dialogDelete.setTitle("Bạn có chắc chắn muốn xóa sản phẩm này không ?");
+        Log.d("SanPhamAdapter", "Showing delete dialog for product ID: " + maSP);
         dialogDelete.setPositiveButton("HỦY", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -251,6 +255,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
     private ArrayList<HashMap<String, Object>> getDataTheLoai(Spinner spnLoaiSP) {
         TheLoaiDAO theLoaiDAO = new TheLoaiDAO(context);
         ArrayList<TheLoai> list = theLoaiDAO.getDSTheLoai();
+        Log.d("SanPhamAdapter", "Fetching product categories");
 
         ArrayList<HashMap<String, Object>> listHM = new ArrayList<>();
         // Đổi ds TL sang thành HashMap
