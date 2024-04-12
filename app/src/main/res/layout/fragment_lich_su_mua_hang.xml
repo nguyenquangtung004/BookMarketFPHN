@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".Fragment.LichSuMuaHangFragment">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lịch sử mua hàng"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textColor="#B81D1D"
+        android:textSize="30sp"
+        android:padding="10dp"/>
+
+    <!-- Layout chứa các nút Button -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <!-- Nút Button để lọc tất cả các đơn hàng -->
+        <Button
+            android:id="@+id/btnAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:text="Tất cả"/>
+
+        <!-- Nút Button để lọc các đơn hàng đã nhận -->
+        <Button
+            android:id="@+id/btnReceived"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:text="Đã nhận hàng"/>
+
+        <!-- Nút Button để lọc các đơn hàng chưa nhận -->
+        <Button
+            android:id="@+id/btnNotReceived"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:text="Chưa nhận hàng"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

@@ -33,6 +33,7 @@ import DuAn1_FPLHN.Nhom2.Book_Market.DAO.TaiKhoanDAO;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.FragmentGioHang;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.FragmentHoaDon;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.FragmentQLHoaDon;
+import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.LichSuMuaHangFragment;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.QuanLySanPham;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.QuanLyTaiKhoan;
 import DuAn1_FPLHN.Nhom2.Book_Market.Fragment.QuanLyTheLoai;
@@ -147,12 +148,11 @@ public class MainActivity extends AppCompatActivity {
                 }
                 /*<---------------------->*/
 
-                //Đổi mật khẩu của người mua
-//                if (item.getItemId() == R.id.mDoiMatKhau) {
-//                    showDialogDoiMK(maTK);
-//                    Toast.makeText(MainActivity.this, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
-//                }
-                /*<---------------------->*/
+                //Lịch sử mua hàng (người dùng)
+                if (item.getItemId() == R.id.mLichSuMuaHang) {
+                    callFragment(new LichSuMuaHangFragment());
+                    toolbar.setTitle("Lịch sử mua hàng");
+                }
 
                 //Thông tin đội ngũ phát triển ứng dựng
                 if (item.getItemId() == R.id.mThongTinApp) {
@@ -216,8 +216,9 @@ public class MainActivity extends AppCompatActivity {
         //Ẩn chức năng dành cho admin
         if (loaiTK.equals("admin")){
             Menu menu = bottomNavigationView.getMenu();
+            Menu menu1 = navigationView.getMenu();
             menu.findItem(R.id.bt_giohang).setVisible(false);
-//            menu.findItem(R.id.bt_hoadon).setVisible(false);
+            menu1.findItem(R.id.mLichSuMuaHang).setVisible(false);
         }
 
 
