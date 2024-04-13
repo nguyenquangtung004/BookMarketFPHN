@@ -2,6 +2,7 @@ package DuAn1_FPLHN.Nhom2.Book_Market;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,12 +24,14 @@ public class ChiTietSanPham extends AppCompatActivity {
     private GioHangDAO gioHangDAO;
     private GioHang gioHang;
     private int soluong = 0;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chi_tiet_san_pham);
         Log.d("ChiTietSanPham", "onCreate() đã được gọi");
+        sharedPreferences = getSharedPreferences("ChiTietSanPham", MODE_PRIVATE);
         gioHangDAO = new GioHangDAO(this);
         //Ánh Xạ Giao Diện
         tv_tenSP = findViewById(R.id.tv_tenSP);
@@ -98,6 +101,14 @@ public class ChiTietSanPham extends AppCompatActivity {
                         if (themGioHang){
                             Log.d("ChiTietSanPham", "Thêm giỏ hàng thành công");
                             Toast.makeText(ChiTietSanPham.this, "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+
+                            // Giảm số lượng tồn kho sau khi thêm sản phẩm vào giỏ hàng thành công
+                            gioHang.setSoLuongTonKho(gioHang.getSoLuongTonKho() - soluong);
+                            tv_soluongtonkho.setText("Số lượng tồn kho: " + String.valueOf(gioHang.getSoLuongTonKho()));
+
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putInt("soLuongTonKho", gioHang.getSoLuongTonKho());
+                            editor.apply();
                         } else {
                             Log.d("ChiTietSanPham", "Thêm giỏ hàng thất bại");
                             Toast.makeText(ChiTietSanPham.this, "Thêm giỏ hàng thất bại", Toast.LENGTH_SHORT).show();
@@ -118,7 +129,7 @@ public class ChiTietSanPham extends AppCompatActivity {
                         gioHang.setSoluong(soluong);
                         gioHang.setSoLuongTonKho(gioHang.getSoLuongTonKho() + 1);
                         tv_soluong.setText(String.valueOf(soluong));
-                        tv_soluongtonkho.setText("Số lượng tồn kho: " + String.valueOf(gioHang.getSoLuongTonKho()));
+//                        tv_soluongtonkho.setText("Số lượng tồn kho: " + String.valueOf(gioHang.getSoLuongTonKho()));
                         Log.d("ChiTietSanPham", "Số lượng giảm xuống: " + soluong);
                     }
                 }
@@ -133,7 +144,7 @@ public class ChiTietSanPham extends AppCompatActivity {
                         gioHang.setSoluong(soluong);
                         gioHang.setSoLuongTonKho(gioHang.getSoLuongTonKho() - 1);
                         tv_soluong.setText(String.valueOf(soluong));
-                        tv_soluongtonkho.setText("Số lượng tồn kho: " + String.valueOf(gioHang.getSoLuongTonKho()));
+//                        tv_soluongtonkho.setText("Số lượng tồn kho: " + String.valueOf(gioHang.getSoLuongTonKho()));
                         Log.d("ChiTietSanPham", "Số lượng tăng lên: " + soluong);
                     } else {
                         Toast.makeText(ChiTietSanPham.this, "Không đủ hàng trong kho", Toast.LENGTH_SHORT).show();
@@ -146,5 +157,22 @@ public class ChiTietSanPham extends AppCompatActivity {
 
 
 
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Lưu số lượng tồn kho vào SharedPreferences khi thoát ra khỏi màn hình ChiTietSanPham
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("soLuongTonKho", gioHang.getSoLuongTonKho());
+        editor.apply();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Lấy số lượng tồn kho từ SharedPreferences khi mở lại màn hình ChiTietSanPham
+        int soLuongTonKho = sharedPreferences.getInt("soLuongTonKho", 0);
+        gioHang.setSoLuongTonKho(soLuongTonKho);
+        tv_soluongtonkho.setText("Số lượng tồn kho: " + String.valueOf(soLuongTonKho));
     }
 }
