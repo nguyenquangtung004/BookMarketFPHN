@@ -22,7 +22,7 @@ public class ChiTietSanPham extends AppCompatActivity {
     private TextView btn_themGioHang;
     private GioHangDAO gioHangDAO;
     private GioHang gioHang;
-    private int soluong = 1;
+    private int soluong = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +90,10 @@ public class ChiTietSanPham extends AppCompatActivity {
             btn_themGioHang.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (gioHang.getSoLuongTonKho() > 0) {
+                    if (soluong == 0) {
+                        Toast.makeText(ChiTietSanPham.this, "Vui lòng chọn số lượng", Toast.LENGTH_SHORT).show();
+                        Log.d("ChiTietSanPham", "Vui lòng chọn số lượng");
+                    } else if (gioHang.getSoLuongTonKho() > 0) {
                         boolean themGioHang = gioHangDAO.themGioHang(gioHang);
                         if (themGioHang){
                             Log.d("ChiTietSanPham", "Thêm giỏ hàng thành công");
@@ -104,7 +107,6 @@ public class ChiTietSanPham extends AppCompatActivity {
                         Toast.makeText(ChiTietSanPham.this, "Sản phẩm này đã hết hàng", Toast.LENGTH_SHORT).show();
                     }
                 }
-
             });
             img_tru.setOnClickListener(new View.OnClickListener() {
                 @Override
