@@ -1,20 +1,85 @@
-- Tên Dự Án 1 : Book Market
-- Mô tả : Xây dựng siêu thị bán sách bằng JAVA
--Người thực hiện dự án :
-+ Trưởng nhóm :Nguyễn Quang Tùng
-+ Thành Viên 1 : Vương Đình Hiến
-+ Thành Viên 2 : 
--Thời gian thực hiện dự án 1 tháng 5/3/2024 - 13/4/2024
-- Một số quy tắc khi thực hiện dự án bắt buộc phải tuân theo:
-  +Thực hiện việc chia nhánh trước khi gộp nhánh tránh lỗi bất đồng bộ
-  +Thành viên tham gia cần commit lại những phần đã update 
-  +Đặt tên class ví dụ : ĐangKi
-  +Đặt tên id các thuộc tính theo quy tắc con rắn
-  -> Ví dụ Text View : tv_Layout Hiện Tại_Đói tượng _ Số lần nếu có
-  //*Mẫu tv_dn_ttk hoặc tv_dn_ttk_1*//
-  +Các nút button : cũng đặt theo quy tắc con rắn 
-  Ví Dụ btn_layout mà nút đang nằm_số lần nếu có
-  //*Mẫu btn_dn hoặc btn_dn_1*//
-- Còn lại theo quy tắc lạc đà 
-  => Mục đích của quy tắc dễ hiểu code
-  YÊU CẦU CÁC THÀNH VIÊN THAM DỰ ÁN ĐỌC FILE GHI CHÚ  
+# 📚 Book Market - Java Bookstore Application
+
+## 📝 Mô tả dự án
+
+**Book Market** là một ứng dụng siêu thị bán sách được xây dựng bằng **Java**. Ứng dụng cho phép người dùng đăng nhập, quản lý sách, thể loại, tài khoản, hóa đơn, giỏ hàng và thực hiện thống kê doanh thu.
+
+## 👥 Thành viên dự án
+
+| Vai trò | Họ và tên |
+|---------|-----------|
+| **Trưởng nhóm** | Nguyễn Quang Tùng |
+| **Thành viên 1** | Vương Đình Hiến |
+| **Thành viên 2** | *(Đang cập nhật)* |
+
+**⏱ Thời gian thực hiện:** Từ **05/03/2024** đến **13/04/2024**
+
+## 📁 Cấu trúc thư mục chính
+
+```
+nguyenquangtung004-bookmarketfphn/
+├── app/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/.../Book_Market/     → Code Java chia theo mô hình MVC
+│   │   │   ├── res/layout/               → Giao diện XML
+│   │   │   ├── res/drawable/             → Icon, background XML
+│   │   │   ├── res/values/               → Strings, colors, theme
+│   │   │   └── AndroidManifest.xml
+├── gradle/
+├── build.gradle
+├── README.md
+└── ...
+```
+
+## ⚙️ Quy tắc đặt tên & làm việc trong dự án
+
+### 1. 🛠️ Quy trình làm việc với Git
+
+- **Bắt buộc chia nhánh** trước khi thực hiện code để tránh lỗi bất đồng bộ
+- **Commit đầy đủ** những phần đã cập nhật, nêu rõ nội dung trong message
+
+### 2. 📐 Quy tắc đặt tên
+
+> Đặt theo chuẩn để dễ đọc code
+
+#### ➤ Class:
+- Dùng **PascalCase**
+- *Ví dụ:* `DangKi`, `MainActivity`, `ThongKeDoanhThu`
+
+#### ➤ ID thuộc tính XML (TextView, Button, ...)
+- Dùng **snake_case**
+
+**TextView:**
+```
+tv_<layout>_<đối_tượng>_<số_lần nếu có>
+Ví dụ: tv_dn_ttk hoặc tv_dn_ttk_1
+```
+
+**Button:**
+```
+btn_<layout>_<mục_đích>_<số_lần nếu có>
+Ví dụ: btn_dn hoặc btn_dn_1
+```
+
+#### ➤ Các biến còn lại:
+- Dùng **camelCase**
+- *Ví dụ:* `tenTaiKhoan`, `soLuongSach`, `giaBan`
+
+## 🎯 Mục tiêu & Lưu ý
+
+- Dự án tuân thủ mô hình **MVC**: chia rõ `Model`, `View`, `Controller/DAO`
+- Tên biến, layout, component phải **rõ ràng**, **thống nhất** để dễ bảo trì
+- **TẤT CẢ THÀNH VIÊN** bắt buộc phải đọc và hiểu rõ file README này trước khi bắt đầu hoặc tiếp tục code
+
+## 💬 Liên hệ nhóm
+
+Nếu có bất kỳ thắc mắc hay góp ý, hãy liên hệ trưởng nhóm:
+
+📧 **Nguyễn Quang Tùng** – `nguyenquangtung004@...`
+
+---
+
+## ✅ Lưu ý quan trọng
+
+**Hãy commit đúng chuẩn – review kỹ – tôn trọng thời gian của cả nhóm!**
